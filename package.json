@@ -1,0 +1,19 @@
+{
+  "name": "frontend-team-13",
+  "version": "1.0.0",
+  "description": "TP 1: equipo 13",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamaraailenacost/frontend-team-13.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tamaraailenacost/frontend-team-13/issues"
+  },
+  "homepage": "https://github.com/tamaraailenacost/frontend-team-13#readme"
+}
