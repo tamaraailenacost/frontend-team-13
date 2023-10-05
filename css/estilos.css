@@ -150,6 +150,15 @@ margin: 100px;
     padding: 20px;
   }
 
+  .clases-img {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+
+  }
+
   .clases-info {
     background: #909090;
     box-shadow: 6px 0 38px rgba(20,20,20,0.10);
@@ -277,6 +286,7 @@ nav {
   left: 0;
   width: 100%;
   z-index: 1000; /* Valor alto para que esté por encima de todo */
+  max-width: 100%;
 }
 
 ul {
@@ -352,14 +362,6 @@ li a:hover {
     background: #c2ee0a;
   }
 
- 
-
-  .google-map {
-    width: 100%; /* Puedes ajustar el ancho según tus necesidades */
-    max-height: 400px; /* Puedes ajustar la altura según tus necesidades */
-    overflow: hidden
-  }
-
   .galeria {
     display: flex;
     
@@ -379,4 +381,16 @@ li a:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
+button {
+  font-size: 1.5em;
+  margin: 5px;
+}
 
+.footer {
+
+  background-color: #333;
+  text-align: center;
+  padding: 20px; 
+  font-size: 24px;
+
+}
