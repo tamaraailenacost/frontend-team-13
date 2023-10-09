@@ -1,0 +1,139 @@
+
+.container-wrapper{
+    max-width: 1900px;
+}
+
+/* Dentro de un container flex, todos los elementos que se encuentran dentro de este
+contenedor, se aliniean con el mismo tamano, sin importar si tenian diferente hight o width
+*/
+.flex-container {
+    display: flex;
+    /*---display: flex;----*/
+    justify-content: space-between;
+    /*
+    justify-content: start
+    justify-content: center;
+    justify-content: space-around;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-wrap: wrap; // ajusta los box segun su contenido
+    */
+
+    /* podemos crear columns o rows 
+    flex-direction: column;
+    flex-direction: row;
+    */
+}
+
+body{
+    margin:unset;
+}
+
+header {
+    align-items: center;
+    color: white;
+}
+
+/* Estilos para los elementos flexibles en el contenedor Flexbox */
+.flex-container > * {
+    /* "flex" permite definir cuanto espacio van a ocupar los elementos */
+    flex: 1;
+    padding: 10px;
+    margin: 5px;
+    margin: 1%;
+    text-align: center;
+}
+
+.flex-item.nav > * {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* estilos para las columnas */
+.col-1 {
+    flex: 1;
+}
+
+.col-2 {
+    flex: 2;
+}
+
+.col-3 {
+    flex: 3;
+}
+
+.col-4 {
+    flex: 4;
+}
+
+.col-5 {
+    flex: 5;
+}
+
+
+.header{
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    width: 100%;
+    background: linear-gradient(1deg, #22de3300, #C2EE0A 100px);
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(1deg, #22de3300, #C2EE0A 100px);
+}
+
+.search-form{
+    width: 200px;
+    height: 50px;
+    background: #2b303b;
+    border: none;
+    font-size: 10pt;
+    float: left;
+    font-size: 14px;
+    color: #ffffff;
+    padding-left: 45px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+  }
+
+.logo {
+
+    font-size: 24px;
+    font-weight: 800;
+    color: aliceblue;
+}
+
+/*registro-------------------------------------*/
+
+.registro-img{
+    background-image: url("../images/registro-image.jpg");
+    width: 100%;
+    align-items: center;
+    display: grid;
+    justify-items: center;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 800px;
+}
+
+.registro-text {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 2;
+    opacity: 0.5;
+}
+
+.signupFrm {
+
+    margin: 50px 40px;
+}
+
+.image-container {
+    margin: 0px;
+    padding: 0px;
+}
