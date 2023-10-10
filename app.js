@@ -61,6 +61,7 @@ function renderFooter() {
 
 
 // Call the renders
+renderHeader();
 renderFlexbox();
 
 
