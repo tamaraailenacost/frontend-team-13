@@ -16,7 +16,7 @@
                 <div>
 
                      <div>
-                          <div>
+                          <div class="presentacion-text">
 
                                 <h6>Una nueva forma de contruir un estilo de vida mas saludable!</h6>
 
@@ -285,12 +285,12 @@
                 <div>
                     <h2>Sientanse libres de preguntar lo que sea</h2>
 
-                    <form action="#"  id="contacto" method="post" class="contact-form webform" role="form">
-                        <input type="text" class="form-control" name="fc-nombre" placeholder="Nombre">
+                    <form action="#"  id="contacto-form-main" method="post" class="contact-form webform" role="form">
+                        <input type="text"  id="contact_form_user" class="form-control" name="fc-nombre" placeholder="Nombre">
 
-                        <input type="email" class="form-control" name="fc-email" placeholder="Email">
+                        <input type="email" id="contact_form_email" class="form-control" name="fc-email" placeholder="Email">
 
-                        <textarea class="form-control" rows="5" name="fc-mensaje" placeholder="Mensaje"></textarea>
+                        <textarea class="form-control" id="contact_form_mensaje" rows="5" name="fc-mensaje" placeholder="Mensaje"></textarea>
 
                         <button type="submit" class="form-control" id="boton-enviar" name="enviar">Enviar mensaje</button>
                     </form>
@@ -316,6 +316,6 @@
       
     <p class="footer">Copyright &copy; 2023 Gymnasionline</p>
                     
- 
+    <script src="../js/validate-form.js"></script>
 </body>
 </html>
