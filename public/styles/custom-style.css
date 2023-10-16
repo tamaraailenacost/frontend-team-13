@@ -79,12 +79,12 @@ header {
     background: linear-gradient(1deg, #22de3300, #C2EE0A 100px);
 }
 
-.footer{
+/* .footer{
     position: absolute;
     bottom: 0;
     width: 100%;
     background: linear-gradient(1deg, #22de3300, #C2EE0A 100px);
-}
+} */
 
 .search-form{
     width: 200px;
@@ -121,6 +121,10 @@ header {
     height: 800px;
 }
 
+.registro-img:hover{
+    opacity: 0.5;
+}
+
 .registro-text {
     font-size: 24px;
     font-weight: 700;
@@ -136,4 +140,24 @@ header {
 .image-container {
     margin: 0px;
     padding: 0px;
+}
+
+.registro-text h2 {
+   transition: opacity 0.3s;
+   animation: blinker 5s linear infinite;
+
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+
+
+}
+
+
+/* tablets and small devices*/
+@media only screen and (max-width: 992px) {
+
+
 }
