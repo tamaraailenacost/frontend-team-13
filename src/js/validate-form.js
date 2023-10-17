@@ -2,7 +2,6 @@ const user = document.getElementById('user');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password_1 = document.getElementById('password-1');
-//const submit = document.getElementById("sub-form-registro").disabled = true;
 
 function displayAlert(element, message) {
     const alertElement = element.nextElementSibling;
