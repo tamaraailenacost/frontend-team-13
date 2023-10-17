@@ -137,7 +137,7 @@ background-image: url("..//public/images/index-image.jpg");
 
 
   a {
-    color: red;
+    color: #ffffff;
     font-weight: normal;
     text-decoration: none;
     transition: all 0.3s ease;
@@ -177,8 +177,15 @@ background-image: url("..//public/images/index-image.jpg");
     justify-content: center;
     align-items: center;
     max-width: 100%;
+    transition: 0.5s;
+    object-fit: cover;
 
   }
+
+  .clases-img:hover {
+    opacity:0.5;
+  }
+
 
   .clases-info {
     background: #909090;
@@ -410,10 +417,27 @@ button {
 }
 
 .footer {
-
+  
   background-color: #333;
   text-align: center;
   padding: 20px; 
   font-size: 24px;
 
+}
+
+/* text o presentacion */
+.presentacion-text {
+  position: absolute;
+  margin-top: 10%;
+  /* margin: auto; */
+  /* margin-bottom: 18px; */
+  font-family: fantasy;
+  opacity: 0.7;
+  width: 100%;
+  padding: 5%;
+}
+
+.presentacion-text:hover {
+
+  opacity: 1;
 }

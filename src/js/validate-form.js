@@ -2,7 +2,9 @@ const user = document.getElementById('user');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const password_1 = document.getElementById('password-1');
-//const submit = document.getElementById("sub-form-registro").disabled = true;
+
+
+
 
 function displayAlert(element, message) {
     const alertElement = element.nextElementSibling;
@@ -83,7 +85,8 @@ const form = document.getElementById('signupFrm');
 form.addEventListener('submit', function (event) {
 
 
-    if (user.value === '' || email.value === '' || password.value === '' || password_1.value === '') {
+    if (!validateEmail || !validateUser() || !validatePasswordMatch() || !validatePasswordMatch() ) {
+        
         event.preventDefault();
 
         validateEmail();
@@ -92,5 +95,4 @@ form.addEventListener('submit', function (event) {
         validateUser();   
     }
 });
-
 

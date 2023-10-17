@@ -79,12 +79,12 @@ header {
     background: linear-gradient(1deg, #22de3300, #C2EE0A 100px);
 }
 
-.footer{
+/* .footer{
     position: absolute;
     bottom: 0;
     width: 100%;
     background: linear-gradient(1deg, #22de3300, #C2EE0A 100px);
-}
+} */
 
 .search-form{
     width: 200px;
@@ -121,6 +121,10 @@ header {
     height: 800px;
 }
 
+.registro-img:hover{
+    opacity: 0.5;
+}
+
 .registro-text {
     font-size: 24px;
     font-weight: 700;
@@ -137,6 +141,129 @@ header {
     margin: 0px;
     padding: 0px;
 }
+
+.registro-text h2 {
+   transition: opacity 0.3s;
+   animation: blinker 5s linear infinite;
+
+}
+
+.flex-item.burger-menu.col-2 {
+    display: none;
+}
+
+span.burger-icon {
+    color: #333;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    display: none;
+    position: fixed;
+    right: 0px;
+    z-index: 1020;
+    top:0px;
+}
+
+span.burger-icon:hover {
+    color: #C2EE0A;
+    background: #333;
+    padding: 10px;
+
+}
+
+.burger-menu {
+    display: none;
+}
+
+/* Breakpoints and responsive desing */
+/* Breakpoints and responsive desing */
+/* Breakpoints and responsive desing */
+
+/* tablets and small devices*/
+@media only screen and (max-width: 992px) {
+
+    .flex-container {
+        display: block;
+        justify-content: space-between;
+    }
+
+    .registro-img {
+        max-height: 300px;
+    }
+
+    .registro-text {
+        display: none;
+    }
+
+    h1.title.login100-form-title {
+        font-size: 18px;
+    }
+
+
+    .presentacion-text {
+        display: none;
+    }
+
+    section#nosotros {
+        display: block;
+    }
+
+    p, span {
+        font-size: 16px!important;
+    }
+
+    h3,h2,h1 {
+        font-size: 20px!important;
+    }
+
+    .clases-img {
+        max-height: 300px;
+    }
+
+    .flex-item.burger-menu {
+        display: none;
+    }
+
+    .flex-item.burger-menu li{
+        float:unset;
+    }
+
+    .flex-item.burger-menu li >*{
+        font-size: 21px;
+        border-radius: 1px solid #ffffff;
+    }
+
+    .flex-item.nav {
+        display: none;
+    }
+
+    .flex-item.login {
+        display: none;
+    }
+
+    span.burger-icon {
+        display: inline-block;
+    }
+
+
+}
+/*breakpoint*/
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    .input100 {
+
+        font-size: 14px!important;
+
+    }
+
+    p {
+        font-size: 14px!important;
+    }
+
+}
+/*breakpoint*/
 
 /*login-------------------------------------*/
 .login-img{
