@@ -395,6 +395,27 @@ login
   color: #C2EE0A;
 }
 
+.return-inicio{
+  font-size: 18px;
+  font-weight: 700;
+  color: #dfdfce;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  padding: 7px 20px;
+  background: #C2EE0A;
+  border-radius: 25px;
+  width: 13%;
+  margin: auto;
+}
+
 
 
 
