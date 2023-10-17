@@ -103,13 +103,3 @@ const contact_form_user = document.getElementById("contact_form_user");
 const contact_form_mensaje = document.getElementById("contact_form_mensaje");
 
 
-contact_form.addEventListener('submit', function (event) {
-
-    console.log("hola estoy aca")
-    if (contact_form_email ===""|| contact_form_email ===""|| contact_form_mensaje ==="" ) {
-        
-        event.preventDefault();
-
-    }
-});
-
