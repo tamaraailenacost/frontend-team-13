@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../../public/styles/custom-style.css">
+    <link rel="stylesheet" href="../../public/styles/estilos.boostrap.css">
+</head>
+
+<body class="container-wrapper">
+    <!-- Body -->
+    <div class="flex-container">
+        <div class="flex-item col-4 image-container">
+            <div class="login-img">
+               
+            </div>
+        </div>
+      <div class="flex-item col-3">
+            <div class="signupFrm">
+                <form  id="signupFrm" action="login" type="GET" class="form">
+                  <h1 class="title login100-form-title">Bienvenid@ nuevamente</h1>
+                 
+                  <div class="flex-item">
+                    <input type="text" class="input100" id="email" placeholder="user@gmail.com">
+                  </div>
+            
+                  <div class="flex-item">
+                    <input type="text" class="input100" id="password" placeholder="escribe tu password">
+                  </div>
+            
+                 
+                  <div class="container-button">
+                    <input  [su_button url= ”http://tympanus.net/codrops/2014/04/09/how-to-create-a-circular-progress-button/”  ]
+                    type="submit"  id="sub-form-registro"class="login-button" value="Sign in"  a href="./index.html"></a> 
+                  </div>
+                </form>
+              </div>
+              <h3 class="register">No tienes una cuenta? <a href="registro.html"><br> Registrate</a> </h3>
+        </div>
+    </div>
+    <script src="../js/login.js"></script>
+    </body>
+</html>

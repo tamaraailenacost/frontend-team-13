@@ -137,3 +137,18 @@ header {
     margin: 0px;
     padding: 0px;
 }
+
+/*login-------------------------------------*/
+.login-img{
+    background-image: url("../images/login-image.jpg");
+    width: 100%;
+    align-items: center;
+    display: grid;
+    justify-items: center;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 800px;
+
+}
+
