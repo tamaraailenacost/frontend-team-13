@@ -5,6 +5,7 @@ const password_1 = document.getElementById('password-1');
 
 
 
+
 function displayAlert(element, message) {
     const alertElement = element.nextElementSibling;
     if (!alertElement) {
@@ -94,12 +95,4 @@ form.addEventListener('submit', function (event) {
         validateUser();   
     }
 });
-
-
-// validaciones para el formulario de contacto
-const contact_form = document.getElementById("contacto-form-main");
-const contact_form_email = document.getElementById("contact_form_mensaje");
-const contact_form_user = document.getElementById("contact_form_user");
-const contact_form_mensaje = document.getElementById("contact_form_mensaje");
-
 

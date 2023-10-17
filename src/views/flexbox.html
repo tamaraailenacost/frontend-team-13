@@ -3,11 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Gymnasionline</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="../../public/styles/estilos.boostrap.css">
+    <link rel="stylesheet" href="../../public/styles/custom-style.css">
+    <link rel="stylesheet" href="../../css/estilos.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
 </head>
-<body
+<body>
+        <!-- Header -->
+        <header id ="header" class="header">
+            <div class="flex-container">
+                <div class="flex-item logo col-1">
+                    <a href="" class="logo"> Gym & CIA</a>
+                </div>
+                    <span class="burger-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                      </svg>
+                      
+                    </span>
+                <div class="flex-item burger-menu col-2">
+                    <nav>
+                    <li >
+                        <a href="#inicio">Inicio</a>
+                    </li>
+                    <li >
+                        <a href="#nosotros" >Nosotros</a>
+                    </li>
+                    <li >
+                        <a href="#clases">Clases</a>
+                    </li>
+                    <li >
+                        <a href="#horarios" >Horarios</a>
+                    </li>
+                    <li >
+                        <a href="#contacto">Contacto</a>
+                    </li>
+                    <li >
+                        <a href="../../src/views/registro.html" >Registrate</a>
+                    </li>
+                    <li >
+                        <a href="#contacto">Reserva</a>
+                    </li>
+                </div>
+                <div class="flex-item nav col-2">
+                    <nav>
+                    <li >
+                        <a href="#inicio">Inicio</a>
+                    </li>
+                    <li >
+                        <a href="#nosotros" >Nosotros</a>
+                    </li>
+                    <li >
+                        <a href="#clases">Clases</a>
+                    </li>
+                    <li >
+                        <a href="#horarios" >Horarios</a>
+                    </li>
+                    <li >
+                        <a href="#contacto">Contacto</a>
+                    </li>
+                </div>
+                <div class="flex-item login col-2">
+                    <button class="custom-btn">
+                        <a href="#contacto">Reservar</a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                            <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                          </svg>
+                    </button>
+                    <button class="custom-btn">
+                        <a href="../../src/views/registro.html">Registrate</a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+                            <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+                          </svg>
+                    </button> 
+                </div>
+            </div>
+        </header>
     
      <!-- Presentacion -->
      <section class="presentacion">
@@ -285,7 +359,7 @@
                 <div>
                     <h2>Sientanse libres de preguntar lo que sea</h2>
 
-                    <form action="#"  id="contacto-form-main" method="post" class="contact-form webform" role="form">
+                    <form action="#"  id="contacto-form-main" method="GET" class="contact-form webform" role="form">
                         <input type="text"  id="contact_form_user" class="form-control" name="fc-nombre" placeholder="Nombre">
 
                         <input type="email" id="contact_form_email" class="form-control" name="fc-email" placeholder="Email">
@@ -315,7 +389,6 @@
  <footer>
       
     <p class="footer">Copyright &copy; 2023 Gymnasionline</p>
-                    
-    <script src="../js/validate-form.js"></script>
+    <script src="../js/burger-menu.js"></script>                 
 </body>
 </html>
