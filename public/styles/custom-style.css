@@ -148,21 +148,36 @@ header {
 
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
+.flex-item.burger-menu.col-2 {
+    display: none;
+}
 
-    .input100 {
+span.burger-icon {
+    color: #333;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+    display: none;
+    position: fixed;
+    right: 0px;
+    z-index: 1020;
+    top:0px;
+}
 
-        font-size: 14px!important;
-
-    }
-
-    p {
-        font-size: 14px!important;
-    }
+span.burger-icon:hover {
+    color: #C2EE0A;
+    background: #333;
+    padding: 10px;
 
 }
 
+.burger-menu {
+    display: none;
+}
+
+/* Breakpoints and responsive desing */
+/* Breakpoints and responsive desing */
+/* Breakpoints and responsive desing */
 
 /* tablets and small devices*/
 @media only screen and (max-width: 992px) {
@@ -205,5 +220,47 @@ header {
         max-height: 300px;
     }
 
+    .flex-item.burger-menu {
+        display: none;
+    }
+
+    .flex-item.burger-menu li{
+        float:unset;
+    }
+
+    .flex-item.burger-menu li >*{
+        font-size: 21px;
+        border-radius: 1px solid #ffffff;
+    }
+
+    .flex-item.nav {
+        display: none;
+    }
+
+    .flex-item.login {
+        display: none;
+    }
+
+    span.burger-icon {
+        display: inline-block;
+    }
+
 
 }
+/*breakpoint*/
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    .input100 {
+
+        font-size: 14px!important;
+
+    }
+
+    p {
+        font-size: 14px!important;
+    }
+
+}
+/*breakpoint*/
