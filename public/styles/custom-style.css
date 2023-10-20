@@ -154,7 +154,6 @@ header {
 
 span.burger-icon {
     color: #333;
-    background: #ffffff;
     border-radius: 10px;
     padding: 10px;
     display: none;
@@ -173,6 +172,12 @@ span.burger-icon:hover {
 
 .burger-menu {
     display: none;
+}
+
+span.clases-precio:hover{
+    transform: scaleX(1.5);
+    background-color: #C2EE0A;
+    color: #ffffff;
 }
 
 /* Breakpoints and responsive desing */
@@ -196,7 +201,8 @@ span.burger-icon:hover {
     }
 
     h1.title.login100-form-title {
-        font-size: 18px;
+        font-size: 30px;
+        font-family: sans-serif;
     }
 
 
@@ -209,11 +215,15 @@ span.burger-icon:hover {
     }
 
     p, span {
-        font-size: 16px!important;
+        font-size: 12px!important;
     }
 
-    h3,h2,h1 {
-        font-size: 20px!important;
+    h1 {
+        font-size: 30px;
+    }
+
+    h3,h2{
+        font-size: 25px;
     }
 
     .clases-img {
@@ -245,6 +255,57 @@ span.burger-icon:hover {
         display: inline-block;
     }
 
+    .presentacion {
+
+        min-height: 300px!important;
+    }
+
+    .horarios-tabla {
+        display: none!important;
+    }
+
+    .input100 {
+
+        padding: 3%;
+        margin: 3%;
+    }
+
+    .login-img {
+        max-height: 300px;
+    }
+
+    .login100-form-btn{
+
+        font-size: 20px!important;
+    }
+
+    .flex-item.burger-menu.col-2 {
+        border: 1px solid #ffffff;
+        max-width: 200px;
+        background-color: #c2ee0adb;
+        position: fixed;
+        right: 0px;
+    }
+
+    .link-button {
+
+        font-size: 25px;
+        font-weight: 800;
+    }
+
+    .alert-validate {
+        font-size: 16px;
+        width: 100%;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        margin: 2%;
+    }
+
+    .header {
+        background: #C2EE0A;
+    }
+
 
 }
 /*breakpoint*/
@@ -252,14 +313,10 @@ span.burger-icon:hover {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 
-    .input100 {
 
-        font-size: 14px!important;
-
-    }
 
     p {
-        font-size: 14px!important;
+        font-size: 16px!important;
     }
 
 }
@@ -278,4 +335,6 @@ span.burger-icon:hover {
     height: 800px;
 
 }
+
+
 

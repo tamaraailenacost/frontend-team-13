@@ -1,12 +1,11 @@
 
   body {
-margin: 100px;
-background-image: url("..//public/images/index-image.jpg");
- background-attachment: fixed;
- background-size: cover;
-    /* background: #c2ee0a; */
-    font-family:'Plain', sans-serif;
+  margin: auto;
+  background-size: cover;
+  /* background: #c2ee0a; */
+  font-family:'Plain', sans-serif;
   }
+  
   .flex-container {
     display: flex;
     /*---display: flex;----*/

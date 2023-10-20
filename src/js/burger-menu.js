@@ -1,8 +1,5 @@
-console.log("hola mundo");
-
 const burgerIcon = document.querySelector('.burger-icon');
 const burgerMenu = document.querySelector('.burger-menu');
-
 
 
 burgerIcon.addEventListener('click', () => {
@@ -13,8 +10,7 @@ burgerIcon.addEventListener('click', () => {
 
     }else{
         burgerMenu.style.display = "none";
-    }
     
-
+    }
 
 });
