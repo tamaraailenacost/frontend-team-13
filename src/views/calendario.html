@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gymnasionline</title>
+    <link rel="stylesheet" href="../../css/estilos.css">
+    <link rel="stylesheet" href="../../public/styles/estilos.boostrap.css">
+    <link rel="stylesheet" href="../../public/styles/custom-style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+</head>
+<body>
+    <!-- Header -->
+        <header id ="header" class="header">
+            <div class="flex-container">
+                <div class="flex-item logo col-1">
+                    <a href="" class="logo"> Gym & CIA</a>
+                </div>
+                    <span class="burger-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                      </svg>
+                      
+                    </span>
+                <div class="flex-item burger-menu col-2">
+                    <nav>
+                    <li >
+                        <a href="flexbox.html">Inicio</a>
+                    </li>
+                    <li >
+                        <a href="flexbox.html#nosotros" >Nosotros</a>
+                    </li>
+                    <li >
+                        <a href="flexbox.html#clases">Clases</a>
+                    </li>
+                    <li >
+                        <a href="flexbox.html#horarios" >Horarios</a>
+                    </li>
+                    <li >
+                        <a href="./api.html">Clientes</a>
+                    </li>
+                    <li >
+                        <a href="./calendario.html">Reservar</a>
+                    </li>
+                    <li >
+                        <a href="./login.html" >Login</a>
+                    </li>
+                    <li >
+                        <a href="./api.html">Registrate</a>
+                    </li>
+                </div>
+                <div class="flex-item nav col-2">
+                    <nav>
+                    <li >
+                        <a href="flexbox.html">Inicio</a>
+                    </li>
+                    <li >
+                        <a href="flexbox.html#nosotros" >Nosotros</a>
+                    </li>
+                    <li >
+                        <a href="flexbox.html#clases">Clases</a>
+                    </li>
+                    <li >
+                        <a href="flexbox.html#horarios" >Horarios</a>
+                    </li>
+                    <li >
+                        <a href="./api.html">Clientes</a>
+                    </li>
+                </div>
+                <div class="flex-item login col-3">
+                    <button class="custom-btn">
+                        <a href="/calendario.html">Reservar</a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                          </svg>
+                    </button>
+                    <button class="custom-btn">
+                        <a href="./login.html">Login</a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                          </svg>
+                    </button>
+                    <button class="custom-btn">
+                        <a href="./registro.html">Registrate</a>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                          </svg>
+                    </button> 
+
+                </div>
+            </div>
+        </header>
+  <!-- header ----->  
+  
+  
+
+  <div class="flex-container">
+        <div class="flex-item nav col-1 calendario-select">
+            <form>
+            <h4>Seleccionar Fecha</h4>       
+            <input type="date" id="start" name="trip-start" min="2023-11-27" max="2024-12-01" required/>
+            <p><button>Submit</button></p>
+            </form>
+        </div>
+        <div class="flex-item nav col-1 clase-select">
+            <form>                    <ul>
+                        <li class="clases-selecte-one"><a href="#">Aeróbicos - 9:00 a.m.</a></li>
+                        <li class="clases-selecte-one"><a href="#">Entrenamiento de fuerza - 11:00 a.m.</a></li>
+                        <li class="clases-selecte-one"><a href="#">Yoga - 4:00 p.m.</a></li>
+                        <li class="clases-selecte-one"><a href="#">Pilates - 6:00 p.m.</a></li>
+                        <li class="clases-selecte-one"><a href="#">Zumba - 7:30 p.m.</a></li>
+                        <li class="clases-selecte-one"><a href="#">Spinning - 10:00 a.m.</a></li>
+                        <li class="clases-selecte-one"><a href="#">CrossFit - 5:00 p.m.</a></li>
+                    </ul>
+            </form>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="flex-item nav col-1 tus reservas">
+            <h4>Aqui podes ver tus clases</h4>
+            <table class="table-tusclases">
+                <tr>
+                  <th>Clase</th>
+                  <th>Horario</th>
+                  <th>Action</th>
+
+                </tr>
+                <tr>
+                  <td>CrossFit </td>
+                  <td>5:00 p.m </td>
+                  <td><button>Eliminar</button></td>
+                </tr>
+                <tr>
+                </tr>
+              </table>
+            <li class="clases-selecte-one"></li>
+        </div>
+    </div>
+
+
+ <!-- FOOTER -->
+ <footer>   
+    <p class="footer">Copyright &copy; 2023 Gymnasionline</p>
+    <script src="../js/burger-menu.js"></script>
+
+
+
+             
+</body>
+</html>
