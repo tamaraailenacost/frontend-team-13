@@ -336,5 +336,34 @@ span.clases-precio:hover{
 
 }
 
+p.footer {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
 
+.calendario-select{
+    margin-top: 200px;
+}
+
+.clase-select{
+    margin-top: 200px;
+}
+
+.flex-item.nav.col-1.tus.reservas {
+    margin: 2%;
+    border: 1px solid;
+    width: 100%;
+}
+
+table.table-tusclases {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table.table-tusclases th,
+  table.table-tusclases td{
+  padding: 20px;
+}
 
