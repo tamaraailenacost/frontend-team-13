@@ -2,56 +2,56 @@
 [ RESTYLE TAG ]*/
 
 * {
-	padding: 0px; 
-	box-sizing: border-box;
+    padding: 0px;
+    box-sizing: border-box;
 }
 
 body, html {
-  background-color: #2A2B30;
-	height: 100%;
+    background-color: #2A2B30;
+    height: 100%;
     color: white;
-	font-family: Ubuntu-Regular, sans-serif;
+    font-family: Ubuntu-Regular, sans-serif;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: Ubuntu-Regular;
-	font-size: 14px;
-	color: #C2EE0A;
-	margin: 0px;
-	transition: all 0.4s;
-	-webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  outline: none !important;
+    font-family: Ubuntu-Regular;
+    font-size: 14px;
+    color: #C2EE0A;
+    margin: 0px;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    outline: none !important;
 
 }
 
 a:focus {
-	outline: none !important;
+    outline: none !important;
 }
 
 a:hover {
-	text-decoration: none;
-  color: #403866;
+    text-decoration: none;
+    color: #403866;
 }
 
 /*---------------------------------------------*/
-h1,h2,h3,h4,h5,h6 {
-	margin: 0px;
+h1, h2, h3, h4, h5, h6 {
+    margin: 0px;
 }
 
 p {
-	font-family: Ubuntu-Regular;
-	font-size: 14px;
-	line-height: 1.7;
-	color: white;
-	margin: 0px;
+    font-family: Ubuntu-Regular;
+    font-size: 14px;
+    line-height: 1.7;
+    color: white;
+    margin: 0px;
 }
 
 ul, li {
-	margin: 0px;
-	list-style-type: none;
+    margin: 0px;
+    list-style-type: none;
 }
 
 
@@ -68,94 +68,115 @@ input {
 }
 
 textarea {
-  outline: none;
-  border: none;
+    outline: none;
+    border: none;
 }
 
 textarea:focus, input:focus {
-  border-color: transparent !important;
+    border-color: transparent !important;
 }
 
-input::-webkit-input-placeholder { color: #8f8fa1;}
-input:-moz-placeholder { color: #8f8fa1;}
-input::-moz-placeholder { color: #8f8fa1;}
-input:-ms-input-placeholder { color: #8f8fa1;}
+input::-webkit-input-placeholder {
+    color: #8f8fa1;
+}
 
-textarea::-webkit-input-placeholder { color: #8f8fa1;}
-textarea:-moz-placeholder { color: #8f8fa1;}
-textarea::-moz-placeholder { color: #8f8fa1;}
-textarea:-ms-input-placeholder { color: #8f8fa1;}
+input:-moz-placeholder {
+    color: #8f8fa1;
+}
+
+input::-moz-placeholder {
+    color: #8f8fa1;
+}
+
+input:-ms-input-placeholder {
+    color: #8f8fa1;
+}
+
+textarea::-webkit-input-placeholder {
+    color: #8f8fa1;
+}
+
+textarea:-moz-placeholder {
+    color: #8f8fa1;
+}
+
+textarea::-moz-placeholder {
+    color: #8f8fa1;
+}
+
+textarea:-ms-input-placeholder {
+    color: #8f8fa1;
+}
 
 label {
-  display: block;
-  margin: 0;
+    display: block;
+    margin: 0;
 }
 
 /*---------------------------------------------*/
 button {
-	outline: none !important;
-	border: 2px solid white;
-  color: white;
-  border-radius: solid white 5px;
-	background: #C2EE0A;
+    outline: none !important;
+    border: 2px solid white;
+    color: white;
+    border-radius: solid white 5px;
+    background: #C2EE0A;
     border-radius: 25px;
     padding: 10px 20px;
     font-weight: 700;
 }
 
 button:hover {
-	cursor: pointer;
-  background-color: #C2EE0A;
+    cursor: pointer;
+    background-color: #C2EE0A;
 }
 
 iframe {
-	border: none !important;
+    border: none !important;
 }
 
 
 /*//////////////////////////////////////////////////////////////////
 [ Utility ]*/
 .txt1 {
-  font-family: Ubuntu-Regular;
-  font-size: 16px;
-  color: #827ffe;
-  line-height: 1.4;
+    font-family: Ubuntu-Regular;
+    font-size: 16px;
+    color: #827ffe;
+    line-height: 1.4;
 }
-
 
 
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/
 
 .limiter {
-  width: 100%;
-  margin: 0 auto;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .container-login100 {
-  width: 100%;  
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;;
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;;
 }
 
 
 .wrap-login100 {
-  width: 390px;
-  background: #fff;
-  border-radius: 10px;
-  position: relative;
+    width: 390px;
+    background: #fff;
+    border-radius: 10px;
+    position: relative;
 }
 
 
@@ -163,98 +184,99 @@ iframe {
 [ Form ]*/
 
 .login100-form {
-  width: 100%;
+    width: 100%;
 }
 
 .login100-form-title {
-  font-size: 26px;
-  color: #C2EE0A;
-  line-height: 1.2;
-  text-transform: uppercase;
-  text-align: center;
-  width: 100%;
-  display: block;
+    font-size: 26px;
+    color: #C2EE0A;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    display: block;
 }
-
 
 
 /*------------------------------------------------------------------
 [ Input ]*/
 
 .wrap-input100 {
-  width: 100%;
-  position: relative;
-  background-color: #e6e6e6;
-  border: 1px solid transparent;
-  border-radius: 3px;
+    width: 100%;
+    position: relative;
+    background-color: #e6e6e6;
+    border: 1px solid transparent;
+    border-radius: 3px;
 }
 
 
 /*---------------------------------------------*/
 .input100 {
-  line-height: 1.2;
-  font-size: 18px;
-  display: block;
-  width: 100%;
-  padding: 10px 20px 10px 38px;
+    line-height: 1.2;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    padding: 10px 20px 10px 38px;
+    transition: transform 0.4s;
 }
 
 .input100:hover {
-  transform: skew(1deg, 1deg);
+    transform: skew(1deg, 1deg);
 }
 
-.input-alert{
-  border: solid 2px red;
+.input-alert {
+    border: solid 2px red;
 }
+
 /*------------------------------------------------------------------
 [ Focus Input ]*/
 
 .focus-input100 {
-  position: absolute;
-  display: block;
-  width: calc(100% + 2px);
-  height: calc(100% + 2px);
-  top: -1px;
-  left: -1px;
-  pointer-events: none;
-  border: 1px solid #827ffe;
-  border-radius: 3px;
+    position: absolute;
+    display: block;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    top: -1px;
+    left: -1px;
+    pointer-events: none;
+    border: 1px solid #827ffe;
+    border-radius: 3px;
 
-  visibility: hidden;
-  opacity: 0;
+    visibility: hidden;
+    opacity: 0;
 
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
 
-  -webkit-transform: scaleX(1.1) scaleY(1.3);
-  -moz-transform: scaleX(1.1) scaleY(1.3);
-  -ms-transform: scaleX(1.1) scaleY(1.3);
-  -o-transform: scaleX(1.1) scaleY(1.3);
-  transform: scaleX(1.1) scaleY(1.3);
+    -webkit-transform: scaleX(1.1) scaleY(1.3);
+    -moz-transform: scaleX(1.1) scaleY(1.3);
+    -ms-transform: scaleX(1.1) scaleY(1.3);
+    -o-transform: scaleX(1.1) scaleY(1.3);
+    transform: scaleX(1.1) scaleY(1.3);
 }
 
 .input100:focus + .focus-input100 {
-  visibility: visible;
-  opacity: 1;
+    visibility: visible;
+    opacity: 1;
 
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
-  transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
 }
 
 .eff-focus-selection {
-  visibility: visible;
-  opacity: 1;
+    visibility: visible;
+    opacity: 1;
 
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
-  transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
 }
 
 
@@ -262,186 +284,183 @@ iframe {
 [ Restyle Checkbox ]*/
 
 .input-checkbox100 {
-  display: none;
+    display: none;
 }
 
 .label-checkbox100 {
-  font-family: Ubuntu-Regular;
-  font-size: 16px;
-  color: #999999;
-  line-height: 1.2;
+    font-family: Ubuntu-Regular;
+    font-size: 16px;
+    color: #999999;
+    line-height: 1.2;
 
-  display: block;
-  position: relative;
-  padding-left: 26px;
-  cursor: pointer;
+    display: block;
+    position: relative;
+    padding-left: 26px;
+    cursor: pointer;
 }
 
 .label-checkbox100::before {
-  content: "\f00c";
-  font-family: FontAwesome;
-  font-size: 13px;
-  color: transparent;
+    content: "\f00c";
+    font-family: FontAwesome;
+    font-size: 13px;
+    color: transparent;
 
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-radius: 3px;
-  background: #fff;
-  border: 2px solid #827ffe;
-  left: 0;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
-  transform: translateY(-50%);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    background: #fff;
+    border: 2px solid #827ffe;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .input-checkbox100:checked + .label-checkbox100::before {
-  color: #827ffe;
+    color: #827ffe;
 }
 
 
 /*------------------------------------------------------------------
 [ Button ]*/
 .container-login100-form-btn {
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .login100-form-btn {
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
-  text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
 
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display:flex;
-  justify-content: center;
-  align-items:center;
-  padding: 10 20px;
-  width: 100%;
-  background: #C2EE0A;
-  border-radius: 3px;
-  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10 20px;
+    width: 100%;
+    background: #C2EE0A;
+    border-radius: 3px;
 
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
 }
 
 .login100-form-btn:hover {
-  background-color: #403866;
+    background-color: #403866;
 }
 
 /*
 login
 */
-.container-button{
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  margin: auto;
+.container-button {
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: auto;
 }
 
-.login-button{
-  font-size: 18px;
-  font-weight: 700;
-  color: #3b3b35;
-  line-height: 1.2;
-  text-transform: uppercase;
+.login-button {
+    font-size: 18px;
+    font-weight: 700;
+    color: #3b3b35;
+    line-height: 1.2;
+    text-transform: uppercase;
 
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display:flex;
-  justify-content: center;
-  align-items:center;
-  padding: 10 20px;
-  background: #C2EE0A;
-  border-radius: 3px;
-  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10 20px;
+    background: #C2EE0A;
+    border-radius: 3px;
 
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
 }
 
 .login-button:hover {
-  background-color: #253227;
-  color: #C2EE0A;
+    background-color: #253227;
+    color: #C2EE0A;
 }
 
-.return-inicio{
-  font-size: 18px;
-  font-weight: 700;
-  color: #dfdfce;
-  line-height: 1.2;
-  text-transform: uppercase;
+.return-inicio {
+    font-size: 18px;
+    font-weight: 700;
+    color: #dfdfce;
+    line-height: 1.2;
+    text-transform: uppercase;
 
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display:flex;
-  justify-content: center;
-  align-items:center;
-  padding: 7px 20px;
-  background: #C2EE0A;
-  border-radius: 25px;
-  width: 13%;
-  margin: auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 20px;
+    background: #C2EE0A;
+    border-radius: 25px;
+    width: 13%;
+    margin: auto;
 }
-
-
-
 
 
 /*------------------------------------------------------------------
 [ Alert validate ]*/
 
 .validate-input {
-  position: relative;
+    position: relative;
 }
 
 .alert-validate {
-  color: #c80000;
-  width: 50%;
-  pointer-events: none;
+    color: #c80000;
+    width: 50%;
+    pointer-events: none;
 
-  font-family: Ubuntu-Regular;
-  font-size: 14px;
-  line-height: 1.4;
-  text-align: center;
+    font-family: Ubuntu-Regular;
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: center;
 
-  /*visibility: hidden;*/
-  -webkit-transition: opacity 0.4s;
-  -o-transition: opacity 0.4s;
-  -moz-transition: opacity 0.4s;
-  transition: opacity 0.4s;
+    /*visibility: hidden;*/
+    -webkit-transition: opacity 0.4s;
+    -o-transition: opacity 0.4s;
+    -moz-transition: opacity 0.4s;
+    transition: opacity 0.4s;
 }
 
 /*style=”bubbles” background=”#e1a948″*/

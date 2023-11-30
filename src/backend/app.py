@@ -1,28 +1,27 @@
-
-#--------------------------------------------------------------------
+# --------------------------------------------------------------------
 # Instalar con pip install Flask
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, render_template
+
+import config
+from src.backend.routes import calendarRoute, authRoute
+from src.backend.views.calcularFecha import show_class_per_date
 
 # Si es necesario, pip install Werkzeug
-from werkzeug.utils import secure_filename
-
 # No es necesario instalar, es parte del sistema standard de Python
-import os
-import time
-
 # Instalar con pip install flask-cors
-from flask_cors import CORS
-
 # Importo submodulos para que podamos dividir el proyecto
-from views import calcularFecha
 
 app = Flask(__name__)
+app.config.from_object(config)
+
+app.register_blueprint(calendarRoute.bp)
+app.register_blueprint(authRoute.bp)
+
 
 # ruta principal
 @app.route('/calendario')
 def index():
     return render_template("calendario.html")
-
 
 
 # metodo que recibe una fecha y retorna las clases disponibles para ese dia de la semana
@@ -43,13 +42,15 @@ def delete_clase_in_list(date):
     return render_template("calendario.html", items)
 
 
+# route para loguearse
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
-
 ## algunos ejemplos de uso
-#----------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------------
 
 # # example of POST request
 # @app.route('/post', methods=['POST'])
@@ -62,7 +63,7 @@ if __name__ == '__main__':
 # def show_user_profile(username):
 # return f'User {username}'
 
-# #JSON 
+# #JSON
 # @app.route("/users")
 # def users_api():
 #     users = get_all_users()

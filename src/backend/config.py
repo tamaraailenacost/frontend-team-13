@@ -1,13 +1,14 @@
-# Instalar con pip install mysql-connector-python
-import mysql.connector
+import os
 
-#--------------------------------------------------------------------
-db = mysql.connector.connect(
-    host="localhost",
-    user="",
-    password="",
-    database="gym"
-)
+from dotenv import load_dotenv
 
-Cursor = db.cursor()
+# Load the .env file
+load_dotenv()
 
+# Get the environment variables
+DB_HOST = os.getenv("localhost")
+DB_NAME = os.getenv("gym")
+DB_USER = os.getenv("root")
+DB_PASS = os.getenv("1234")
+
+SECRET_KEY = os.getenv("SECRET_KEY")

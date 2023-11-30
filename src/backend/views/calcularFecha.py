@@ -1,5 +1,7 @@
-from flask import render_template, request
 from datetime import datetime
+
+from flask import request
+
 
 def show_class_per_date(date):
     # Obtén el parámetro 'fecha' de la URL
