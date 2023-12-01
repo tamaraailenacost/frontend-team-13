@@ -2,7 +2,7 @@ import mysql
 from flask import session
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from src.backend.database import DBConnector
+from src.database import DBConnector
 
 
 class AuthService:

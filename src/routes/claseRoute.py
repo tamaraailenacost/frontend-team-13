@@ -3,7 +3,7 @@
 
 from flask import Blueprint
 
-from src.backend.controllers.claseController import create_clase, get_all_clases, get_clase, update_clase, delete_clase
+from src.controllers.claseController import create_clase, get_all_clases, get_clase, update_clase, delete_clase
 
 bp = Blueprint("clase", __name__, url_prefix="/clases")
 

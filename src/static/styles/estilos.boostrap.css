@@ -8,7 +8,7 @@
 
 body, html {
     background-color: #2A2B30;
-    height: 100%;
+    /*height: 100%;*/
     color: white;
     font-family: Ubuntu-Regular, sans-serif;
 }
@@ -33,7 +33,11 @@ a:focus {
 
 a:hover {
     text-decoration: none;
-    color: #403866;
+    /*color: #403866;*/
+}
+
+svg {
+    transition: color 0.4s;
 }
 
 /*---------------------------------------------*/
@@ -63,7 +67,6 @@ input {
     padding: 2%;
     font-size: 23px;
     border-radius: 5px;
-    border: none;
     border: 2px solid #C2EE0A;
 }
 
@@ -118,7 +121,6 @@ button {
     outline: none !important;
     border: 2px solid white;
     color: white;
-    border-radius: solid white 5px;
     background: #C2EE0A;
     border-radius: 25px;
     padding: 10px 20px;
@@ -217,6 +219,8 @@ iframe {
     display: block;
     width: 100%;
     padding: 10px 20px 10px 38px;
+    transition: transform .4s;
+
 }
 
 .input100:hover {
@@ -360,7 +364,7 @@ iframe {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10 20px;
+    padding: 10px 20px;
     width: 100%;
     background: #C2EE0A;
     border-radius: 3px;
@@ -400,7 +404,7 @@ login
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10 20px;
+    padding: 10px 20px;
     background: #C2EE0A;
     border-radius: 3px;
 
@@ -416,10 +420,10 @@ login
     color: #C2EE0A;
 }
 
+
 .return-inicio {
     font-size: 18px;
     font-weight: 700;
-    color: #dfdfce;
     line-height: 1.2;
     text-transform: uppercase;
 
@@ -431,12 +435,25 @@ login
     justify-content: center;
     align-items: center;
     padding: 7px 20px;
-    background: #C2EE0A;
-    border-radius: 25px;
-    width: 13%;
+    background-color: #C2EE0A;
+    width: 20%;
     margin: auto;
+    transition-property: background-color;
+    transition-duration: .3s;
 }
 
+.return-inicio a {
+    color: #3b3b35;
+    text-decoration: none;
+}
+
+.return-inicio:hover {
+    background-color: transparent;
+}
+
+.return-inicio:hover a {
+    color: #C2EE0A;
+}
 
 /*------------------------------------------------------------------
 [ Alert validate ]*/

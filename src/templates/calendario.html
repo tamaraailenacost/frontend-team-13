@@ -1,0 +1,59 @@
+{% extends 'base.html'  %}
+{% include 'header.html'  %}
+
+{% block body %}
+<div class="flex-container">
+    <div class="flex-item nav col-1 calendario-select">
+        <form action="" method="GET">
+            <h4>Seleccionar Fecha</h4>
+            <input type="date" name="date" min="2023-11-27" max="2024-12-01" required/>
+            <p>
+                <button>Submit</button>
+            </p>
+        </form>
+    </div>
+    <div class="flex-item nav col-1 clase-select">
+        <form>
+            <ul>
+                <li class="clases-selecte-one"><a href="#">Aeróbicos - 9:00 a.m.</a></li>
+                <li class="clases-selecte-one"><a href="#">Entrenamiento de fuerza - 11:00 a.m.</a></li>
+                <li class="clases-selecte-one"><a href="#">Yoga - 4:00 p.m.</a></li>
+                <li class="clases-selecte-one"><a href="#">Pilates - 6:00 p.m.</a></li>
+                <li class="clases-selecte-one"><a href="#">Zumba - 7:30 p.m.</a></li>
+                <li class="clases-selecte-one"><a href="#">Spinning - 10:00 a.m.</a></li>
+                <li class="clases-selecte-one"><a href="#">CrossFit - 5:00 p.m.</a></li>
+            </ul>
+        </form>
+    </div>
+</div>
+
+<div class="flex-container">
+    <div class="flex-item nav col-1 tus reservas">
+        <h4>Aqui podes ver tus clases</h4>
+        <table class="table-tusclases">
+            <tr>
+                <th>Clase</th>
+                <th>Horario</th>
+                <th>Action</th>
+
+            </tr>
+            <tr>
+                <td>CrossFit</td>
+                <td>5:00 p.m</td>
+                <td>
+                    <button onClick="return confirm('Esta seguro que desea eliminarlo?')">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+        <li class="clases-selecte-one"></li>
+    </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+    <p class="footer">Copyright &copy; 2023 Gymnasionline</p>
+</footer>
+{% endblock %}

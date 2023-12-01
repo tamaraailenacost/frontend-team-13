@@ -1,10 +1,10 @@
 # --------------------------------------------------------------------
 # Instalar con pip install Flask
-from flask import Flask, render_template
+from flask import Flask, send_from_directory
 
-import config
-from src.backend.routes import calendarRoute, authRoute
-from src.backend.views.calcularFecha import show_class_per_date
+from routes import authRoute
+from routes import calendarRoute
+from src import config
 
 # Si es necesario, pip install Werkzeug
 # No es necesario instalar, es parte del sistema standard de Python
@@ -12,41 +12,49 @@ from src.backend.views.calcularFecha import show_class_per_date
 # Importo submodulos para que podamos dividir el proyecto
 
 app = Flask(__name__)
-app.config.from_object(config)
 
 app.register_blueprint(calendarRoute.bp)
 app.register_blueprint(authRoute.bp)
 
 
 # ruta principal
-@app.route('/calendario')
+@app.route('/', methods=['GET'])
 def index():
-    return render_template("calendario.html")
+    return send_from_directory("views", 'index.html')
 
 
-# metodo que recibe una fecha y retorna las clases disponibles para ese dia de la semana
-@app.route('/calendario/<date>', methods=['GET'])
-def show_class(date):
-    return show_class_per_date(date)
+@app.route('/clientes', methods=['GET'])
+def clientes():
+    return send_from_directory("views", 'clientes.html')
 
 
-# # metodo que recibe la clase id seleccionada y la agrega en la lista de clases
-@app.route('/calendario/<claseId>', methods=['GET'])
-def insert_clase_in_list(date):
-    return render_template("calendario.html", items)
+@app.route('/login', methods=['GET'])
+def login():
+    return send_from_directory("views", 'login.html')
 
 
-# # metodo que recibe la clase id y la elimina de la lista
-@app.route('/api/calendario/<claseId>', methods=["DELETE"])
-def delete_clase_in_list(date):
-    return render_template("calendario.html", items)
+@app.route('/registro', methods=['GET'])
+def registro():
+    return send_from_directory("views", 'registro.html')
 
 
-# route para loguearse
+@app.route('/calendario', methods=['GET'])
+def calendario():
+    return send_from_directory("views", 'calendario.html')
+
+
+# route para cuando hay un error
+@app.errorhandler(Exception)
+def error(error):
+    return send_from_directory("views", 'error.html')
 
 
 if __name__ == '__main__':
+    app.config.from_object(config)
+    app.register_error_handler(Exception, error)
     app.run(debug=True)
+
+# route para cuando se produce un error
 
 ## algunos ejemplos de uso
 # ----------------------------------------------------------------------------------------

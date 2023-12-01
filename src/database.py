@@ -1,6 +1,6 @@
 import mysql.connector
 
-from src.backend import config
+from src import config
 
 
 class DBConnector:

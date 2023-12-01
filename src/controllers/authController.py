@@ -1,7 +1,8 @@
 from flask import request, redirect, url_for, render_template
+from flask_login import login_required
 from werkzeug.security import check_password_hash
 
-from src.backend.services.authService import AuthService
+from src.services.authService import AuthService
 
 
 def login():

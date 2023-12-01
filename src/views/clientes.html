@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clientes</title>
+
+    <link rel="stylesheet" href="../static/styles/api.css">
+
+</head>
+<body>
+<h1>Clientes felices</h1>
+<br>
+<h2>Queremos que seas parte de esta gran familia. A continuacion podras conocer algunas de las personas que decidieron
+    dar lo mejor de si y compartirlo con nosotros</h2>
+
+
+<div class="container">
+    <button onclick="traerDatosAPI()">presiona para conocerlos</button>
+    <a href="./">
+        <button>volver al incio</button>
+    </a>
+</div>
+
+<div id="contenido" class="contenido">
+    <!-- se contenido.inner.HTML mediante el "id=contenido"
+    -->
+</div>
+
+
+<script>
+
+    function traerDatosAPI() {
+        let contenido = document.getElementById('contenido');
+
+        fetch('https://randomuser.me/api')
+            .then(datos => datos.json())
+            .then(datos => {
+                console.log(datos)
+                let resultado = datos.results;
+
+                contenido.innerHTML += `
+                    <div class="card">
+                        <!-- Muestra una imagen obtenida de los datos de la API. -->
+                        <img src="${resultado[0].picture.large}"</img><br>
+
+                        <!-- Muestra el nombre obtenido de los datos de la API. -->
+                        Nombre: ${resultado[0].name.last}, ${resultado[0].name.first}<br>
+
+                        <!-- Muestra el nombre de usuario obtenido de los datos de la API. -->
+                        User: ${resultado[0].login.username}<br>
+
+                        <!-- Muestra la contraseña obtenida de los datos de la API. -->
+                        Pass: ${resultado[0].login.password}<br>
+
+                        <!-- Muestra la dirección de correo electrónico obtenida de los datos de la API. -->
+                        ${resultado[0].email}
+                    </div>`;
+            })
+    }
+</script>
+</body>
+</html>

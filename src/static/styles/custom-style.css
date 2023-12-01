@@ -1,5 +1,5 @@
 
-.container-wrapper{
+.container-wrapper {
     max-width: 1900px;
 }
 
@@ -25,8 +25,8 @@ contenedor, se aliniean con el mismo tamano, sin importar si tenian diferente hi
     */
 }
 
-body{
-    margin:unset;
+body {
+    margin: unset;
 }
 
 header {
@@ -44,7 +44,7 @@ header {
     text-align: center;
 }
 
-.flex-item.nav > * {
+.flex-item.nav ul {
     display: flex;
     justify-content: space-between;
 }
@@ -71,7 +71,7 @@ header {
 }
 
 
-.header{
+.header {
     position: fixed;
     top: 0;
     z-index: 1020;
@@ -86,7 +86,7 @@ header {
     background: linear-gradient(1deg, #22de3300, #C2EE0A 100px);
 } */
 
-.search-form{
+.search-form {
     width: 200px;
     height: 50px;
     background: #2b303b;
@@ -98,7 +98,7 @@ header {
     padding-left: 45px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-  }
+}
 
 .logo {
 
@@ -109,7 +109,7 @@ header {
 
 /*registro-------------------------------------*/
 
-.registro-img{
+.registro-img {
     background-image: url("../images/registro-image.jpg");
     width: 100%;
     align-items: center;
@@ -119,9 +119,10 @@ header {
     background-repeat: no-repeat;
     background-size: cover;
     height: 800px;
+    transition: opacity 0.3s;
 }
 
-.registro-img:hover{
+.registro-img:hover {
     opacity: 0.5;
 }
 
@@ -143,8 +144,8 @@ header {
 }
 
 .registro-text h2 {
-   transition: opacity 0.3s;
-   animation: blinker 5s linear infinite;
+    transition: opacity 0.3s;
+    animation: blinker 5s linear infinite;
 
 }
 
@@ -160,7 +161,7 @@ span.burger-icon {
     position: fixed;
     right: 0px;
     z-index: 1020;
-    top:0px;
+    top: 0px;
 }
 
 span.burger-icon:hover {
@@ -174,7 +175,7 @@ span.burger-icon:hover {
     display: none;
 }
 
-span.clases-precio:hover{
+span.clases-precio:hover {
     transform: scaleX(1.5);
     background-color: #C2EE0A;
     color: #ffffff;
@@ -205,7 +206,6 @@ span.clases-precio:hover{
         font-family: sans-serif;
     }
 
-
     .presentacion-text {
         display: none;
     }
@@ -215,32 +215,41 @@ span.clases-precio:hover{
     }
 
     p, span {
-        font-size: 12px!important;
+        font-size: 12px !important;
     }
 
     h1 {
         font-size: 30px;
     }
 
-    h3,h2{
+    h3, h2 {
         font-size: 25px;
+    }
+
+    .clase {
+        flex-direction: column;
     }
 
     .clases-img {
         max-height: 300px;
+        width: 100%;
+    }
+
+    .clases-info {
+        width: 100%;
     }
 
     .flex-item.burger-menu {
         display: none;
     }
 
-    .flex-item.burger-menu li{
-        float:unset;
+    .flex-item.burger-menu li {
+        float: unset;
     }
 
-    .flex-item.burger-menu li >*{
+    .flex-item.burger-menu li > * {
         font-size: 21px;
-        border-radius: 1px solid #ffffff;
+        border: 1px solid #ffffff;
     }
 
     .flex-item.nav {
@@ -257,11 +266,11 @@ span.clases-precio:hover{
 
     .presentacion {
 
-        min-height: 300px!important;
+        min-height: 300px !important;
     }
 
     .horarios-tabla {
-        display: none!important;
+        display: none !important;
     }
 
     .input100 {
@@ -274,9 +283,9 @@ span.clases-precio:hover{
         max-height: 300px;
     }
 
-    .login100-form-btn{
+    .login100-form-btn {
 
-        font-size: 20px!important;
+        font-size: 20px !important;
     }
 
     .flex-item.burger-menu.col-2 {
@@ -308,22 +317,29 @@ span.clases-precio:hover{
 
 
 }
+
 /*breakpoint*/
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 
 
-
     p {
-        font-size: 16px!important;
+        font-size: 16px !important;
     }
 
 }
+
 /*breakpoint*/
 
 /*login-------------------------------------*/
-.login-img{
+
+.flex-item.login {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-img {
     background-image: url("../images/login-image.jpg");
     width: 100%;
     align-items: center;
@@ -337,16 +353,16 @@ span.clases-precio:hover{
 }
 
 p.footer {
-    position: fixed;
-    bottom: 0px;
+    /*position: fixed;*/
+    /*bottom: 0px;*/
     width: 100%;
 }
 
-.calendario-select{
+.calendario-select {
     margin-top: 200px;
 }
 
-.clase-select{
+.clase-select {
     margin-top: 200px;
 }
 
@@ -360,10 +376,10 @@ table.table-tusclases {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
-  }
+}
 
-  table.table-tusclases th,
-  table.table-tusclases td{
-  padding: 20px;
+table.table-tusclases th,
+table.table-tusclases td {
+    padding: 20px;
 }
 
