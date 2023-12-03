@@ -1,0 +1,8 @@
+Datos Importantes
+
+-Mysql
+    --host: giulianocharra.mysql.pythonanywhere-services.com
+    -password: KzX3xj3zva@a89s
+    -user: giulianocharra
+
+    mysql -u giulianocharra -h giulianocharra.mysql.pythonanywhere-services.com 'giulianocharra$gym'  < db-backup.sql
