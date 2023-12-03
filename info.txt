@@ -3,6 +3,7 @@ Datos Importantes
 -Mysql
     --host: giulianocharra.mysql.pythonanywhere-services.com
     -password: KzX3xj3zva@a89s
+    v!ASB!6tLn_ad4D
     -user: giulianocharra
 
     mysql -u giulianocharra -h giulianocharra.mysql.pythonanywhere-services.com 'giulianocharra$gym'  < db-backup.sql
