@@ -17,8 +17,12 @@ class Clase(db.Model):
     capacidad_maxima: Mapped[int] = mapped_column(Integer)
     horario_id: Mapped[int] = mapped_column(ForeignKey("horario.horario_id"))
 
-    horario: Mapped[Horario] = relationship(back_populates="clases")
-    reservas: Mapped[List["Reserva"]] = relationship(back_populates="clase")
+    horario: Mapped[Horario] = relationship(
+        back_populates="clases", lazy="subquery"
+    )
+    reservas: Mapped[List["Reserva"]] = relationship(
+        back_populates="clase", lazy="subquery"
+    )
 
     def __repr__(self):
         return f"<Clase {self.clase_id}>"

@@ -1,5 +1,8 @@
 from backend import db
-from backend.errors.exceptions import TipoUsuarioNotFoundError, TiposUsuariosEmptyError
+from backend.errors.exceptions import (
+    TipoUsuarioNotFoundError,
+    TiposUsuariosEmptyError,
+)
 from backend.models.tipoUsuario import TipoUsuario
 
 
@@ -40,7 +43,9 @@ class TipoUsuarioService:
         if not tipos_usuarios or len(tipos_usuarios) == 0:
             raise TiposUsuariosEmptyError()
 
-        tipos_usuarios = [tipo_usuario.to_dict() for tipo_usuario in tipos_usuarios]
+        tipos_usuarios = [
+            tipo_usuario.to_dict() for tipo_usuario in tipos_usuarios
+        ]
 
         return tipos_usuarios
 
@@ -67,9 +72,7 @@ class TipoUsuarioService:
         :param tipo_usuario_id: id del tipo de usuario
         :return: el tipo de usuario eliminado
         """
-        tipo_usuario = TipoUsuarioService.get_tipo_usuario_by_id(tipo_usuario_id)
+        tipo_usuario = TipoUsuario.query.get(tipo_usuario_id)
         if tipo_usuario:
             db.session.delete(tipo_usuario)
             db.session.commit()
-
-        return tipo_usuario.to_dict()

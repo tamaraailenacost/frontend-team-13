@@ -89,12 +89,10 @@ class ClaseService:
         :return: la clase eliminada
         """
 
-        clase = ClaseService.get_clase_by_id(clase_id)
+        clase = Clase.query.get(clase_id)
         if clase:
             db.session.delete(clase)
             db.session.commit()
-
-        return clase.to_dict()
 
     @staticmethod
     def get_clases_by_dia_semana_id(dia_semana_id):
@@ -123,7 +121,11 @@ class ClaseService:
         #     raise ClasesEmptyError()
 
         # Version 2 filtrado de clases por dia de la semana
-        stmt = select(Clase).join(Horario).where(Horario.dia_semana_id == dia_semana_id)
+        stmt = (
+            select(Clase)
+            .join(Horario)
+            .where(Horario.dia_semana_id == dia_semana_id)
+        )
 
         clases = db.session.execute(stmt).scalars().all()
 

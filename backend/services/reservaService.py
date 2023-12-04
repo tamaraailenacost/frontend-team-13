@@ -1,5 +1,12 @@
 from backend import db
-from backend.errors.exceptions import ReservasEmptyError, ReservaNotFoundError
+from backend.errors.exceptions import (
+    ReservasEmptyError,
+    ReservaNotFoundError,
+    ClaseNotFoundError,
+    ClienteNotFoundError,
+)
+from backend.models.clase import Clase
+from backend.models.cliente import Cliente
 from backend.models.reserva import Reserva
 
 
@@ -15,6 +22,23 @@ class ReservaService:
         :param clase_id: id de la clase
         :return: reserva creada
         """
+
+        # validar que el cliente y la clase existan y que no haya una reserva para ese cliente y esa clase
+        cliente = Cliente.query.get(cliente_id)
+        if cliente is None:
+            raise ClienteNotFoundError()
+
+        clase = Clase.query.get(clase_id)
+        if clase is None:
+            raise ClaseNotFoundError()
+
+        reserva = Reserva.query.filter_by(
+            cliente_id=cliente_id, clase_id=clase_id
+        ).first()
+
+        if reserva is not None:
+            raise ReservaAlreadyExistsError()
+
         reserva = Reserva(
             cliente_id=cliente_id,
             clase_id=clase_id,
@@ -71,11 +95,10 @@ class ReservaService:
         """
         Busca una reserva por su id y la elimina
         :param reserva_id: id de la reserva
-        :return: reserva eliminada
         """
-        reserva = ReservaService.get_reserva_by_id(reserva_id)
-        if reserva:
-            db.session.delete(reserva)
-            db.session.commit()
+        reserva = Reserva.query.get(reserva_id)
+        if reserva is None:
+            raise ReservaNotFoundError()
 
-        return reserva.to_dict()
+        db.session.delete(reserva)
+        db.session.commit()

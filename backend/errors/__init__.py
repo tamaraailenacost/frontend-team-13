@@ -18,6 +18,7 @@ from .exceptions import (
     ClientesEmptyError,
     DiaSemanaNotFoundError,
     CuentaExistenteError,
+    ReservaAlreadyExistsError,
 )
 
 
@@ -78,7 +79,10 @@ def register_error_handlers(app):
         (TiposUsuariosEmptyError, HTTPStatus.NO_CONTENT),
         (ReservasEmptyError, HTTPStatus.NO_CONTENT),
         (ReservaNotFoundError, HTTPStatus.NOT_FOUND),
+        (ReservaAlreadyExistsError, HTTPStatus.BAD_REQUEST),
     ]
 
     for error_class, http_status in error_handlers:
-        app.errorhandler(error_class)(create_error_handler(error_class, http_status))
+        app.errorhandler(error_class)(
+            create_error_handler(error_class, http_status)
+        )

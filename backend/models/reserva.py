@@ -18,8 +18,12 @@ class Reserva(db.Model):
         DateTime, default=datetime.now(), nullable=False
     )
 
-    cliente: Mapped[Cliente] = relationship(back_populates="reservas")
-    clase: Mapped[Clase] = relationship(back_populates="reservas")
+    cliente: Mapped[Cliente] = relationship(
+        back_populates="reservas", lazy="subquery"
+    )
+    clase: Mapped[Clase] = relationship(
+        back_populates="reservas", lazy="subquery"
+    )
 
     def __repr__(self):
         return f"<Reserva {self.reserva_id}>"

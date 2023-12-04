@@ -111,3 +111,11 @@ class ReservaNotFoundError(Exception):
     def __init__(self, message="Reserva no encontrada."):
         self.message = message
         super().__init__(self.message)
+
+
+class ReservaAlreadyExistsError(Exception):
+    """Excepción lanzada cuando se intenta registrar una reserva existente."""
+
+    def __init__(self, message="Reserva existente."):
+        self.message = message
+        super().__init__(self.message)

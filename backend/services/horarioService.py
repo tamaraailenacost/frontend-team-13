@@ -76,7 +76,7 @@ class HorarioService:
         :param horario_id: id del horario
         :return: horario eliminado
         """
-        horario = HorarioService.get_horario_by_id(horario_id)
+        horario = Horario.query.get(horario_id)
         if horario:
             db.session.delete(horario)
             db.session.commit()
