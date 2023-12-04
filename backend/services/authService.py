@@ -61,9 +61,7 @@ class AuthService:
         usuario = Usuario.query.filter_by(email=email).first()
         # if usuario and check_password_hash(usuario.password, password):
         if not usuario or usuario.password != password:
-            raise UsuarioNotFoundError(
-                "Nombre de usuario o contraseña incorrectos."
-            )
+            raise UsuarioNotFoundError("Nombre de usuario o contraseña incorrectos.")
 
         cliente = Cliente.query.filter_by(usuario_id=usuario.usuario_id).first()
 
@@ -84,16 +82,12 @@ class AuthService:
         usuario = Usuario.query.filter_by(email=email).first()
 
         if not usuario or usuario.password != password:
-            raise UsuarioNotFoundError(
-                "Email de usuario o contraseña incorrectos."
-            )
+            raise UsuarioNotFoundError("Email de usuario o contraseña incorrectos.")
 
         # Busca el cliente asociado
         cliente = usuario.cliente
         if not cliente:
-            raise UsuarioNotFoundError(
-                "El usuario no tiene un cliente asociado."
-            )
+            raise UsuarioNotFoundError("El usuario no tiene un cliente asociado.")
         # Eliminar cliente asociado
         db.session.delete(cliente)
 
