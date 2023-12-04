@@ -75,8 +75,19 @@ class ClienteService:
         Busca un cliente por su id, lo elimina y devuelve el cliente eliminado
         :param cliente_id:
         """
-        cliente = ClienteService.get_cliente_by_id(cliente_id)
+        cliente = Cliente.query.get(cliente_id)
         if not cliente:
             raise ClienteNotFoundError()
         db.session.delete(cliente)
         db.session.commit()
+
+    @staticmethod
+    def buscar_reservas(cliente_id):
+        """
+        Busca las reservas de un cliente
+        :param cliente_id: id del cliente
+        :return: las reservas del cliente
+        """
+        cliente = Cliente.query.get(cliente_id)
+        reservas = [reserva.to_dict() for reserva in cliente.reservas]
+        return reservas

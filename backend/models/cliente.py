@@ -1,3 +1,5 @@
+from typing import List
+
 from sqlalchemy import String, ForeignKey
 from sqlalchemy.orm import mapped_column, Mapped, relationship
 
@@ -16,7 +18,7 @@ class Cliente(db.Model):
     telefono: Mapped[str] = mapped_column(String(45))
 
     usuario: Mapped[Usuario] = relationship(back_populates="cliente")
-    reservas: Mapped["Reserva"] = relationship(back_populates="cliente")
+    reservas: Mapped[List["Reserva"]] = relationship(back_populates="cliente")
 
     def __repr__(self):
         return f"<Cliente {self.cliente_id}>"

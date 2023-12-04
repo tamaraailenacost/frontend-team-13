@@ -18,7 +18,9 @@ def create_cliente():
     telefono = data.get("telefono")
 
     if not usuario_id or not nombre:
-        return {"error": "Usuario ID y nombre son obligatorios"}, HTTPStatus.BAD_REQUEST
+        return {
+            "error": "Usuario ID y nombre son obligatorios"
+        }, HTTPStatus.BAD_REQUEST
 
     cliente = ClienteService.create_cliente(usuario_id, nombre, telefono)
 
@@ -54,7 +56,9 @@ def update_cliente(cliente_id):
     :return: el cliente actualizado
     """
     data = request.json
-    campos_actualizar = {key: data[key] for key in data if data[key] is not None}
+    campos_actualizar = {
+        key: data[key] for key in data if data[key] is not None
+    }
 
     cliente = ClienteService.update_cliente(cliente_id, **campos_actualizar)
     return {
@@ -71,3 +75,13 @@ def delete_cliente(cliente_id):
     """
     ClienteService.delete_cliente(cliente_id)
     return {"message": "Cliente eliminado exitosamente"}
+
+
+def get_reservas_cliente(cliente_id):
+    """
+    Busca las reservas de un cliente
+    :param cliente_id: id del cliente
+    :return: las reservas del cliente
+    """
+    reservas = ClienteService.buscar_reservas(cliente_id)
+    return {"reservas": reservas}
