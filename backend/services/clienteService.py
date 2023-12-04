@@ -5,7 +5,11 @@ from backend.models.cliente import Cliente
 
 class ClienteService:
     @staticmethod
-    def create_cliente(usuario_id, nombre, telefono):
+    def create_cliente(
+        usuario_id,
+        nombre,
+        telefono,
+    ):
         """
         Crea un nuevo cliente y lo guarda en la base de datos
         :param usuario_id: id del usuario
@@ -13,7 +17,11 @@ class ClienteService:
         :param telefono: telefono del cliente
         :return: cliente
         """
-        cliente = Cliente(usuario_id=usuario_id, nombre=nombre, telefono=telefono)
+        cliente = Cliente(
+            usuario_id=usuario_id,
+            nombre=nombre,
+            telefono=telefono,
+        )
         db.session.add(cliente)
         db.session.commit()
         return cliente.to_dict()

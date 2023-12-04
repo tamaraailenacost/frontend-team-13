@@ -5,7 +5,11 @@ from backend.models.usuario import Usuario
 
 class UsuarioService:
     @staticmethod
-    def create_usuario(username, email, password):
+    def create_usuario(
+        username,
+        email,
+        password,
+    ):
         """
         Crea un usuario y luego crea un cliente al que le asigna el id del usuario creado y lo devuelve
         :param username: username del usuario
@@ -13,7 +17,11 @@ class UsuarioService:
         :param password: contraseña del usuario
         :return: el usuario creado
         """
-        usuario = Usuario(username=username, email=email, password=password)
+        usuario = Usuario(
+            username=username,
+            email=email,
+            password=password,
+        )
         db.session.add(usuario)
         db.session.commit()
 

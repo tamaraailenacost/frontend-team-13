@@ -5,14 +5,20 @@ from backend.models.reserva import Reserva
 
 class ReservaService:
     @staticmethod
-    def create_reserva(cliente_id, clase_id):
+    def create_reserva(
+        cliente_id,
+        clase_id,
+    ):
         """
         Crea una reserva y la guarda en la base de datos
         :param cliente_id: id del cliente
         :param clase_id: id de la clase
         :return: reserva creada
         """
-        reserva = Reserva(cliente_id=cliente_id, clase_id=clase_id)
+        reserva = Reserva(
+            cliente_id=cliente_id,
+            clase_id=clase_id,
+        )
         db.session.add(reserva)
         db.session.commit()
         return reserva.to_dict()
