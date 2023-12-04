@@ -4,6 +4,7 @@ from backend.errors.exceptions import (
     ReservaNotFoundError,
     ClaseNotFoundError,
     ClienteNotFoundError,
+    ReservaAlreadyExistsError,
 )
 from backend.models.clase import Clase
 from backend.models.cliente import Cliente
