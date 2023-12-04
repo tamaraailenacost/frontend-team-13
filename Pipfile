@@ -10,6 +10,7 @@ pymysql = "*"
 python-dotenv = "*"
 cryptography = "*"
 werkzeug = "*"
+flask-cors = "*"
 
 [dev-packages]
 black = "*"

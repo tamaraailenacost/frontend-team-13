@@ -1,5 +1,6 @@
 # backend/__init__.py
 from flask import Flask
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
 import config
@@ -11,6 +12,7 @@ db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
 
     app.config.from_object(config)
     app.json.sort_keys = False
