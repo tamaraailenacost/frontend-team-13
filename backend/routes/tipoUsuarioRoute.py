@@ -1,7 +1,12 @@
 from flask import Blueprint
 
-from backend.controllers.tipoUsuarioController import create_tipo_usuario, get_all_tipos_usuarios, get_tipo_usuario, \
-    update_tipo_usuario, delete_tipo_usuario
+from backend.controllers.tipoUsuarioController import (
+    create_tipo_usuario,
+    get_all_tipos_usuarios,
+    get_tipo_usuario,
+    update_tipo_usuario,
+    delete_tipo_usuario,
+)
 
 bp = Blueprint("tipo_usuario", __name__, url_prefix="/api/tipo_usuarios")
 

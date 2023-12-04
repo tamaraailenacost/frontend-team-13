@@ -9,7 +9,13 @@ from backend.models.horario import Horario
 
 class ClaseService:
     @staticmethod
-    def create_clase(nombre, descripcion, instructor, capacidad_maxima, horario_id):
+    def create_clase(
+        nombre,
+        descripcion,
+        instructor,
+        capacidad_maxima,
+        horario_id,
+    ):
         """
         Crea una clase y la guarda en la base de datos
         :param nombre: nombre de la clase
@@ -20,8 +26,13 @@ class ClaseService:
         :return: la clase creada
         """
 
-        clase = Clase(nombre=nombre, descripcion=descripcion, instructor=instructor,
-                      capacidad_maxima=capacidad_maxima, horario_id=horario_id)
+        clase = Clase(
+            nombre=nombre,
+            descripcion=descripcion,
+            instructor=instructor,
+            capacidad_maxima=capacidad_maxima,
+            horario_id=horario_id,
+        )
         db.session.add(clase)
         db.session.commit()
         return clase.to_dict()

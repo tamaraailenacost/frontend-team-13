@@ -1,7 +1,12 @@
 from flask import Blueprint
 
-from backend.controllers.clienteController import create_cliente, get_all_clientes, get_cliente, update_cliente, \
-    delete_cliente
+from backend.controllers.clienteController import (
+    create_cliente,
+    get_all_clientes,
+    get_cliente,
+    update_cliente,
+    delete_cliente,
+)
 
 bp = Blueprint("cliente", __name__, url_prefix="/api/clientes")
 

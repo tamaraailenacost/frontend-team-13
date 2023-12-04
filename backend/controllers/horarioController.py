@@ -18,11 +18,16 @@ def create_horario():
     hora_fin = data.get("hora_fin")
 
     if not dia_semana_id or not hora_inicio or not hora_fin:
-        return {"error": "Dia semana, hora inicio y hora fin son obligatorios"}, HTTPStatus.BAD_REQUEST
+        return {
+            "error": "Dia semana, hora inicio y hora fin son obligatorios"
+        }, HTTPStatus.BAD_REQUEST
 
     horario = HorarioService.create_horario(dia_semana_id, hora_inicio, hora_fin)
 
-    return {"message": "Horario creado exitosamente", "horario": horario}, HTTPStatus.CREATED
+    return {
+        "message": "Horario creado exitosamente",
+        "horario": horario,
+    }, HTTPStatus.CREATED
 
 
 def get_all_horarios():
@@ -55,7 +60,10 @@ def update_horario(horario_id):
     campos_actualizar = {key: data[key] for key in data if data[key] is not None}
 
     horario = HorarioService.update_horario(horario_id, **campos_actualizar)
-    return {"message": "Horario actualizado exitosamente", "horario_actualizado": horario}
+    return {
+        "message": "Horario actualizado exitosamente",
+        "horario_actualizado": horario,
+    }
 
 
 def delete_horario(horario_id):

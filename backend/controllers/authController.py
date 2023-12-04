@@ -18,10 +18,19 @@ def registrar_usuario():
     email = data.get("email")
 
     if not username or not password or not email:
-        return {"error": "Nombre de usuario, contraseña y correo electrónico son obligatorios"}, HTTPStatus.BAD_REQUEST
+        return {
+            "error": "Nombre de usuario, contraseña y correo electrónico son obligatorios"
+        }, HTTPStatus.BAD_REQUEST
 
-    usuario = AuthService.registrar_usuario(username, password, email)
-    return {"message": "Usuario registrado exitosamente", "usuario": usuario}, HTTPStatus.CREATED
+    usuario = AuthService.registrar_usuario(
+        username,
+        password,
+        email,
+    )
+    return {
+        "message": "Usuario registrado exitosamente",
+        "usuario": usuario,
+    }, HTTPStatus.CREATED
 
 
 def login():
@@ -34,10 +43,15 @@ def login():
     password = data.get("password")
 
     if not email or not password:
-        return {"error": "Nombre de usuario y contraseña son obligatorios"}, HTTPStatus.BAD_REQUEST
+        return {
+            "error": "Nombre de usuario y contraseña son obligatorios"
+        }, HTTPStatus.BAD_REQUEST
 
     usuario = AuthService.login(email, password)
-    return {"message": "Inicio de sesión exitoso", "usuario": usuario}, HTTPStatus.OK
+    return {
+        "message": "Inicio de sesión exitoso",
+        "usuario": usuario,
+    }, HTTPStatus.OK
 
 
 def eliminar_cuenta():
@@ -50,7 +64,9 @@ def eliminar_cuenta():
     password = data.get("password")
 
     if not email or not password:
-        return {"error": "Nombre de usuario y contraseña son obligatorios"}, HTTPStatus.BAD_REQUEST
+        return {
+            "error": "Nombre de usuario y contraseña son obligatorios"
+        }, HTTPStatus.BAD_REQUEST
 
     AuthService.eliminar_cuenta(email, password)
     return {"message": "Cuenta eliminada exitosamente"}, HTTPStatus.OK

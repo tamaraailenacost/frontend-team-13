@@ -1,6 +1,12 @@
 from flask import Blueprint
 
-from backend.controllers.claseController import create_clase, get_all_clases, get_clase, update_clase, delete_clase
+from backend.controllers.claseController import (
+    create_clase,
+    get_all_clases,
+    get_clase,
+    update_clase,
+    delete_clase,
+)
 
 bp = Blueprint("clase", __name__, url_prefix="/api/clases")
 

@@ -3,10 +3,22 @@ from http import HTTPStatus
 
 from flask import jsonify
 
-from .exceptions import ClaseNotFoundError, ClasesEmptyError, TipoUsuarioNotFoundError, \
-    TiposUsuariosEmptyError, HorariosEmptyError, HorarioNotFoundError, UsuarioNotFoundError, UsuariosEmptyError, \
-    ReservasEmptyError, ReservaNotFoundError, ClienteNotFoundError, ClientesEmptyError, DiaSemanaNotFoundError, \
-    CuentaExistenteError
+from .exceptions import (
+    ClaseNotFoundError,
+    ClasesEmptyError,
+    TipoUsuarioNotFoundError,
+    TiposUsuariosEmptyError,
+    HorariosEmptyError,
+    HorarioNotFoundError,
+    UsuarioNotFoundError,
+    UsuariosEmptyError,
+    ReservasEmptyError,
+    ReservaNotFoundError,
+    ClienteNotFoundError,
+    ClientesEmptyError,
+    DiaSemanaNotFoundError,
+    CuentaExistenteError,
+)
 
 
 def create_error_handler(error_class, http_status):

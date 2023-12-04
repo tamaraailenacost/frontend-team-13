@@ -1,5 +1,6 @@
 # En tu archivo backend/errors/exceptions.py
 
+
 class CuentaExistenteError(Exception):
     """Excepción lanzada cuando se intenta registrar una cuenta existente."""
 

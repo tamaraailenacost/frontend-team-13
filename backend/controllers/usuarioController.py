@@ -18,11 +18,20 @@ def create_usuario():
     password = data.get("password")
 
     if not username or not email or not password:
-        return {"error": "Nombre, email y contrasenia son obligatorios"}, HTTPStatus.BAD_REQUEST
+        return {
+            "error": "Nombre, email y contrasenia son obligatorios"
+        }, HTTPStatus.BAD_REQUEST
 
-    usuario = UsuarioService.create_usuario(username, email, password)
+    usuario = UsuarioService.create_usuario(
+        username,
+        email,
+        password,
+    )
 
-    return {"message": "Usuario creado exitosamente", "usuario": usuario}, HTTPStatus.CREATED
+    return {
+        "message": "Usuario creado exitosamente",
+        "usuario": usuario,
+    }, HTTPStatus.CREATED
 
 
 def get_all_usuarios():
@@ -55,7 +64,10 @@ def update_usuario(usuario_id):
     campos_actualizar = {key: data[key] for key in data if data[key] is not None}
 
     usuario = UsuarioService.update_usuario(usuario_id, **campos_actualizar)
-    return {"message": "Usuario actualizado exitosamente", "usuario_actualizado": usuario}
+    return {
+        "message": "Usuario actualizado exitosamente",
+        "usuario_actualizado": usuario,
+    }
 
 
 def delete_usuario(usuario_id):

@@ -5,7 +5,11 @@ from backend.models.horario import Horario
 
 class HorarioService:
     @staticmethod
-    def create_horario(dia_semana_id, hora_inicio, hora_fin):
+    def create_horario(
+        dia_semana_id,
+        hora_inicio,
+        hora_fin,
+    ):
         """
         Crea un nuevo horario y lo guarda en la base de datos
         :param dia_semana_id: id del dia de la semana
@@ -13,7 +17,11 @@ class HorarioService:
         :param hora_fin: hora de fin
         :return: horario creado
         """
-        horario = Horario(dia_semana_id=dia_semana_id, hora_inicio=hora_inicio, hora_fin=hora_fin)
+        horario = Horario(
+            dia_semana_id=dia_semana_id,
+            hora_inicio=hora_inicio,
+            hora_fin=hora_fin,
+        )
         db.session.add(horario)
         db.session.commit()
         return horario.to_dict()

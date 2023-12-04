@@ -1,7 +1,12 @@
 from flask import Blueprint
 
-from backend.controllers.reservaController import create_reserva, get_all_reservas, get_reserva, update_reserva, \
-    delete_reserva
+from backend.controllers.reservaController import (
+    create_reserva,
+    get_all_reservas,
+    get_reserva,
+    update_reserva,
+    delete_reserva,
+)
 
 bp = Blueprint("reserva", __name__, url_prefix="/api/reservas")
 

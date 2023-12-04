@@ -16,7 +16,9 @@ def create_tipo_usuario():
 
     tipo_usuario = TipoUsuarioService.create_tipo_usuario(nombre)
 
-    return ({"message": "Tipo de usuario creado exitosamente", "tipo_usuario": tipo_usuario}), HTTPStatus.CREATED
+    return (
+        {"message": "Tipo de usuario creado exitosamente", "tipo_usuario": tipo_usuario}
+    ), HTTPStatus.CREATED
 
 
 def get_all_tipos_usuarios():
@@ -48,8 +50,13 @@ def update_tipo_usuario(tipo_usuario_id):
     # Filtrar los campos no nulos
     campos_actualizar = {key: data[key] for key in data if data[key] is not None}
 
-    tipo_usuario = TipoUsuarioService.update_tipo_usuario(tipo_usuario_id, **campos_actualizar)
-    return {"message": "Tipo de usuario actualizado exitosamente", "tipo_usuario_actualizado": tipo_usuario}
+    tipo_usuario = TipoUsuarioService.update_tipo_usuario(
+        tipo_usuario_id, **campos_actualizar
+    )
+    return {
+        "message": "Tipo de usuario actualizado exitosamente",
+        "tipo_usuario_actualizado": tipo_usuario,
+    }
 
 
 def delete_tipo_usuario(tipo_usuario_id):

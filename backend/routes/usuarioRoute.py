@@ -1,7 +1,12 @@
 from flask import Blueprint
 
-from backend.controllers.usuarioController import create_usuario, get_all_usuarios, get_usuario, update_usuario, \
-    delete_usuario
+from backend.controllers.usuarioController import (
+    create_usuario,
+    get_all_usuarios,
+    get_usuario,
+    update_usuario,
+    delete_usuario,
+)
 
 bp = Blueprint("usuario", __name__, url_prefix="/api/usuarios")
 

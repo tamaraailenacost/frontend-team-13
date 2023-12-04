@@ -22,9 +22,17 @@ def create_clase():
     if not nombre or not horario_id:
         return ({"error": "Nombre y horario_id son obligatorios"}), 400
 
-    clase = ClaseService.create_clase(nombre, descripcion, instructor, capacidad_maxima, horario_id)
+    clase = ClaseService.create_clase(
+        nombre,
+        descripcion,
+        instructor,
+        capacidad_maxima,
+        horario_id,
+    )
 
-    return ({"message": "Clase creada exitosamente", "clase": clase}), HTTPStatus.CREATED
+    return (
+        {"message": "Clase creada exitosamente", "clase": clase}
+    ), HTTPStatus.CREATED
 
 
 def get_all_clases():
@@ -33,7 +41,7 @@ def get_all_clases():
     :arg dia_semana_id: ID de día de la semana
     :return: lista de clases
     """
-    dia_semana_id = request.args.get('dia_semana_id')
+    dia_semana_id = request.args.get("dia_semana_id")
 
     if dia_semana_id:
         # Aplicar lógica de filtrado por ID de día de la semana
@@ -63,10 +71,15 @@ def update_clase(clase_id):
     """
     data = request.json
     # Filtrar los campos no nulos
-    campos_actualizar = {key: data[key] for key in data if data[key] is not None}
+    campos_actualizar = {
+        key: data[key] for key in data if data[key] is not None
+    }
 
     clase = ClaseService.update_clase(clase_id, **campos_actualizar)
-    return {"message": "Clase actualizada exitosamente", "clase_actualizada": clase}
+    return {
+        "message": "Clase actualizada exitosamente",
+        "clase_actualizada": clase,
+    }
 
 
 def delete_clase(clase_id):

@@ -22,7 +22,10 @@ def create_cliente():
 
     cliente = ClienteService.create_cliente(usuario_id, nombre, telefono)
 
-    return {"message": "Cliente creado exitosamente", "cliente": cliente}, HTTPStatus.CREATED
+    return {
+        "message": "Cliente creado exitosamente",
+        "cliente": cliente,
+    }, HTTPStatus.CREATED
 
 
 def get_all_clientes():
@@ -54,7 +57,10 @@ def update_cliente(cliente_id):
     campos_actualizar = {key: data[key] for key in data if data[key] is not None}
 
     cliente = ClienteService.update_cliente(cliente_id, **campos_actualizar)
-    return {"message": "Cliente actualizado exitosamente", "cliente_actualizado": cliente}
+    return {
+        "message": "Cliente actualizado exitosamente",
+        "cliente_actualizado": cliente,
+    }
 
 
 def delete_cliente(cliente_id):

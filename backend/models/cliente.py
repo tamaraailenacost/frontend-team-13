@@ -6,10 +6,12 @@ from backend.models.usuario import Usuario
 
 
 class Cliente(db.Model):
-    __tablename__ = 'cliente'
+    __tablename__ = "cliente"
 
     cliente_id: Mapped[int] = mapped_column(primary_key=True)
-    usuario_id: Mapped[int] = mapped_column(ForeignKey('usuario.usuario_id'), nullable=False)
+    usuario_id: Mapped[int] = mapped_column(
+        ForeignKey("usuario.usuario_id"), nullable=False
+    )
     nombre: Mapped[str] = mapped_column(String(255))
     telefono: Mapped[str] = mapped_column(String(45))
 
@@ -17,7 +19,7 @@ class Cliente(db.Model):
     reservas: Mapped["Reserva"] = relationship(back_populates="cliente")
 
     def __repr__(self):
-        return f'<Cliente {self.cliente_id}>'
+        return f"<Cliente {self.cliente_id}>"
 
     def to_dict(self):
         return {

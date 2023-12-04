@@ -7,7 +7,7 @@ class PasswordService:
         """
         Genera un hash de la contraseña.
         """
-        return generate_password_hash(password, method='sha256')
+        return generate_password_hash(password, method="sha256")
 
     @staticmethod
     def verify_password(hashed_password, password):

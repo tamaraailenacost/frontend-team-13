@@ -14,7 +14,7 @@ def create_and_register_blueprints(app):
         usuarioRoute.bp,
         claseRoute.bp,
         horarioRoute.bp,
-        reservaRoute.bp
+        reservaRoute.bp,
     ]
 
     for bp in blue_prints:

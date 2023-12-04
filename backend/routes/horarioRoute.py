@@ -1,7 +1,12 @@
 from flask import Blueprint
 
-from backend.controllers.horarioController import create_horario, get_all_horarios, get_horario, update_horario, \
-    delete_horario
+from backend.controllers.horarioController import (
+    create_horario,
+    get_all_horarios,
+    get_horario,
+    update_horario,
+    delete_horario,
+)
 
 bp = Blueprint("horario", __name__, url_prefix="/api/horarios")
 
