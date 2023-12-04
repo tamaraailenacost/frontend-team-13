@@ -293,25 +293,22 @@
       </form>
 
       <div class="flex-container">
-        <div class="flex-item nav col-1 tus reservas">
-          <h4>Aquí podes ver tus clases</h4>
-          <table class="table-tusclases">
-            <tr>
-              <th>Clase</th>
-              <th>Horario</th>
-              <th>Action</th>
-            </tr>
-            <tr>
-              <td>CrossFit</td>
-              <td>5:00 p.m</td>
-              <td><button>Eliminar</button></td>
-            </tr>
-            <tr></tr>
-          </table>
-          <li class="clases-selecte-one"></li>
+        <div class="flex-item nav col-1 tus-reservas">
+          <h3>Aquí podes ver tus clases</h3>
+          <table
+            id="mis-reservas"
+            class="table-tusclases"
+          ></table>
         </div>
       </div>
     </main>
+    <!-- Toast que muestra un mensaje -->
+    <div
+      id="toast"
+      class="hidden"
+    >
+      <p id="toast-message"></p>
+    </div>
 
     <!-- FOOTER -->
     <footer>

@@ -115,7 +115,7 @@ form.addEventListener("submit", async function (event) {
       window.location.href = "../../index.html";
     } else {
       // Manejar errores de la solicitud HTTP
-      displayAlert(email, responseData.error);
+      displayAlert(email, responseData);
     }
   } catch (error) {
     // Manejar errores de red u otros errores

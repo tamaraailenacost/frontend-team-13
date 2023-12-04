@@ -334,7 +334,7 @@ p.footer {
   width: 100%;
 }
 
-.flex-item.nav.col-1.tus.reservas {
+.flex-item.nav.col-1.tus-reservas {
   margin: 2%;
   border: 1px solid;
   width: 100%;
@@ -344,11 +344,21 @@ table.table-tusclases {
   table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
+  font-size: 1.2rem;
 }
 
 table.table-tusclases th,
 table.table-tusclases td {
   padding: 20px;
+}
+
+.table-tusclases th {
+  color: #c2ee0a;
+  font-size: 1.3rem;
+}
+.table-tusclases td.columna-clase-nombre,
+.table-tusclases td.columna-dia-semana {
+  text-transform: capitalize;
 }
 
 .reservas__main {
@@ -428,4 +438,42 @@ table.table-tusclases td {
 .nombre-clase.active {
   background-color: rgba(85, 85, 85, 0.7);
   color: #c2ee0a;
+}
+
+.btn-eliminar-reserva {
+  background-color: #f83535;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.btn-eliminar-reserva:hover {
+  color: #f83535;
+  background-color: #ffffff;
+}
+
+/* Agrega este CSS para dar estilo al toast */
+#toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgb(56, 161, 42);
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  display: none;
+}
+
+#toast.show {
+  display: block;
+}
+#toast.success {
+  background-color: rgb(56, 161, 42);
+}
+
+#toast.error {
+  background-color: #f83535;
 }
