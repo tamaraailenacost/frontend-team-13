@@ -76,18 +76,18 @@ function reservarClase() {
   const claseSeleccionada = document.querySelector('input[name="clase"]:checked');
 
   if (claseSeleccionada) {
-    const claseId = claseSeleccionada.value;
+    const clase_id = claseSeleccionada.value;
 
     // Obtener el ID del cliente desde el localStorage
-    const clienteId = JSON.parse(localStorage.getItem("gymUserData")).cliente_id;
+    const cliente_id = JSON.parse(localStorage.getItem("gymUserData")).cliente_id;
 
-    if (clienteId) {
+    if (cliente_id) {
       fetch("https://giulianocharra.pythonanywhere.com/api/reservas", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ claseId, clienteId }),
+        body: JSON.stringify({ clase_id, cliente_id }),
       })
         .then((response) => response.json())
         .then((data) => {
@@ -167,7 +167,7 @@ function actualizarTablaReservas() {
         <td>${formatoHora(reserva.clase.horario.hora_inicio)}</td>
         <td>${reserva.fecha_reserva}</td>
         <td>
-          <button class="btn-eliminar-reserva" onclick="eliminarReserva(${reserva.reserva_id})">
+          <button class="btn-eliminar-reserva" onclick="eliminarReserva(${reserva})">
             <i class="fa-regular fa-trash-can"></i>
           </button>
         </td>
@@ -177,9 +177,9 @@ function actualizarTablaReservas() {
 }
 
 // Función para eliminar una reserva
-function eliminarReserva(reservaId) {
+function eliminarReserva(reserva) {
   // Realizar la solicitud Fetch para eliminar la reserva en el backend
-  fetch(`https://giulianocharra.pythonanywhere.com/api/reservas/${reservaId}`, {
+  fetch(`https://giulianocharra.pythonanywhere.com/api/reservas/${reserva.reservaId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -196,6 +196,9 @@ function eliminarReserva(reservaId) {
     .then((data) => {
       // Manejar la respuesta del backend si es necesario
       console.log("Reserva eliminada con éxito", data);
+      reservasCliente = reservasCliente.filter(
+        (reservaCliente) => reservaCliente.id !== reserva.id
+      );
 
       // Actualizar la tabla después de eliminar la reserva
       actualizarTablaReservas();
