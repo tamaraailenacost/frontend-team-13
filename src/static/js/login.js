@@ -112,7 +112,7 @@ form.addEventListener("submit", async function (event) {
       localStorage.setItem("gymUserData", JSON.stringify(responseData.usuario));
 
       // Redirigir a la página de inicio o a donde desees
-      window.location.href = "./index.html";
+      window.location.href = "../../../index.html";
     } else {
       // Manejar errores de la solicitud HTTP
       displayAlert(email, responseData.error);
