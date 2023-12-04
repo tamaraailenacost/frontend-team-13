@@ -10,7 +10,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>clientes</title>
+
+    <title>Gymnasionline</title>
     <link
       rel="stylesheet"
       href="../static/styles/estilos.css"
@@ -25,10 +26,6 @@
     />
     <link
       rel="stylesheet"
-      href="../static/styles/clientes.css"
-    />
-    <link
-      rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
       crossorigin="anonymous"
     />
@@ -37,7 +34,7 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
+  <body class="pagina-reservas">
     <!-- Header -->
     <header
       id="header"
@@ -234,73 +231,94 @@
         </div>
       </div>
     </header>
+    <!-- header ----->
 
-    <!-- MAIN -->
-    <main>
-      <h1>Clientes felices</h1>
-      <br />
-      <h2>
-        Queremos que seas parte de esta gran familia. A continuación podrás conocer algunas de las
-        personas que decidieron dar lo mejor de si y compartirlo con nosotros
-      </h2>
+    <!-- main -->
+    <main class="reservas__main">
+      <h1>Hace tu Reserva</h1>
+      <form class="form-filtrar-clases">
+        <div class="filtros">
+          <div class="filtro">
+            <label for="dia">Seleccione un Dia</label>
+            <select
+              name="dia"
+              id="dia"
+            >
+              <option
+                selected
+                value="1"
+              >
+                Lunes
+              </option>
+              <option value="2">Martes</option>
+              <option value="3">Miercoles</option>
+              <option value="4">Jueves</option>
+              <option value="5">Viernes</option>
+              <option value="6">Sabado</option>
+              <option value="7">Domingo</option>
+            </select>
+          </div>
+        </div>
+        <input
+          type="submit"
+          class="buscar-btn"
+          value="Buscar"
+        />
+      </form>
+      <form class="form-registrar-clase">
+        <h4>Clases Disponibles:</h4>
+        <!-- <div class="flex-container">
+          <ul>
+            <li class="clases-selecte-one"><a href="#">Aeróbicos - 9:00 a.m.</a></li>
+            <li class="clases-selecte-one">
+              <a href="#">Entrenamiento de fuerza - 11:00 a.m.</a>
+            </li>
+            <li class="clases-selecte-one"><a href="#">Yoga - 4:00 p.m.</a></li>
+            <li class="clases-selecte-one"><a href="#">Pilates - 6:00 p.m.</a></li>
+            <li class="clases-selecte-one"><a href="#">Zumba - 7:30 p.m.</a></li>
+            <li class="clases-selecte-one"><a href="#">Spinning - 10:00 a.m.</a></li>
+            <li class="clases-selecte-one"><a href="#">CrossFit - 5:00 p.m.</a></li>
+          </ul>
+        </div> -->
+        <div
+          class="clases-container"
+          id="clases-container"
+        ></div>
 
-      <div class="container-opciones">
-        <button onclick="traerDatosAPI()">ver otras opiniones</button>
-        <a href="../../index.html">
-          <button>volver al inicio</button>
-        </a>
-      </div>
+        <input
+          type="submit"
+          class="reservar-btn"
+          value="Reservar"
+        />
+      </form>
 
-      <div
-        id="contenido"
-        class="contenido"
-      >
-        <!-- se contenido.inner.HTML mediante el "id=contenido"
-    -->
+      <div class="flex-container">
+        <div class="flex-item nav col-1 tus reservas">
+          <h4>Aquí podes ver tus clases</h4>
+          <table class="table-tusclases">
+            <tr>
+              <th>Clase</th>
+              <th>Horario</th>
+              <th>Action</th>
+            </tr>
+            <tr>
+              <td>CrossFit</td>
+              <td>5:00 p.m</td>
+              <td><button>Eliminar</button></td>
+            </tr>
+            <tr></tr>
+          </table>
+          <li class="clases-selecte-one"></li>
+        </div>
       </div>
     </main>
+
     <!-- FOOTER -->
     <footer>
       <p class="footer">Copyright &copy; 2023 Gymnasionline</p>
     </footer>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        traerDatosAPI();
-      });
-
-      function traerDatosAPI() {
-        let contenido = document.getElementById("contenido");
-        contenido.innerHTML = "";
-        fetch("https://randomuser.me/api?results=10")
-          .then((datos) => datos.json())
-          .then((datos) => {
-            let resultado = datos.results;
-            let i = 0;
-            resultado.forEach((persona) => {
-              contenido.innerHTML += `
-                <div class="card" style=--i:${i}>
-                    <!-- Muestra una imagen obtenida de los datos de la API. -->
-                    <img src="${persona.picture.large}"</img><br>
-
-                    <!-- Muestra el nombre obtenido de los datos de la API. -->
-                    Nombre: ${persona.name.last}, ${persona.name.first}<br>
-
-                    <!-- Muestra el nombre de usuario obtenido de los datos de la API. -->
-                    User: ${persona.login.username}<br>
-
-                    <!-- Muestra la contraseña obtenida de los datos de la API. -->
-                    Pass: ${persona.login.password}<br>
-
-                    <!-- Muestra la dirección de correo electrónico obtenida de los datos de la API. -->
-                    ${resultado[0].email}
-                </div>
-            `;
-              i++;
-            });
-          });
-      }
-    </script>
+    <script src="../static/js/burger-menu.js"></script>
     <script src="../static/js/login-menu.js"></script>
+    <script src="../static/js/reservar.js"></script>
   </body>
 </html>

@@ -1,50 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>Login</title>
-    <link rel="stylesheet" href="../static/styles/custom-style.css">
-    <link rel="stylesheet" href="../static/styles/estilos.boostrap.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="../static/styles/estilos.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../static/styles/estilos.boostrap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../static/styles/custom-style.css"
+    />
+  </head>
 
-<body class="container-wrapper">
-<!-- Body -->
-<div class="flex-container">
-    <div class="flex-item col-4 image-container">
-        <div class="login-img">
-
-        </div>
-    </div>
-    <div class="flex-item col-3">
+  <body class="container-wrapper">
+    <!-- Body -->
+    <div class="flex-container">
+      <div class="flex-item col-4 image-container">
+        <div class="login-img"></div>
+      </div>
+      <div class="flex-item col-3">
         <div class="signupFrm">
-            <form id="signupFrm" action="/login" method="post" class="form">
-                <h1 class="title login100-form-title">Bienvenid@ nuevamente</h1>
+          <form
+            id="signupFrm"
+            action="/login"
+            method="post"
+            class="form"
+          >
+            <h1 class="title login100-form-title">Bienvenid@ nuevamente</h1>
 
-                <div class="flex-item">
-                    <label for="email" hidden></label>
-                    <input type="text" class="input100" id="email" placeholder="user@gmail.com">
-                </div>
+            <div class="flex-item">
+              <label
+                for="email"
+                hidden
+              ></label>
+              <input
+                type="text"
+                class="input100"
+                id="email"
+                placeholder="user@gmail.com"
+              />
+            </div>
 
-                <div class="flex-item">
-                    <label for="password" hidden></label>
-                    <input type="text" class="input100" id="password" placeholder="escribe tu password">
-                </div>
+            <div class="flex-item">
+              <label
+                for="password"
+                hidden
+              ></label>
+              <input
+                type="text"
+                class="input100"
+                id="password"
+                placeholder="escribe tu password"
+              />
+            </div>
 
-                <div class="container-button">
-                    <input type="submit" id="sub-form-registro" class="login-button" value="Sign in">
-                </div>
-            </form>
+            <div class="container-button">
+              <input
+                type="submit"
+                id="sub-form-registro"
+                class="login-button"
+                value="Sign in"
+              />
+            </div>
+          </form>
         </div>
         <div>
-            <h3 class="register">No tienes una cuenta? <a class="registrar-link" href="registro">Registrate</a>
-            </h3>
+          <h3 class="register">
+            No tienes una cuenta?
+            <a
+              class="registrar-link"
+              href="registro.html"
+              >Regístrate</a
+            >
+          </h3>
         </div>
-        <br>
-        <button class="return-inicio"><a href="./">INICIO</a></button>
+        <br />
+        <button class="return-inicio"><a href="../../index.html">INICIO</a></button>
+      </div>
     </div>
-</div>
-<script src="../static/js/login.js"></script>
-</body>
+    <script src="../static/js/login.js"></script>
+  </body>
 </html>

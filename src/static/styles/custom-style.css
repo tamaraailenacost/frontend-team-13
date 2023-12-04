@@ -1,82 +1,62 @@
-
 .container-wrapper {
-    max-width: 1900px;
-}
-
-/* Dentro de un container flex, todos los elementos que se encuentran dentro de este
-contenedor, se aliniean con el mismo tamano, sin importar si tenian diferente hight o width
-*/
-.flex-container {
-    display: flex;
-    /*---display: flex;----*/
-    justify-content: space-between;
-    /*
-    justify-content: start
-    justify-content: center;
-    justify-content: space-around;
-    justify-content: space-evenly;
-    align-content: center;
-    flex-wrap: wrap; // ajusta los box segun su contenido
-    */
-
-    /* podemos crear columns o rows 
-    flex-direction: column;
-    flex-direction: row;
-    */
+  max-width: 1900px;
 }
 
 body {
-    margin: unset;
+  margin: unset;
 }
 
 header {
-    align-items: center;
-    color: white;
+  align-items: center;
+  color: white;
 }
 
 /* Estilos para los elementos flexibles en el contenedor Flexbox */
 .flex-container > * {
-    /* "flex" permite definir cuanto espacio van a ocupar los elementos */
-    flex: 1;
-    padding: 10px;
-    margin: 5px;
-    margin: 1%;
-    text-align: center;
+  /* "flex" permite definir cuanto espacio van a ocupar los elementos */
+  flex: 1;
+  padding: 10px;
+  margin: 5px;
+  margin: 1%;
+  text-align: center;
+}
+
+.header .flex-container {
+  position: relative;
 }
 
 .flex-item.nav ul {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* estilos para las columnas */
 .col-1 {
-    flex: 1;
+  flex: 1;
 }
 
 .col-2 {
-    flex: 2;
+  flex: 2;
 }
 
 .col-3 {
-    flex: 3;
+  flex: 3;
 }
 
 .col-4 {
-    flex: 4;
+  flex: 4;
 }
 
 .col-5 {
-    flex: 5;
+  flex: 5;
 }
 
-
 .header {
-    position: fixed;
-    top: 0;
-    z-index: 1020;
-    width: 100%;
-    background: linear-gradient(1deg, #22de3300, #C2EE0A 100px);
+  position: fixed;
+  top: 0;
+  z-index: 1020;
+  width: 100%;
+  background: linear-gradient(1deg, #22de3300, #c2ee0a 100px);
 }
 
 /* .footer{
@@ -87,98 +67,98 @@ header {
 } */
 
 .search-form {
-    width: 200px;
-    height: 50px;
-    background: #2b303b;
-    border: none;
-    font-size: 10pt;
-    float: left;
-    font-size: 14px;
-    color: #ffffff;
-    padding-left: 45px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
+  width: 200px;
+  height: 50px;
+  background: #2b303b;
+  border: none;
+  font-size: 10pt;
+  float: left;
+  font-size: 14px;
+  color: #ffffff;
+  padding-left: 45px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
 }
 
 .logo {
-
-    font-size: 24px;
-    font-weight: 800;
-    color: aliceblue;
+  font-size: 24px;
+  font-weight: 800;
+  color: aliceblue;
 }
 
 /*registro-------------------------------------*/
 
 .registro-img {
-    background-image: url("../images/registro-image.jpg");
-    width: 100%;
-    align-items: center;
-    display: grid;
-    justify-items: center;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 800px;
-    transition: opacity 0.3s;
+  background-image: url("../images/registro-image.jpg");
+  width: 100%;
+  align-items: center;
+  display: grid;
+  justify-items: center;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
+  transition: opacity 0.3s;
 }
 
 .registro-img:hover {
-    opacity: 0.5;
+  opacity: 0.5;
 }
 
 .registro-text {
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 2;
-    opacity: 0.5;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 2;
+  opacity: 0.5;
 }
 
 .signupFrm {
+  margin: 50px 40px;
+}
 
-    margin: 50px 40px;
+.signupFrm .container-button {
+  display: flex;
 }
 
 .image-container {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 .registro-text h2 {
-    transition: opacity 0.3s;
-    animation: blinker 5s linear infinite;
-
+  transition: opacity 0.3s;
+  animation: blinker 5s linear infinite;
 }
 
 .flex-item.burger-menu.col-2 {
-    display: none;
+  display: none;
 }
 
 span.burger-icon {
-    color: #333;
-    border-radius: 10px;
-    padding: 10px;
-    display: none;
-    position: fixed;
-    right: 0px;
-    z-index: 1020;
-    top: 0px;
+  color: #333;
+  border-radius: 10px;
+  padding: 10px;
+  display: none;
+  position: fixed;
+  right: 0px;
+  z-index: 1020;
+  top: 0px;
 }
 
 span.burger-icon:hover {
-    color: #C2EE0A;
-    background: #333;
-    padding: 10px;
-
+  color: #c2ee0a;
+  background: #333;
+  padding: 10px;
 }
 
 .burger-menu {
-    display: none;
+  display: none;
 }
 
 span.clases-precio:hover {
-    transform: scaleX(1.5);
-    background-color: #C2EE0A;
-    color: #ffffff;
+  transform: scaleX(1.5);
+  background-color: #c2ee0a;
+  color: #ffffff;
 }
 
 /* Breakpoints and responsive desing */
@@ -187,147 +167,144 @@ span.clases-precio:hover {
 
 /* tablets and small devices*/
 @media only screen and (max-width: 992px) {
+  .flex-container {
+    display: block;
+    justify-content: space-between;
+  }
 
-    .flex-container {
-        display: block;
-        justify-content: space-between;
-    }
+  .registro-img {
+    max-height: 300px;
+  }
 
-    .registro-img {
-        max-height: 300px;
-    }
+  .registro-text {
+    display: none;
+  }
 
-    .registro-text {
-        display: none;
-    }
+  h1.title.login100-form-title {
+    font-size: 30px;
+    font-family: sans-serif;
+  }
 
-    h1.title.login100-form-title {
-        font-size: 30px;
-        font-family: sans-serif;
-    }
+  .presentacion-text {
+    display: none;
+  }
 
-    .presentacion-text {
-        display: none;
-    }
+  section#nosotros {
+    display: block;
+  }
 
-    section#nosotros {
-        display: block;
-    }
+  p,
+  span {
+    font-size: 12px !important;
+  }
 
-    p, span {
-        font-size: 12px !important;
-    }
+  h1 {
+    font-size: 30px;
+  }
 
-    h1 {
-        font-size: 30px;
-    }
+  h3,
+  h2 {
+    font-size: 25px;
+  }
 
-    h3, h2 {
-        font-size: 25px;
-    }
+  .clase {
+    flex-direction: column;
+  }
 
-    .clase {
-        flex-direction: column;
-    }
+  .clases-img {
+    max-height: 300px;
+    width: 100%;
+  }
 
-    .clases-img {
-        max-height: 300px;
-        width: 100%;
-    }
+  .clases-info {
+    width: 100%;
+  }
 
-    .clases-info {
-        width: 100%;
-    }
+  .flex-item.burger-menu {
+    display: none;
+  }
 
-    .flex-item.burger-menu {
-        display: none;
-    }
+  .flex-item.burger-menu li {
+    float: unset;
+  }
 
-    .flex-item.burger-menu li {
-        float: unset;
-    }
+  .flex-item.burger-menu li > * {
+    font-size: 21px;
+    border: 1px solid #ffffff;
+  }
 
-    .flex-item.burger-menu li > * {
-        font-size: 21px;
-        border: 1px solid #ffffff;
-    }
+  .flex-item.nav {
+    display: none;
+  }
 
-    .flex-item.nav {
-        display: none;
-    }
+  .flex-item.login {
+    display: none;
+  }
 
-    .flex-item.login {
-        display: none;
-    }
+  span.burger-icon {
+    display: inline-block;
+  }
 
-    span.burger-icon {
-        display: inline-block;
-    }
+  .presentacion {
+    min-height: 300px !important;
+  }
 
-    .presentacion {
+  .horarios-tabla {
+    display: none !important;
+  }
 
-        min-height: 300px !important;
-    }
+  .input100 {
+    padding: 3%;
+    margin: 3%;
+  }
 
-    .horarios-tabla {
-        display: none !important;
-    }
+  .login-img {
+    max-height: 300px;
+  }
 
-    .input100 {
+  .login100-form-btn {
+    font-size: 20px !important;
+  }
 
-        padding: 3%;
-        margin: 3%;
-    }
+  .flex-item.burger-menu.col-2 {
+    border: 1px solid #ffffff;
+    max-width: 200px;
+    background-color: #c2ee0adb;
+    position: fixed;
+    right: 0px;
+  }
 
-    .login-img {
-        max-height: 300px;
-    }
+  .link-button {
+    font-size: 25px;
+    font-weight: 800;
+  }
 
-    .login100-form-btn {
+  .alert-validate {
+    font-size: 16px;
+    width: 100%;
+  }
 
-        font-size: 20px !important;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 2%;
+  }
 
-    .flex-item.burger-menu.col-2 {
-        border: 1px solid #ffffff;
-        max-width: 200px;
-        background-color: #c2ee0adb;
-        position: fixed;
-        right: 0px;
-    }
-
-    .link-button {
-
-        font-size: 25px;
-        font-weight: 800;
-    }
-
-    .alert-validate {
-        font-size: 16px;
-        width: 100%;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        margin: 2%;
-    }
-
-    .header {
-        background: #C2EE0A;
-    }
-
-
+  .header {
+    background: #c2ee0a;
+  }
 }
 
 /*breakpoint*/
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-
-
-    p {
-        font-size: 16px !important;
-    }
-
+  p {
+    font-size: 16px !important;
+  }
 }
 
 /*breakpoint*/
@@ -335,51 +312,120 @@ span.clases-precio:hover {
 /*login-------------------------------------*/
 
 .flex-item.login {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .login-img {
-    background-image: url("../images/login-image.jpg");
-    width: 100%;
-    align-items: center;
-    display: grid;
-    justify-items: center;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 800px;
-
+  background-image: url("../images/login-image.jpg");
+  width: 100%;
+  align-items: center;
+  display: grid;
+  justify-items: center;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
 }
 
 p.footer {
-    /*position: fixed;*/
-    /*bottom: 0px;*/
-    width: 100%;
-}
-
-.calendario-select {
-    margin-top: 200px;
-}
-
-.clase-select {
-    margin-top: 200px;
+  /*position: fixed;*/
+  /*bottom: 0px;*/
+  width: 100%;
 }
 
 .flex-item.nav.col-1.tus.reservas {
-    margin: 2%;
-    border: 1px solid;
-    width: 100%;
+  margin: 2%;
+  border: 1px solid;
+  width: 100%;
 }
 
 table.table-tusclases {
-    table-layout: fixed;
-    width: 100%;
-    border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 table.table-tusclases th,
 table.table-tusclases td {
-    padding: 20px;
+  padding: 20px;
 }
 
+.reservas__main {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-reserva {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.filtros {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.filtro {
+  min-width: 200px;
+  max-width: 30%;
+}
+
+.form-filtrar-clases,
+.form-registrar-clase {
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.form-registrar-clase {
+  width: 100%;
+}
+
+.form-filtrar-clases h4 {
+  color: #c2ee0a;
+}
+
+.form-registrar-clase .reservar-btn {
+  width: 100%;
+  max-width: 200px;
+}
+
+.clases-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  width: 100%;
+  padding-block: 30px;
+  flex-wrap: wrap;
+  background-color: #50505041;
+  border-radius: 10px;
+}
+
+.clase-opcion {
+}
+
+.nombre-clase {
+  text-transform: capitalize;
+  font-size: 1.3rem;
+  display: inline;
+  padding: 20px;
+}
+
+.nombre-clase:hover,
+.nombre-clase.active {
+  background-color: rgba(85, 85, 85, 0.7);
+  color: #c2ee0a;
+}
