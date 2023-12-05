@@ -10,18 +10,15 @@
             <p><button>Submit</button></p>
             </form>
         </div>
-
-        <div class="flex-item col-1 clase-select">
-            <form> 
-              <h4> Estas son las clases disponibles para {{fecha}}</h4> 
-                    <ul>
-                        {% for clase in clases_para_dia_seleccionado %}
-                          <li class="clases-selecte-one">
-                            <a onClick="return confirm('Desea seleccionar esta clase')"href="#">
-                            {{ clase[0] }}  - {{ clase[1] }}
-                          </a>
-                        </li>
-                        {% endfor %}
+        <div class="flex-item nav col-1 clase-select">
+            <form>                    <ul>
+                        <li class="clases-selecte-one"><a href="#">Aeróbicos - 9:00 a.m.</a></li>
+                        <li class="clases-selecte-one"><a href="#">Entrenamiento de fuerza - 11:00 a.m.</a></li>
+                        <li class="clases-selecte-one"><a href="#">Yoga - 4:00 p.m.</a></li>
+                        <li class="clases-selecte-one"><a href="#">Pilates - 6:00 p.m.</a></li>
+                        <li class="clases-selecte-one"><a href="#">Zumba - 7:30 p.m.</a></li>
+                        <li class="clases-selecte-one"><a href="#">Spinning - 10:00 a.m.</a></li>
+                        <li class="clases-selecte-one"><a href="#">CrossFit - 5:00 p.m.</a></li>
                     </ul>
             </form>
         </div>
