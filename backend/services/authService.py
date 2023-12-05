@@ -1,7 +1,12 @@
 from backend import db
-from backend.errors.exceptions import UsuarioNotFoundError, CuentaExistenteError
+from backend.errors.exceptions import (
+    UsuarioNotFoundError,
+    CuentaExistenteError,
+    PasswordInvalidaError,
+)
 from backend.models.cliente import Cliente
 from backend.models.usuario import Usuario
+from backend.utils.passwordService import PasswordService
 
 
 class AuthService:
@@ -18,6 +23,9 @@ class AuthService:
         :param email: Correo electrónico.
         :return: Mensaje indicando el éxito de la operación.
         """
+
+        if PasswordService.validar_formato_password(password) is False:
+            raise PasswordInvalidaError()
 
         # Verificar si el nombre de usuario o correo electrónico ya existen
         usuario_existente = Usuario.query.filter_by(username=username).first()
@@ -61,7 +69,9 @@ class AuthService:
         usuario = Usuario.query.filter_by(email=email).first()
         # if usuario and check_password_hash(usuario.password, password):
         if not usuario or usuario.password != password:
-            raise UsuarioNotFoundError("Nombre de usuario o contraseña incorrectos.")
+            raise UsuarioNotFoundError(
+                "Nombre de usuario o contraseña incorrectos."
+            )
 
         cliente = Cliente.query.filter_by(usuario_id=usuario.usuario_id).first()
 
@@ -82,12 +92,16 @@ class AuthService:
         usuario = Usuario.query.filter_by(email=email).first()
 
         if not usuario or usuario.password != password:
-            raise UsuarioNotFoundError("Email de usuario o contraseña incorrectos.")
+            raise UsuarioNotFoundError(
+                "Email de usuario o contraseña incorrectos."
+            )
 
         # Busca el cliente asociado
         cliente = usuario.cliente
         if not cliente:
-            raise UsuarioNotFoundError("El usuario no tiene un cliente asociado.")
+            raise UsuarioNotFoundError(
+                "El usuario no tiene un cliente asociado."
+            )
         # Eliminar cliente asociado
         db.session.delete(cliente)
 

@@ -1,13 +1,15 @@
 from http import HTTPStatus
 
-from flask import Blueprint, request
+from flask import request
 
 from backend.services.tipoUsuarioService import TipoUsuarioService
 
-bp = Blueprint("tipo_usuario", __name__, url_prefix="/tipo_usuarios")
-
 
 def create_tipo_usuario():
+    """
+    Crea un tipo de usuario
+    :return: el tipo de usuario creado
+    """
     data = request.json
     nombre = data.get("nombre")
 
@@ -17,7 +19,10 @@ def create_tipo_usuario():
     tipo_usuario = TipoUsuarioService.create_tipo_usuario(nombre)
 
     return (
-        {"message": "Tipo de usuario creado exitosamente", "tipo_usuario": tipo_usuario}
+        {
+            "message": "Tipo de usuario creado exitosamente",
+            "tipo_usuario": tipo_usuario,
+        }
     ), HTTPStatus.CREATED
 
 
@@ -48,7 +53,9 @@ def update_tipo_usuario(tipo_usuario_id):
     """
     data = request.json
     # Filtrar los campos no nulos
-    campos_actualizar = {key: data[key] for key in data if data[key] is not None}
+    campos_actualizar = {
+        key: data[key] for key in data if data[key] is not None
+    }
 
     tipo_usuario = TipoUsuarioService.update_tipo_usuario(
         tipo_usuario_id, **campos_actualizar

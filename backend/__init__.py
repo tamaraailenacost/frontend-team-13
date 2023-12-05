@@ -15,10 +15,7 @@ def create_app():
     # A cross-origin resource sharing (CORS) request was blocked because the response to the associated preflight
     # request failed, had an unsuccessful HTTP status code, and/or was a redirect.To fix this issue, ensure all CORS
     # preflight OPTIONS requests are answered with a successful HTTP status code (2xx) and do not redirect.
-
-    CORS(app, resources={r"/*": {"origins": "*"}})
-
-    # CORS(app)
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
 
     app.config.from_object(config)
     app.json.sort_keys = False

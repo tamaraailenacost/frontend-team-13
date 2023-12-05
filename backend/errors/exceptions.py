@@ -119,3 +119,14 @@ class ReservaAlreadyExistsError(Exception):
     def __init__(self, message="Reserva existente."):
         self.message = message
         super().__init__(self.message)
+
+
+class PasswordInvalidaError(Exception):
+    """Excepción lanzada cuando se proporciona una contraseña inválida."""
+
+    def __init__(
+        self,
+        message="Contraseña inválida. La contraseña debe tener al menos 8 caracteres y contener letras y números.",
+    ):
+        self.message = message
+        super().__init__(self.message)

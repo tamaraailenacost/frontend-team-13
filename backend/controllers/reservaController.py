@@ -15,16 +15,18 @@ def create_reserva():
     clase_id = data.get("clase_id")
 
     if not cliente_id or not clase_id:
-        return {
-            "error": "Cliente_id y clase_id son obligatorios"
-        }, HTTPStatus.BAD_REQUEST
+        return (
+            {"error": "Cliente_id y clase_id son obligatorios"}
+        ), HTTPStatus.BAD_REQUEST
 
     reserva = ReservaService.create_reserva(cliente_id, clase_id)
 
-    return {
-        "message": "Reserva creada exitosamente",
-        "reserva": reserva,
-    }, HTTPStatus.CREATED
+    return (
+        {
+            "message": "Reserva creada exitosamente",
+            "reserva": reserva,
+        }
+    ), HTTPStatus.CREATED
 
 
 def get_all_reservas():
@@ -53,7 +55,9 @@ def update_reserva(reserva_id):
     :return: la reserva actualizada
     """
     data = request.json
-    campos_actualizar = {key: data[key] for key in data if data[key] is not None}
+    campos_actualizar = {
+        key: data[key] for key in data if data[key] is not None
+    }
 
     reserva = ReservaService.update_reserva(reserva_id, **campos_actualizar)
     return {
