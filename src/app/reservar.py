@@ -1,4 +1,3 @@
-
 #--------------------------------------------------------------------
 # Instalar con pip install Flask
 from flask import Flask, request, jsonify, render_template
@@ -13,31 +12,44 @@ import time
 # Instalar con pip install flask-cors
 from flask_cors import CORS
 
-# Importo submodulos para que podamos dividir el proyecto
-from views import calcularFecha
+
+from flask import Flask
 
 app = Flask(__name__)
 
+
 # ruta principal
-@app.route('/calendario')
+@app.route('/api/calendario')
 def index():
     return render_template("calendario.html")
 
 
-
 # metodo que recibe una fecha y retorna las clases disponibles para ese dia de la semana
-@app.route('/calendario/<date>', methods=['GET'])
-def show_class(date):
-    return show_class_per_date(date)
+@app.route('/api/calendario/<date>', methods=['GET'])
+def show_class_per_date(date):
+    # Obtén el parámetro 'fecha' de la URL
+    date = request.args.get('date')
+
+    try:
+        fecha = datetime.strptime(date, '%Y-%m-%d')
+        dia_semana = fecha.strftime('%A')
+        # Renderiza la plantilla con el resultado
+        print(dia_semana)
+
+    except ValueError:
+        # Si hay un error al analizar la fecha, muestra un mensaje de error
+        return "Formato de fecha incorrecto. Utiliza el formato YYYY-MM-DD."
 
 
-# # metodo que recibe la clase id seleccionada y la agrega en la lista de clases
-@app.route('/calendario/<claseId>', methods=['GET'])
+
+
+# metodo que recibe la clase id seleccionada y la agrega en la lista de clases
+@app.route('/api/calendario/<claseId>', methods=['GET'])
 def insert_clase_in_list(date):
     return render_template("calendario.html", items)
 
 
-# # metodo que recibe la clase id y la elimina de la lista
+# metodo que recibe la clase id y la elimina de la lista
 @app.route('/api/calendario/<claseId>', methods=["DELETE"])
 def delete_clase_in_list(date):
     return render_template("calendario.html", items)
@@ -47,9 +59,7 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-## algunos ejemplos de uso
-#----------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------
+
 
 # # example of POST request
 # @app.route('/post', methods=['POST'])
