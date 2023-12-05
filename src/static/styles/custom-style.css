@@ -448,6 +448,8 @@ table.table-tusclases td {
   padding: 5px 10px;
   font-size: 1.2rem;
   cursor: pointer;
+  transition: color, background-color;
+  transition-duration: 0.3s;
 }
 
 .btn-eliminar-reserva:hover {

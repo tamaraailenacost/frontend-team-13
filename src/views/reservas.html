@@ -11,7 +11,7 @@
       content="width=device-width, initial-scale=1.0"
     />
 
-    <title>Gymnasionline</title>
+    <title>Gymnasionline reservas</title>
     <link
       rel="stylesheet"
       href="../static/styles/estilos.css"
@@ -295,10 +295,19 @@
       <div class="flex-container">
         <div class="flex-item nav col-1 tus-reservas">
           <h3>Aquí podes ver tus clases</h3>
-          <table
-            id="mis-reservas"
-            class="table-tusclases"
-          ></table>
+          <table class="table-tusclases">
+            <thead>
+              <tr>
+                <th>Clase</th>
+                <th>Dia Semana</th>
+                <th>Hora Inicio</th>
+                <th>Instructor</th>
+                <th>Fecha Reserva</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="mis-reservas"></tbody>
+          </table>
         </div>
       </div>
     </main>
@@ -316,6 +325,9 @@
     </footer>
     <script src="../static/js/burger-menu.js"></script>
     <script src="../static/js/login-menu.js"></script>
-    <script src="../static/js/reservar.js"></script>
+    <script
+      type="module"
+      src="../static/js/reservar.js"
+    ></script>
   </body>
 </html>

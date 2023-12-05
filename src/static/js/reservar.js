@@ -1,3 +1,6 @@
+import { formatoHora } from "../../utils/formatoHora.js";
+import { showToast } from "../../utils/toast.js";
+
 let reservasCliente = [];
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -24,7 +27,7 @@ function buscarClases() {
   const diaSeleccionado = document.getElementById("dia").value;
 
   // Realizar la solicitud Fetch al backend
-  fetch(`https://giulianocharra.pythonanywhere.com/api/clases?dia_semana_id=${diaSeleccionado}`)
+  fetch(`https://giulianocharra.pythonanywhere.com/api/clases/?dia_semana_id=${diaSeleccionado}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -72,47 +75,50 @@ function buscarClases() {
     });
 }
 
-function reservarClase() {
+async function reservarClase() {
   const claseSeleccionada = document.querySelector('input[name="clase"]:checked');
 
-  if (claseSeleccionada) {
-    const clase_id = claseSeleccionada.value;
-
-    // Obtener el ID del cliente desde el localStorage
-    const cliente_id = JSON.parse(localStorage.getItem("gymUserData")).cliente_id;
-
-    if (cliente_id) {
-      fetch("https://giulianocharra.pythonanywhere.com/api/reservas", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ clase_id, cliente_id }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          // Manejar la respuesta del backend
-          console.log("Respuesta del backend:", data);
-
-          // Si la reserva fue exitosa, puedes mostrar un mensaje al usuario
-          if (data.success) {
-            showToast("Reserva exitosa", "success");
-            let reserva = data.reserva;
-            reservasCliente.push(reserva);
-            actualizarTablaReservas();
-          } else {
-            showToast("Error al realizar la reserva", "error");
-          }
-        })
-        .catch((error) => {
-          console.error("Error al reservar la clase:", error);
-          showToast("Error al realizar la reserva", "error");
-        });
-    } else {
-      console.error("No se pudo obtener el ID del cliente desde el localStorage.");
-    }
-  } else {
+  if (!claseSeleccionada) {
     console.error("No se ha seleccionado ninguna clase para reservar.");
+    return;
+  }
+
+  try {
+    const claseId = parseInt(claseSeleccionada.value);
+    const clienteId = JSON.parse(localStorage.getItem("gymUserData")).cliente_id;
+
+    if (!clienteId) {
+      console.error("No se pudo obtener el ID del cliente desde el localStorage.");
+      return;
+    }
+    let dataBody = { clase_id: claseId, cliente_id: clienteId };
+
+    const response = await fetch("https://giulianocharra.pythonanywhere.com/api/reservas/", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataBody),
+    });
+
+    if (!response.ok) {
+      console.error("Error en la solicitud HTTP:", response.status, response.statusText);
+      let data = await response.json();
+      showToast(`Error: ${data.error}`, "error");
+      return;
+    }
+
+    const data = await response.json();
+    console.log("Respuesta del backend:", data);
+
+    showToast("Reserva realizada", "success");
+    let reserva = data.reserva;
+    reservasCliente.push(reserva);
+    actualizarTablaReservas();
+  } catch (error) {
+    console.error("Error:", error.message);
+    showToast("Error al realizar la reserva", "error");
   }
 }
 
@@ -123,9 +129,7 @@ async function obtenerReservasCliente() {
 
   // Realizar la solicitud Fetch al backend para obtener las reservas
   try {
-    let req = await fetch(
-      `https://giulianocharra.pythonanywhere.com/api/clientes/${clienteId}/reservas`
-    );
+    let req = await fetch(`https://giulianocharra.pythonanywhere.com/api/clientes/${clienteId}/reservas`);
     let json = await req.json();
 
     // Asignar las reservas obtenidas a la variable reservasCliente
@@ -146,88 +150,65 @@ function actualizarTablaReservas() {
   // Limpiar la tabla antes de agregar las nuevas reservas
   tablaReservas.innerHTML = "";
 
-  // Crear una fila de encabezado
-  tablaReservas.innerHTML = `
-    <tr>
-      <th>Clase</th>
-      <th>Dia Semana</th>
-      <th>Hora Inicio</th>
-      <th>Fecha Reserva</th>
-      <th>Action</th>
-    </tr>
-  `;
-
   // Iterar sobre las reservas y agregarlas a la tabla
   for (const reserva of reservasCliente) {
     // Agregar una nueva fila con un template literal
-    tablaReservas.innerHTML += `
+    const nuevaFila = `
       <tr>
         <td class="columna-clase-nombre">${reserva.clase.nombre}</td>
         <td class="columna-dia-semana">${reserva.clase.horario.dia_semana.nombre}</td>
         <td>${formatoHora(reserva.clase.horario.hora_inicio)}</td>
+        <td>${reserva.clase.instructor}</td>
         <td>${reserva.fecha_reserva}</td>
         <td>
-          <button class="btn-eliminar-reserva" onclick="eliminarReserva(${reserva})">
+          <button class="btn-eliminar-reserva" data-id-reserva="${reserva.reserva_id}">
             <i class="fa-regular fa-trash-can"></i>
           </button>
         </td>
       </tr>
     `;
+
+    // Agregar la nueva fila a la tabla sin afectar las filas existentes
+    tablaReservas.insertAdjacentHTML("beforeend", nuevaFila);
+
+    // asignar el id de la reserva como atributo data-id-reserva al botón de eliminar
+    const btnEliminar = document.querySelector(`[data-id-reserva="${reserva.reserva_id}"]`);
+    btnEliminar.addEventListener("click", () => {
+      eliminarReserva(reserva.reserva_id);
+    });
   }
 }
 
 // Función para eliminar una reserva
-function eliminarReserva(reserva) {
-  // Realizar la solicitud Fetch para eliminar la reserva en el backend
-  fetch(`https://giulianocharra.pythonanywhere.com/api/reservas/${reserva.reservaId}`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    // Puedes incluir un cuerpo si es necesario para tu backend
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Error al eliminar reserva`);
-        // throw new Error(`Error al eliminar reserva (${response.status}): ${response.statusText}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      // Manejar la respuesta del backend si es necesario
-      console.log("Reserva eliminada con éxito", data);
-      reservasCliente = reservasCliente.filter(
-        (reservaCliente) => reservaCliente.id !== reserva.id
-      );
-
-      // Actualizar la tabla después de eliminar la reserva
-      actualizarTablaReservas();
-      showToast("Reserva eliminada exitosamente.", "success");
-    })
-    .catch((error) => {
-      console.error("Error al eliminar reserva:", error);
-      showToast(error.message, "error");
-      // Puedes manejar el error según tus necesidades
+async function eliminarReserva(reservaId) {
+  try {
+    // Realizar la solicitud Fetch para eliminar la reserva en el backend
+    const response = await fetch(`https://giulianocharra.pythonanywhere.com/api/reservas/${reservaId}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-}
 
-function formatoHora(hora) {
-  // Dar formato a la hora (asumiendo que siempre está en el formato HH:mm:ss)
-  const [horaFormato12, minutos] = hora.split(":");
-  const amPm = horaFormato12 >= 12 ? "p.m." : "a.m.";
-  const hora12 = horaFormato12 % 12 || 12;
+    if (!response.ok) {
+      throw new Error(`Error al eliminar reserva`);
+    }
 
-  return `${hora12}:${minutos} ${amPm}`;
-}
+    const data = await response.json();
 
-function showToast(message, type) {
-  const toast = document.getElementById("toast");
-  const toastMessage = document.getElementById("toast-message");
+    // Manejar la respuesta del backend si es necesario
+    console.log("Reserva eliminada con éxito", data);
 
-  toastMessage.textContent = message;
-  toast.classList.add("show", type);
+    // Actualizar la lista de reservas después de eliminar la reserva
+    reservasCliente = reservasCliente.filter((reserva) => reserva.reserva_id !== reservaId);
 
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 3000); // Ocultar el toast después de 3 segundos
+    // Actualizar la tabla después de eliminar la reserva
+    actualizarTablaReservas();
+
+    showToast("Reserva eliminada exitosamente.", "success");
+  } catch (error) {
+    console.error("Error al eliminar reserva:", error);
+    showToast(error.message, "error");
+    // Puedes manejar el error según tus necesidades
+  }
 }
