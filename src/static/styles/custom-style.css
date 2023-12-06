@@ -130,10 +130,6 @@ header {
   animation: blinker 5s linear infinite;
 }
 
-.flex-item.burger-menu.col-2 {
-  display: none;
-}
-
 span.burger-icon {
   color: #333;
   border-radius: 10px;
@@ -151,7 +147,8 @@ span.burger-icon:hover {
   padding: 10px;
 }
 
-.burger-menu {
+.burger-menu,
+.burger-menu.show {
   display: none;
 }
 
@@ -159,6 +156,217 @@ span.clases-precio:hover {
   transform: scaleX(1.5);
   background-color: #c2ee0a;
   color: #ffffff;
+}
+
+/*login-------------------------------------*/
+
+.flex-item.login {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.login-img {
+  background-image: url("../images/login-image.jpg");
+  width: 100%;
+  align-items: center;
+  display: grid;
+  justify-items: center;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 800px;
+}
+
+p.footer {
+  /*position: fixed;*/
+  /*bottom: 0px;*/
+  width: 100%;
+}
+
+.flex-item.nav.col-1.tus-reservas {
+  margin: 2%;
+  border: 1px solid;
+  width: 100%;
+  display: block;
+}
+
+table.table-tusclases {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.2rem;
+}
+
+table.table-tusclases th,
+table.table-tusclases td {
+  padding: 20px;
+}
+
+.table-tusclases th {
+  color: #c2ee0a;
+  font-size: 1.3rem;
+}
+
+.table-tusclases .campo-nombre {
+  display: none;
+  color: #c2ee0a;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.table-tusclases td.columna-clase-nombre p::first-letter,
+.table-tusclases td.columna-dia-semana p::first-letter {
+  text-transform: capitalize;
+}
+
+.reservas__main {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-reserva {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+form-registrar-clase .filtros {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.filtro {
+  min-width: 200px;
+  max-width: 30%;
+}
+
+.form-filtrar-clases,
+.form-registrar-clase {
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-registrar-clase {
+  width: 100%;
+}
+
+.form-filtrar-clases h4 {
+  color: #c2ee0a;
+}
+
+.form-registrar-clase .reservar-btn {
+  width: 100%;
+  max-width: 200px;
+}
+
+.clases-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  width: 100%;
+  padding-block: 30px;
+  flex-wrap: wrap;
+  background-color: #50505041;
+  border-radius: 10px;
+}
+
+.clase-opcion {
+}
+
+.nombre-clase {
+  text-transform: capitalize;
+  font-size: 1.3rem;
+  display: inline;
+  padding: 20px;
+}
+
+.nombre-clase:hover {
+  background-color: rgba(85, 85, 85, 0.7);
+  color: #c2ee0a;
+}
+
+.nombre-clase.active {
+  color: rgb(255, 255, 255);
+  background-color: #c2ee0a;
+}
+
+.btn-eliminar-reserva {
+  background-color: #f83535;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color, background-color;
+  transition-duration: 0.3s;
+}
+
+.btn-eliminar-reserva:hover {
+  color: #f83535;
+  background-color: #ffffff;
+}
+
+/* Agrega este CSS para dar estilo al toast */
+#toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgb(56, 161, 42);
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  display: none;
+}
+
+#toast.show {
+  display: block;
+}
+
+#toast.success {
+  background-color: rgb(56, 161, 42);
+}
+
+#toast.error {
+  background-color: #f83535;
+}
+
+#signupFrm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(10px, 5vw, 20px);
+}
+
+#signupFrm .input100 {
+  margin: 0;
+  max-width: 500px;
+}
+
+#signupFrm #errorRegistro {
+  color: #f83535;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#signupFrm .flex-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* Breakpoints and responsive desing */
@@ -185,17 +393,13 @@ span.clases-precio:hover {
     font-family: sans-serif;
   }
 
-  .presentacion-text {
-    display: none;
-  }
-
   section#nosotros {
     display: block;
   }
 
   p,
   span {
-    font-size: 12px !important;
+    font-size: 1.3rem;
   }
 
   h1 {
@@ -220,8 +424,8 @@ span.clases-precio:hover {
     width: 100%;
   }
 
-  .flex-item.burger-menu {
-    display: none;
+  .burger-menu.show {
+    display: block;
   }
 
   .flex-item.burger-menu li {
@@ -246,16 +450,32 @@ span.clases-precio:hover {
   }
 
   .presentacion {
-    min-height: 300px !important;
+    /* min-height: 300px !important; */
+    background-size: cover;
+    min-height: 60svh;
+    margin-top: clamp(55px, 5vw, 65px);
+    padding-top: 10px;
+  }
+  .presentacion-text {
+    margin-top: 0;
+    text-align: center;
+  }
+  .presentacion-text a {
+    justify-content: center;
+  }
+
+  .presentacion-text h6,
+  .presentacion-text h1,
+  .presentacion-text a {
+    font-size: 20px;
+  }
+
+  .presentacion-text h1 {
+    letter-spacing: normal;
   }
 
   .horarios-tabla {
     display: none !important;
-  }
-
-  .input100 {
-    padding: 3%;
-    margin: 3%;
   }
 
   .login-img {
@@ -292,10 +512,6 @@ span.clases-precio:hover {
   h6 {
     margin: 2%;
   }
-
-  .header {
-    background: #c2ee0a;
-  }
 }
 
 /*breakpoint*/
@@ -305,177 +521,60 @@ span.clases-precio:hover {
   p {
     font-size: 16px !important;
   }
+  .seccion-login {
+    padding-bottom: 30px;
+  }
+
+  .signupFrm {
+    margin: 10px;
+  }
+  .form-registrar-clase {
+    padding: 10px 15px;
+    align-items: center;
+  }
+
+  .clases-container {
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .clase-opcion {
+    width: 100%;
+  }
+
+  .clase-opcion .nombre-clase {
+    width: 100%;
+    display: inline-block;
+  }
+
+  .table-tusclases thead {
+    display: none;
+  }
+
+  .table-tusclases tr {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .table-tusclases td .campo-nombre {
+    display: inline-block;
+    text-align: left;
+  }
+  #mis-reservas {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #mis-reservas td {
+    display: flex;
+    gap: 20px;
+  }
+
+  #mis-reservas td {
+    padding: 10px;
+  }
 }
 
 /*breakpoint*/
-
-/*login-------------------------------------*/
-
-.flex-item.login {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.login-img {
-  background-image: url("../images/login-image.jpg");
-  width: 100%;
-  align-items: center;
-  display: grid;
-  justify-items: center;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 800px;
-}
-
-p.footer {
-  /*position: fixed;*/
-  /*bottom: 0px;*/
-  width: 100%;
-}
-
-.flex-item.nav.col-1.tus-reservas {
-  margin: 2%;
-  border: 1px solid;
-  width: 100%;
-}
-
-table.table-tusclases {
-  table-layout: fixed;
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 1.2rem;
-}
-
-table.table-tusclases th,
-table.table-tusclases td {
-  padding: 20px;
-}
-
-.table-tusclases th {
-  color: #c2ee0a;
-  font-size: 1.3rem;
-}
-.table-tusclases td.columna-clase-nombre,
-.table-tusclases td.columna-dia-semana {
-  text-transform: capitalize;
-}
-
-.reservas__main {
-  margin-top: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.form-reserva {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-}
-
-.filtros {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-}
-
-.filtro {
-  min-width: 200px;
-  max-width: 30%;
-}
-
-.form-filtrar-clases,
-.form-registrar-clase {
-  padding: 20px 50px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  gap: 20px;
-}
-.form-registrar-clase {
-  width: 100%;
-}
-
-.form-filtrar-clases h4 {
-  color: #c2ee0a;
-}
-
-.form-registrar-clase .reservar-btn {
-  width: 100%;
-  max-width: 200px;
-}
-
-.clases-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  width: 100%;
-  padding-block: 30px;
-  flex-wrap: wrap;
-  background-color: #50505041;
-  border-radius: 10px;
-}
-
-.clase-opcion {
-}
-
-.nombre-clase {
-  text-transform: capitalize;
-  font-size: 1.3rem;
-  display: inline;
-  padding: 20px;
-}
-
-.nombre-clase:hover,
-.nombre-clase.active {
-  background-color: rgba(85, 85, 85, 0.7);
-  color: #c2ee0a;
-}
-
-.btn-eliminar-reserva {
-  background-color: #f83535;
-  color: #000000;
-  border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: color, background-color;
-  transition-duration: 0.3s;
-}
-
-.btn-eliminar-reserva:hover {
-  color: #f83535;
-  background-color: #ffffff;
-}
-
-/* Agrega este CSS para dar estilo al toast */
-#toast {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: rgb(56, 161, 42);
-  color: #fff;
-  padding: 15px;
-  border-radius: 5px;
-  display: none;
-}
-
-#toast.show {
-  display: block;
-}
-#toast.success {
-  background-color: rgb(56, 161, 42);
-}
-
-#toast.error {
-  background-color: #f83535;
-}

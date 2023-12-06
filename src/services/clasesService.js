@@ -1,6 +1,6 @@
-import { fetchData } from "./apiService";
+import { fetchData } from "./apiService.js";
 
-const prefix = "clases";
+const prefix = "clases/";
 
 export async function crearClase(datos) {
   /**
@@ -26,7 +26,7 @@ export async function eliminarClase(claseId) {
    * @throws {Error} - Si hay un error en la petición
    */
   try {
-    const data = await fetchData(`${prefix}/${claseId}`, "DELETE");
+    const data = await fetchData(`${prefix}${claseId}`, "DELETE");
     return data;
   } catch (error) {
     console.error("Error al eliminar la clase:", error);
@@ -43,10 +43,33 @@ export async function actualizarClase(claseId, nuevosDatos) {
    * @throws {Error} - Si hay un error en la petición
    */
   try {
-    const data = await fetchData(`${prefix}/${claseId}`, "PUT", nuevosDatos);
+    const data = await fetchData(`${prefix}${claseId}`, "PUT", nuevosDatos);
     return data;
   } catch (error) {
     console.error("Error al actualizar la clase:", error);
     throw error;
   }
 }
+
+export async function obtenerClasesPorDiaSemana(diaSemanaId) {
+  /**
+   * Obtiene las clases de un día de la semana
+   * @param {number} diaSemanaId - El id del día de la semana
+   * @returns {Promise<Object[]>} - Los datos de las clases
+   * @throws {Error} - Si hay un error en la petición
+   */
+  try {
+    const data = await fetchData(`${prefix}?dia_semana_id=${diaSemanaId}`);
+    return data;
+  } catch (error) {
+    console.error("Error al obtener las clases:", error);
+    throw error;
+  }
+}
+
+export default {
+  crearClase,
+  eliminarClase,
+  actualizarClase,
+  obtenerClasesPorDiaSemana,
+};

@@ -44,7 +44,7 @@
           <form
             id="signupFrm"
             action="#"
-            method="GET"
+            method="POST"
             class="form"
           >
             <h1 class="title login100-form-title">
@@ -54,6 +54,7 @@
               <p>
                 Si ya tienes una cuenta, has click <a href="./login.html"> Aquí</a> para ingresar!
               </p>
+              <p id="errorRegistro"></p>
             </div>
             <div class="flex-item">
               <label
@@ -121,6 +122,13 @@
         </div>
       </div>
     </div>
-    <script src="../static/js/validate-form.js"></script>
+    <!-- Toast que muestra un mensaje -->
+    <div
+      id="toast"
+      class="hidden"
+    >
+      <p id="toast-message"></p>
+    </div>
+    <script type="module" src="../static/js/validate-form.js"></script>
   </body>
 </html>

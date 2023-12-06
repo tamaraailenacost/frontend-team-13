@@ -1,7 +1,8 @@
 // reservaService.js
-import { fetchData } from "./apiService";
 
-const prefix = "reservas";
+import { fetchData } from "./apiService.js";
+
+const prefix = "reservas/";
 
 export async function reservarClase(claseId, clienteId) {
   /**
@@ -28,10 +29,15 @@ export async function eliminarReserva(reservaId) {
    * @throws {Error} - Si hay un error en la petición
    */
   try {
-    const data = await fetchData(`${prefix}/${reservaId}`, "DELETE");
+    const data = await fetchData(`${prefix}${reservaId}`, "DELETE");
     return data;
   } catch (error) {
     console.error(`Error al eliminar reserva en ${prefix}:`, error);
     throw error;
   }
 }
+
+export default {
+  reservarClase,
+  eliminarReserva,
+};

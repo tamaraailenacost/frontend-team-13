@@ -1,10 +1,10 @@
-import { fetchData } from "./apiService";
+import { fetchData } from "./apiService.js";
 
-const prefix = "auth";
+const prefix = "auth/";
 
 export async function registrarUsuario(datos) {
   try {
-    const data = await fetchData(`${prefix}/registro`, "POST", datos);
+    const data = await fetchData(`${prefix}/registro/`, "POST", datos);
     return data;
   } catch (error) {
     console.error("Error al registrar el usuario:", error);
@@ -14,7 +14,7 @@ export async function registrarUsuario(datos) {
 
 export async function iniciarSesion(datos) {
   try {
-    const data = await fetchData(`${prefix}/login`, "POST", datos);
+    const data = await fetchData(`${prefix}login/`, "POST", datos);
     return data;
   } catch (error) {
     console.error("Error al iniciar sesión:", error);
@@ -24,10 +24,17 @@ export async function iniciarSesion(datos) {
 
 export async function eliminarCuenta() {
   try {
-    const data = await fetchData(`${prefix}/eliminarCuenta`, "DELETE");
+    const data = await fetchData(`${prefix}borrar/`, "DELETE");
     return data;
   } catch (error) {
     console.error("Error al eliminar la cuenta:", error);
     throw error;
   }
 }
+
+
+export default {
+  registrarUsuario,
+  iniciarSesion,
+  eliminarCuenta,
+};

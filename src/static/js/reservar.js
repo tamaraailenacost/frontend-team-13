@@ -1,9 +1,15 @@
+import clasesService from "../../services/clasesService.js";
+import clienteService from "../../services/clienteService.js";
+import reservasService from "../../services/reservasService.js";
 import { formatoHora } from "../../utils/formatoHora.js";
 import { showToast } from "../../utils/toast.js";
 
 let reservasCliente = [];
 
 document.addEventListener("DOMContentLoaded", function () {
+  if (!localStorage.getItem("gymUserData")) {
+    window.location.href = "./login.html";
+  }
   // Realizar búsqueda al cargar la página
   buscarClases();
   obtenerReservasCliente();
@@ -23,56 +29,54 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-function buscarClases() {
+async function buscarClases() {
   const diaSeleccionado = document.getElementById("dia").value;
 
-  // Realizar la solicitud Fetch al backend
-  fetch(`https://giulianocharra.pythonanywhere.com/api/clases/?dia_semana_id=${diaSeleccionado}`)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      // Limpiar el contenedor antes de agregar nuevas clases
-      const clasesContainer = document.getElementById("clases-container");
-      clasesContainer.innerHTML = "";
+  try {
+    // Obtener las clases usando el servicio
+    const data = await clasesService.obtenerClasesPorDiaSemana(diaSeleccionado);
 
-      // Agregar las clases al contenedor
-      const fragment = document.createDocumentFragment();
-      data.clases.forEach((clase) => {
-        const claseOpcion = document.createElement("div");
-        claseOpcion.className = "clase-opcion";
-        const inputElement = document.createElement("input");
-        inputElement.id = `clase-${clase.clase_id}`;
-        inputElement.type = "radio";
-        inputElement.name = "clase";
-        inputElement.value = clase.clase_id;
-        inputElement.required = true;
-        inputElement.style.display = "none";
+    // Limpiar el contenedor antes de agregar nuevas clases
+    const clasesContainer = document.getElementById("clases-container");
+    clasesContainer.innerHTML = "";
 
-        const labelElement = document.createElement("label");
-        labelElement.className = "nombre-clase";
-        labelElement.htmlFor = `clase-${clase.clase_id}`;
-        labelElement.textContent = `${clase.nombre} - ${formatoHora(clase.horario.hora_inicio)}`;
+    // Agregar las clases al contenedor
+    const fragment = document.createDocumentFragment();
+    data.clases.forEach((clase) => {
+      const claseOpcion = document.createElement("div");
+      claseOpcion.className = "clase-opcion";
+      const inputElement = document.createElement("input");
+      inputElement.id = `clase-${clase.clase_id}`;
+      inputElement.type = "radio";
+      inputElement.name = "clase";
+      inputElement.value = clase.clase_id;
+      inputElement.required = true;
+      inputElement.style.display = "none";
 
-        // Agregar evento clic para mantener el estilo
-        inputElement.addEventListener("change", () => {
-          if (inputElement.checked) {
-            document.querySelector(".nombre-clase.active")?.classList.remove("active");
-            labelElement.classList.add("active");
-          } else {
-            labelElement.classList.remove("active");
-          }
-        });
+      const labelElement = document.createElement("label");
+      labelElement.className = "nombre-clase";
+      labelElement.htmlFor = `clase-${clase.clase_id}`;
+      labelElement.textContent = `${clase.nombre} - ${formatoHora(clase.horario.hora_inicio)}`;
 
-        claseOpcion.appendChild(labelElement);
-        claseOpcion.appendChild(inputElement);
-        fragment.appendChild(claseOpcion);
+      // Agregar evento clic para mantener el estilo
+      inputElement.addEventListener("change", () => {
+        if (inputElement.checked) {
+          document.querySelector(".nombre-clase.active")?.classList.remove("active");
+          labelElement.classList.add("active");
+        } else {
+          labelElement.classList.remove("active");
+        }
       });
 
-      clasesContainer.appendChild(fragment);
-    })
-    .catch((error) => {
-      console.error("Error al buscar clases:", error);
+      claseOpcion.appendChild(labelElement);
+      claseOpcion.appendChild(inputElement);
+      fragment.appendChild(claseOpcion);
     });
+
+    clasesContainer.appendChild(fragment);
+  } catch (error) {
+    console.error("Error al buscar clases:", error);
+  }
 }
 
 async function reservarClase() {
@@ -91,27 +95,11 @@ async function reservarClase() {
       console.error("No se pudo obtener el ID del cliente desde el localStorage.");
       return;
     }
-    let dataBody = { clase_id: claseId, cliente_id: clienteId };
 
-    const response = await fetch("https://giulianocharra.pythonanywhere.com/api/reservas/", {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(dataBody),
-    });
+    // Reservar la clase usando el servicio
+    const data = await reservasService.reservarClase(claseId, clienteId);
 
-    if (!response.ok) {
-      console.error("Error en la solicitud HTTP:", response.status, response.statusText);
-      let data = await response.json();
-      showToast(`Error: ${data.error}`, "error");
-      return;
-    }
-
-    const data = await response.json();
-    console.log("Respuesta del backend:", data);
-
+    // Mostrar el mensaje y actualizar la tabla de reservas
     showToast("Reserva realizada", "success");
     let reserva = data.reserva;
     reservasCliente.push(reserva);
@@ -122,18 +110,13 @@ async function reservarClase() {
   }
 }
 
-// Función para obtener las reservas del cliente desde el backend
 async function obtenerReservasCliente() {
   // obtener el id del cliente desde el local storage
   const clienteId = JSON.parse(localStorage.getItem("gymUserData")).cliente_id;
 
-  // Realizar la solicitud Fetch al backend para obtener las reservas
   try {
-    let req = await fetch(`https://giulianocharra.pythonanywhere.com/api/clientes/${clienteId}/reservas`);
-    let json = await req.json();
-
-    // Asignar las reservas obtenidas a la variable reservasCliente
-    reservasCliente = json.reservas;
+    // Obtener las reservas del cliente usando el servicio
+    reservasCliente = await clienteService.obtenerReservasCliente(clienteId);
 
     // Después de obtener las reservas, actualizar la tabla
     actualizarTablaReservas();
@@ -142,7 +125,6 @@ async function obtenerReservasCliente() {
   }
 }
 
-// Función para actualizar la tabla de reservas
 function actualizarTablaReservas() {
   // Obtener la referencia a la tabla
   const tablaReservas = document.getElementById("mis-reservas");
@@ -152,24 +134,8 @@ function actualizarTablaReservas() {
 
   // Iterar sobre las reservas y agregarlas a la tabla
   for (const reserva of reservasCliente) {
-    // Agregar una nueva fila con un template literal
-    const nuevaFila = `
-      <tr>
-        <td class="columna-clase-nombre">${reserva.clase.nombre}</td>
-        <td class="columna-dia-semana">${reserva.clase.horario.dia_semana.nombre}</td>
-        <td>${formatoHora(reserva.clase.horario.hora_inicio)}</td>
-        <td>${reserva.clase.instructor}</td>
-        <td>${reserva.fecha_reserva}</td>
-        <td>
-          <button class="btn-eliminar-reserva" data-id-reserva="${reserva.reserva_id}">
-            <i class="fa-regular fa-trash-can"></i>
-          </button>
-        </td>
-      </tr>
-    `;
-
     // Agregar la nueva fila a la tabla sin afectar las filas existentes
-    tablaReservas.insertAdjacentHTML("beforeend", nuevaFila);
+    tablaReservas.insertAdjacentHTML("beforeend", generarFilaTabla(reserva));
 
     // asignar el id de la reserva como atributo data-id-reserva al botón de eliminar
     const btnEliminar = document.querySelector(`[data-id-reserva="${reserva.reserva_id}"]`);
@@ -179,25 +145,35 @@ function actualizarTablaReservas() {
   }
 }
 
-// Función para eliminar una reserva
+// Función para generar la fila de la tabla con referencias a los campos
+function generarFilaTabla(reserva) {
+  return `
+    <tr>
+      <td class="columna-clase-nombre"><span class="campo-nombre">Clase:</span> <p>${
+        reserva.clase.nombre
+      }</p></td>
+      <td class="columna-dia-semana"><span class="campo-nombre">Día Semana:</span> <p>${
+        reserva.clase.horario.dia_semana.nombre
+      }</p></td>
+      <td><span class="campo-nombre">Hora Inicio:</span> <p>${formatoHora(
+        reserva.clase.horario.hora_inicio
+      )}</p></td>
+      <td><span class="campo-nombre">Instructor:</span> <p>${reserva.clase.instructor}</p></td>
+      <td><span class="campo-nombre">Fecha Reserva:</span> <p>${reserva.fecha_reserva}</p></td>
+      <td>
+        <span class="campo-nombre">Acciones:</span>
+        <button class="btn-eliminar-reserva" data-id-reserva="${reserva.reserva_id}">
+          <i class="fa-regular fa-trash-can"></i>
+        </button>
+      </td>
+    </tr>
+  `;
+}
+
 async function eliminarReserva(reservaId) {
   try {
-    // Realizar la solicitud Fetch para eliminar la reserva en el backend
-    const response = await fetch(`https://giulianocharra.pythonanywhere.com/api/reservas/${reservaId}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Error al eliminar reserva`);
-    }
-
-    const data = await response.json();
-
-    // Manejar la respuesta del backend si es necesario
-    console.log("Reserva eliminada con éxito", data);
+    // Eliminar la reserva usando el servicio
+    await reservasService.eliminarReserva(reservaId);
 
     // Actualizar la lista de reservas después de eliminar la reserva
     reservasCliente = reservasCliente.filter((reserva) => reserva.reserva_id !== reservaId);
@@ -210,5 +186,7 @@ async function eliminarReserva(reservaId) {
     console.error("Error al eliminar reserva:", error);
     showToast(error.message, "error");
     // Puedes manejar el error según tus necesidades
+  } finally {
+    showToast("Reserva eliminada exitosamente.", "success");
   }
 }

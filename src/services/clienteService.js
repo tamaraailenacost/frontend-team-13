@@ -1,6 +1,6 @@
-import { fetchData } from "./apiService";
+import { fetchData } from "./apiService.js";
 
-const prefix = "clientes";
+const prefix = "clientes/";
 
 export async function crearCliente(datos) {
   /**
@@ -41,7 +41,7 @@ export async function obtenerCliente(clienteId) {
    * @throws {Error} - Si hay un error en la petición
    */
   try {
-    const data = await fetchData(`${prefix}/${clienteId}`);
+    const data = await fetchData(`${prefix}${clienteId}`);
     return data.cliente;
   } catch (error) {
     console.error("Error al obtener el cliente:", error);
@@ -58,7 +58,7 @@ export async function actualizarCliente(clienteId, nuevosDatos) {
    * @throws {Error} - Si hay un error en la petición
    */
   try {
-    const data = await fetchData(`${prefix}/${clienteId}`, "PUT", nuevosDatos);
+    const data = await fetchData(`${prefix}${clienteId}`, "PUT", nuevosDatos);
     return data;
   } catch (error) {
     console.error("Error al actualizar el cliente:", error);
@@ -74,10 +74,18 @@ export async function obtenerReservasCliente(clienteId) {
    * @throws {Error} - Si hay un error en la petición
    */
   try {
-    const data = await fetchData(`${prefix}/${clienteId}/reservas`);
+    const data = await fetchData(`${prefix}${clienteId}/reservas`);
     return data.reservas;
   } catch (error) {
     console.error("Error al obtener las reservas del cliente:", error);
     throw error;
   }
 }
+
+export default {
+  crearCliente,
+  obtenerClientes,
+  obtenerCliente,
+  actualizarCliente,
+  obtenerReservasCliente,
+};

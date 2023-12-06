@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const logoutButton = document.getElementById("logout-btn");
   const registerButton = document.getElementById("register-btn");
 
+  const boton_reservar = document.querySelector(".btnReservas");
+  const boton_registrar = document.querySelector(".btnRegistrar");
+  const boton_login = document.querySelector(".btnLogin");
+  const boton_logout = document.querySelector(".btnLogout");
+
   if (userData) {
     // Usuario logueado
 
@@ -12,12 +17,16 @@ document.addEventListener("DOMContentLoaded", function () {
     loginButton.style.display = "none"; // Ocultar botones de login y registro
     logoutButton.style.display = "flex"; // Mostrar botón de logout
     registerButton.style.display = "none"; // Ocultar botón de registro
+
+    boton_reservar.style.display = "block"; // Mostrar botón de reservar
+    boton_login.style.display = "none"; // Ocultar botones de login y registro
+    boton_logout.style.display = "block"; // Mostrar botón de logout
+    boton_registrar.style.display = "none"; // Ocultar botón de registro
   }
 });
 function toggleLoginRegister() {
   const loginButtons = document.querySelector(".login-buttons");
-  loginButtons.style.display =
-    loginButtons.style.display === "none" || loginButtons.style.display === "" ? "flex" : "none";
+  loginButtons.classList.toggle("show");
 }
 
 function logout() {

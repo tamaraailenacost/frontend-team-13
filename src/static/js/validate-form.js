@@ -81,41 +81,42 @@ const form = document.getElementById("signupFrm");
 form.addEventListener("submit", async function (event) {
   event.preventDefault();
   if (!validateEmail() || !validateUser() || !validatePasswordMatch() || !validatePasswordMatch()) {
-    // Crear un objeto con la información del usuario
-    const userData = {
-      username: username.value,
-      password: password.value,
-      email: email.value,
-    };
+    console.log("Formulario inválido");
+  }
+  // Crear un objeto con la información del usuario
+  const userData = {
+    username: username.value,
+    password: password.value,
+    email: email.value,
+  };
 
-    try {
-      // Enviar la solicitud al backend usando fetch o la librería que prefieras
-      const response = await fetch(
-        "https://giulianocharra.pythonanywhere.com/api/auth/registrar/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        }
-      );
+  try {
+    // Enviar la solicitud al backend usando fetch o la librería que prefieras
+    const response = await fetch("https://giulianocharra.pythonanywhere.com/api/auth/registrar", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
 
-      // Verificar si la solicitud fue exitosa
-      if (!response.ok) {
-        throw new Error("Error en la solicitud de registro");
-      }
+    const responseData = await response.json();
 
-      const responseData = await response.json();
-
-      if (!responseData.success) {
-        displayAlert(email, responseData.message || "Error en el registro");
-      }
-
-      displayAlert(email, responseData.message || "Usuario registrado con éxito");
-      window.location.href = "../../login.html";
-    } catch (error) {
-      console.error("Error:", error.message);
+    // Verificar si la solicitud fue exitosa
+    if (!response.ok) {
+      throw new Error(responseData.error);
     }
+
+    if (!responseData.success) {
+      displayAlert(email, responseData.message || "Error en el registro");
+      showToast("Error en el registro", "error");
+    }
+
+    displayAlert(email, responseData.message || "Usuario registrado con éxito");
+    window.location.href = "./login.html";
+  } catch (error) {
+    console.error("Error:", error.message);
+    document.getElementById("errorRegistro").textContent = error;
   }
 });

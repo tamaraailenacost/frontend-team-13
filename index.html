@@ -79,13 +79,26 @@
               <li>
                 <a href="./src/views/clientes.html">Clientes</a>
               </li>
-              <li>
+              <li
+                class="btnReservas"
+                style="display: none"
+              >
                 <a href="./src/views/reservas.html">Reservar</a>
               </li>
-              <li>
+              <li class="btnLogin">
                 <a href="./src/views/login.html">Login</a>
               </li>
-              <li>
+              <li
+                class="btnLogout"
+                style="display: none"
+              >
+                <a
+                  href="#"
+                  onclick="logout()"
+                  >Logout</a
+                >
+              </li>
+              <li class="btnRegistrar">
                 <a href="./src/views/registro.html">Regístrate</a>
               </li>
             </ul>
@@ -121,10 +134,7 @@
           </div>
 
           <!-- Botones de login y registro -->
-          <div
-            class="login-buttons"
-            style="display: none"
-          >
+          <div class="login-buttons">
             <button
               id="reservar-btn"
               class="custom-btn"
