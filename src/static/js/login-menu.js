@@ -34,5 +34,5 @@ function logout() {
   localStorage.removeItem("gymUserData");
 
   // Redirigir a la página de inicio (o a donde prefieras)
-  window.location.href = "../../../index.html";
+  window.location.href = "../../index.html";
 }
