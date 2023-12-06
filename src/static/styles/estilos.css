@@ -88,8 +88,16 @@ strong {
   letter-spacing: 0;
 }
 
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 section {
   padding: 2rem 0;
+  max-width: 1480px;
+  width: 100%;
 }
 
 /* BUTTON */
@@ -162,13 +170,15 @@ a:focus {
   text-decoration: none;
 }
 
-.presentacion {
+section.presentacion {
   background-image: url("../images/hero-bg.jpg");
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
   vertical-align: middle;
-  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  min-height: clamp(400px, 60vw, 65vw);
   position: relative;
 }
 
@@ -191,8 +201,7 @@ a:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 70%;
-  /*max-width: 100%;*/
+  width: 65%;
   transition: opacity 0.5s;
   object-fit: cover;
 }
@@ -202,7 +211,7 @@ a:focus {
 }
 
 .clases-info {
-  width: 30%;
+  width: 35%;
   background: #909090;
   box-shadow: 6px 0 38px rgba(20, 20, 20, 0.1);
   border-radius: 0 0 2px 2px;
@@ -215,6 +224,10 @@ a:focus {
 
 .clases-info strong {
   color: #c2ee0a;
+}
+
+.clases-info p{
+  font-size: clamp(16px, 2vw, 20px);
 }
 
 .clases-precio {
@@ -234,16 +247,41 @@ a:focus {
   transition-duration: 0.3s;
 }
 
+section.horarios {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: clamp(5px, 1vw, 20px);
+}
+
+.schedule-table {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.horarios-tabla {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
 .horarios {
   background: #666262;
 }
 
 .horarios-tabla {
-  display: table;
   border: 0;
   text-align: center;
+  width: 100%;
 }
-
+.horarios-tabla strong{
+  text-transform: capitalize;
+}
 .horarios-tabla strong,
 .horarios-tabla span {
   display: block;
@@ -251,16 +289,13 @@ a:focus {
 }
 
 .horarios-tabla strong {
+  font-size: clamp(12px, 2vw, 25px);
   color: #c2ee0a;
-}
-
-.horarios-tabla span {
-  color: #666262;
 }
 
 .horarios-tabla span,
 .horarios-tabla small {
-  font-size: 28px;
+  font-size: clamp(10px, 2vw, 20px);
   text-transform: uppercase;
 }
 
@@ -269,30 +304,28 @@ a:focus {
   top: 10px;
 }
 
-.table .thead-light th,
-.schedule-table tr td:first-child {
-  background: #f36507;
-  border: 1px solid #f36507;
-  color: #c2ee0a;
+.diaSemanaActual {
+  background-color: #909090;
+  color: #ffffff;
 }
 
-.schedule-table .thead-light th {
-  border-bottom: 0;
-  text-transform: uppercase;
+.horarios-tabla tr {
+  /* display: flex; */
+  width: 100%;
 }
 
-.table-bordered td,
-.table-bordered th {
+.horarios-tabla th {
+  font-size: clamp(10px, 2vw, 20px);
+}
+
+.horarios-tabla td,
+.horarios-tabla th {
   border: 1px solid #212122;
-}
-
-.table-bordered td {
-  padding-bottom: 22px;
 }
 
 .table td,
 .table th {
-  padding: 1rem;
+  padding: clamp(5px, 1vw, 2vw);
 }
 
 /* Estilos para la barra de navegación transparente */
@@ -429,7 +462,7 @@ footer {
 /* text o presentacion */
 .presentacion-text {
   position: absolute;
-  margin-top: 10%;
+  margin-top: 2.5%;
   /* margin: auto; */
   /* margin-bottom: 18px; */
   font-family: fantasy;

@@ -57,6 +57,7 @@ header {
   z-index: 1020;
   width: 100%;
   background: linear-gradient(1deg, #22de3300, #c2ee0a 100px);
+  backdrop-filter: blur(10px);
 }
 
 /* .footer{
@@ -237,7 +238,8 @@ table.table-tusclases td {
   gap: 20px;
   width: 100%;
 }
-form-registrar-clase .filtros {
+
+.form-registrar-clase .filtros {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -384,22 +386,22 @@ form-registrar-clase .filtros {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 20px;
+  gap: clamp(5px, 1vw, 20px);
+
+  background-color: #2b303b;
 }
 .fundadora p {
   font-size: calc(1rem + 0.2vw);
   width: 100%;
   justify-content: flex-start;
   letter-spacing: 1px;
-}
-
-.fundadora .galeria-item {
-  width: 100%;
+  padding: clamp(10px, 1vw, 20px);
 }
 
 .fundadora .galeria-item img {
   width: 100%;
   object-fit: cover;
+  max-width: clamp(300px, 40vw, 1000px);
 }
 
 /* Breakpoints and responsive desing */
@@ -408,13 +410,17 @@ form-registrar-clase .filtros {
 
 /* tablets and small devices*/
 @media only screen and (max-width: 992px) {
-  .fundadora {
-    flex-direction: column;
-  }
-
   .flex-container {
     display: block;
     justify-content: space-between;
+  }
+
+  .fundadora .galeria-item {
+    width: 50%;
+  }
+
+  .horarios-tabla {
+    padding: 0;
   }
 
   .registro-img {
@@ -483,32 +489,11 @@ form-registrar-clase .filtros {
   }
 
   .presentacion {
-    /* min-height: 300px !important; */
-    background-size: cover;
-    min-height: 60svh;
-    margin-top: clamp(55px, 5vw, 65px);
     padding-top: 10px;
-  }
-  .presentacion-text {
-    margin-top: 0;
-    text-align: center;
-  }
-  .presentacion-text a {
-    justify-content: center;
-  }
-
-  .presentacion-text h6,
-  .presentacion-text h1,
-  .presentacion-text a {
-    font-size: 20px;
   }
 
   .presentacion-text h1 {
     letter-spacing: normal;
-  }
-
-  .horarios-tabla {
-    display: none !important;
   }
 
   .login-img {
@@ -545,6 +530,15 @@ form-registrar-clase .filtros {
   h6 {
     margin: 2%;
   }
+
+  .presentacion-text {
+  }
+
+  .presentacion-text h6,
+  .presentacion-text h1,
+  .presentacion-text a {
+    margin-left: 0;
+  }
 }
 
 /*breakpoint*/
@@ -562,9 +556,38 @@ form-registrar-clase .filtros {
     display: none;
   }
 
+  .presentacion-text {
+    text-align: center;
+    margin-top: 5%;
+  }
+
+  .presentacion-text a {
+    justify-content: center;
+  }
+
+  .presentacion-text h6,
+  .presentacion-text h1,
+  .presentacion-text a {
+    font-size: 1rem;
+  }
+
+  .fundadora {
+    flex-direction: column;
+  }
+
+  .fundadora .galeria-item {
+    width: 100%;
+  }
+
+  .fundadora .galeria-item img {
+    width: 100%;
+    max-width: none;
+  }
+
   .signupFrm {
     margin: 10px;
   }
+
   .form-registrar-clase {
     padding: 10px 15px;
     align-items: center;
@@ -582,6 +605,10 @@ form-registrar-clase .filtros {
   .clase-opcion .nombre-clase {
     width: 100%;
     display: inline-block;
+  }
+
+  .contenedor-mis-reservas{
+    display: flex;
   }
 
   .table-tusclases thead {

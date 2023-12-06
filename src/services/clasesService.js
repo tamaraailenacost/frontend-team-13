@@ -2,6 +2,21 @@ import { fetchData } from "./apiService.js";
 
 const prefix = "clases/";
 
+export async function buscarTodasLasClases() {
+  /**
+   * Obtiene todas las clases
+   * @returns {Promise<Object[]>} - Los datos de las clases
+   * @throws {Error} - Si hay un error en la petición
+   */
+  try {
+    const data = await fetchData(`${prefix}`);
+    return data;
+  } catch (error) {
+    console.error("Error al obtener las clases:", error);
+    throw error;
+  }
+}
+
 export async function crearClase(datos) {
   /**
    * Crea una nueva clase
