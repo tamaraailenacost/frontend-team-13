@@ -22,6 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
     boton_login.style.display = "none"; // Ocultar botones de login y registro
     boton_logout.style.display = "block"; // Mostrar botón de logout
     boton_registrar.style.display = "none"; // Ocultar botón de registro
+
+    document.getElementById("nombreCliente").textContent = JSON.parse(userData).nombre;
   }
 });
 function toggleLoginRegister() {

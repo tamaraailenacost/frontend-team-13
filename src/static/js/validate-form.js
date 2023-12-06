@@ -1,3 +1,5 @@
+import { showToast } from "../../utils/toast.js";
+
 const username = document.getElementById("username");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -108,15 +110,25 @@ form.addEventListener("submit", async function (event) {
       throw new Error(responseData.error);
     }
 
-    if (!responseData.success) {
+    if (!responseData) {
       displayAlert(email, responseData.message || "Error en el registro");
       showToast("Error en el registro", "error");
     }
 
-    displayAlert(email, responseData.message || "Usuario registrado con éxito");
-    window.location.href = "./login.html";
+    // mostrar toast de éxito y redirigir al login
+    showToast("Usuario registrado con éxito", "success");
+
+    setTimeout(() => {
+      window.location.href = "./login.html";
+    }, 2000);
   } catch (error) {
     console.error("Error:", error.message);
     document.getElementById("errorRegistro").textContent = error;
+
+    setTimeout(() => {
+      document.getElementById("errorRegistro").textContent = "";
+    }, 3000);
+
+    showToast(error, "error");
   }
 });

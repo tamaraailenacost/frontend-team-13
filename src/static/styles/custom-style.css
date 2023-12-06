@@ -163,6 +163,8 @@ span.clases-precio:hover {
 .flex-item.login {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
 }
 
 .login-img {
@@ -355,7 +357,8 @@ form-registrar-clase .filtros {
   max-width: 500px;
 }
 
-#signupFrm #errorRegistro, #errorLogin {
+#signupFrm #errorRegistro,
+#errorLogin {
   color: #f83535;
   font-size: 1.2rem;
   font-weight: bold;
@@ -368,6 +371,36 @@ form-registrar-clase .filtros {
   align-items: center;
   flex-direction: column;
 }
+.fundadoras {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+.fundadora {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+.fundadora p {
+  font-size: calc(1rem + 0.2vw);
+  width: 100%;
+  justify-content: flex-start;
+  letter-spacing: 1px;
+}
+
+.fundadora .galeria-item {
+  width: 100%;
+}
+
+.fundadora .galeria-item img {
+  width: 100%;
+  object-fit: cover;
+}
 
 /* Breakpoints and responsive desing */
 /* Breakpoints and responsive desing */
@@ -375,6 +408,10 @@ form-registrar-clase .filtros {
 
 /* tablets and small devices*/
 @media only screen and (max-width: 992px) {
+  .fundadora {
+    flex-direction: column;
+  }
+
   .flex-container {
     display: block;
     justify-content: space-between;
@@ -391,10 +428,6 @@ form-registrar-clase .filtros {
   h1.title.login100-form-title {
     font-size: 30px;
     font-family: sans-serif;
-  }
-
-  section#nosotros {
-    display: block;
   }
 
   p,
@@ -523,6 +556,10 @@ form-registrar-clase .filtros {
   }
   .seccion-login {
     padding-bottom: 30px;
+  }
+
+  #nombreCliente {
+    display: none;
   }
 
   .signupFrm {

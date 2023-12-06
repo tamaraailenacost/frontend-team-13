@@ -1,4 +1,4 @@
-import {showToast} from '../../utils/toast.js';
+import { showToast } from "../../utils/toast.js";
 
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -108,20 +108,27 @@ form.addEventListener("submit", async function (event) {
     const responseData = await response.json();
 
     if (!response.ok) {
-      throw new Error(responseData.error || "No se pudo crear el usuario");
+      throw new Error(responseData.error || "No se pudo loguear el usuario");
     }
-      // Parsear la respuesta del backend
+    // Parsear la respuesta del backend
 
-      // Verificar si el login fue exitoso
-      // Guardar la información del usuario en el localStorage
-      localStorage.setItem("gymUserData", JSON.stringify(responseData.usuario));
+    // Verificar si el login fue exitoso
+    // Guardar la información del usuario en el localStorage
+    localStorage.setItem("gymUserData", JSON.stringify(responseData.usuario));
 
-      // Redirigir a la página de inicio o a donde desees
+    // mostrar el toast de éxito y luego de 2 segundos redirigir a la página de inicio
+    showToast("Usuario logueado exitosamente", "success");
+
+    setTimeout(() => {
       window.location.href = "../../index.html";
+    }, 2000);
   } catch (error) {
     // Manejar errores de red u otros errores
     console.error(error, error.message);
     showToast(error.message, "error");
     document.getElementById("errorLogin").textContent = error.message;
+    setTimeout(() => {
+      document.getElementById("errorLogin").textContent = "";
+    }, 3000);
   }
 });
