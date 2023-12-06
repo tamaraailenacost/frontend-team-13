@@ -28,13 +28,15 @@ class AuthService:
             raise PasswordInvalidaError()
 
         # Verificar si el nombre de usuario o correo electrónico ya existen
-        usuario_existente = Usuario.query.filter_by(username=username).first()
         email_existente = Usuario.query.filter_by(email=email).first()
+
+        if email_existente:
+            raise CuentaExistenteError("Correo electrónico ya registrado.")
+
+        usuario_existente = Usuario.query.filter_by(username=username).first()
 
         if usuario_existente:
             raise CuentaExistenteError("Nombre de usuario ya registrado.")
-        if email_existente:
-            raise CuentaExistenteError("Correo electrónico ya registrado.")
 
         # Hash de la contraseña antes de almacenarla en la base de datos
         # password = PasswordService.hash_password(password)
