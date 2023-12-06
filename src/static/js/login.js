@@ -1,3 +1,5 @@
+import {showToast} from '../../utils/toast.js';
+
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 
@@ -103,9 +105,12 @@ form.addEventListener("submit", async function (event) {
     });
 
     // Verificar si la solicitud fue exitosa
-    if (response.ok) {
+    const responseData = await response.json();
+
+    if (!response.ok) {
+      throw new Error(responseData.error || "No se pudo crear el usuario");
+    }
       // Parsear la respuesta del backend
-      const responseData = await response.json();
 
       // Verificar si el login fue exitoso
       // Guardar la información del usuario en el localStorage
@@ -113,12 +118,10 @@ form.addEventListener("submit", async function (event) {
 
       // Redirigir a la página de inicio o a donde desees
       window.location.href = "../../index.html";
-    } else {
-      // Manejar errores de la solicitud HTTP
-      displayAlert(email, responseData);
-    }
   } catch (error) {
     // Manejar errores de red u otros errores
-    console.error("Error:", error.message);
+    console.error(error, error.message);
+    showToast(error.message, "error");
+    document.getElementById("errorLogin").textContent = error.message;
   }
 });

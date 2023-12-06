@@ -355,7 +355,7 @@ form-registrar-clase .filtros {
   max-width: 500px;
 }
 
-#signupFrm #errorRegistro {
+#signupFrm #errorRegistro, #errorLogin {
   color: #f83535;
   font-size: 1.2rem;
   font-weight: bold;
