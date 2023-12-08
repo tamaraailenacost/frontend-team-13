@@ -189,7 +189,7 @@ p.footer {
 .flex-item.nav.col-1.tus-reservas {
   margin: 2%;
   border: 1px solid;
-  width: 100%;
+  /* width: 100%; */
   display: block;
 }
 
@@ -404,6 +404,51 @@ table.table-tusclases td {
   max-width: clamp(300px, 40vw, 1000px);
 }
 
+.opcion-con-submenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-open-submenu {
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: rotate 0.3s, background-color 0.3s;
+}
+
+.btn-open-submenu:hover {
+  color: #c2ee0a;
+  background-color: #2b303b;
+  animation: scale 0.3s;
+}
+
+.btn-open-submenu.rotate {
+  rotate: x 180deg;
+}
+
+.submenu {
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.submenu.show {
+  max-height: 500px; /* Adjust the maximum height as per your needs */
+}
+
+.submenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.submenu ul li {
+  padding: 10px;
+}
+
 /* Breakpoints and responsive desing */
 /* Breakpoints and responsive desing */
 /* Breakpoints and responsive desing */
@@ -607,7 +652,7 @@ table.table-tusclases td {
     display: inline-block;
   }
 
-  .contenedor-mis-reservas{
+  .contenedor-mis-reservas {
     display: flex;
   }
 

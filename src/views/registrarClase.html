@@ -11,7 +11,7 @@
       content="width=device-width, initial-scale=1.0"
     />
 
-    <title>Gymnasionline</title>
+    <title>Gymnasionline reservas</title>
     <link
       rel="stylesheet"
       href="../static/styles/estilos.css"
@@ -34,7 +34,7 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
+  <body class="pagina-registrar-clase">
     <!-- Header -->
     <header
       id="header"
@@ -46,7 +46,7 @@
             href="../../index.html"
             class="logo"
           >
-            Gymnasionline</a
+            Gym & CIA</a
           >
         </div>
         <span class="burger-icon"
@@ -93,49 +93,65 @@
                 </div>
               </li>
               <li>
-                <a href="#nosotros">Nosotros</a>
+                <a href="../../index.html#nosotros">Nosotros</a>
               </li>
               <li>
-                <a href="#clases">Clases</a>
+                <a href="../../index.html#clases">Clases</a>
               </li>
               <li>
-                <a href="#horarios">Horarios</a>
+                <a href="../../index.html#horarios">Horarios</a>
               </li>
               <li>
-                <a href="clientes.html">Clientes</a>
+                <a href="./clientes.html">Clientes</a>
               </li>
-              <li>
-                <a href="reservas.html">Reservar</a>
+              <li
+                class="btnReservas"
+                style="display: none"
+              >
+                <a href="./reservas.html">Reservar</a>
               </li>
-              <li>
-                <a href="login.html">Login</a>
+              <li class="btnLogin">
+                <a href="./login.html">Login</a>
               </li>
-              <li>
-                <a href="registro.html">Regístrate</a>
+              <li
+                class="btnLogout"
+                style="display: none"
+              >
+                <a
+                  href="#"
+                  onclick="logout()"
+                  >Logout</a
+                >
+              </li>
+              <li class="btnRegistrar">
+                <a href="./registro.html">Regístrate</a>
               </li>
             </ul>
           </nav>
         </div>
         <div class="flex-item nav col-2">
           <nav>
-            <li>
-              <a href="../../index.html">Inicio</a>
-            </li>
-            <li>
-              <a href="#nosotros">Nosotros</a>
-            </li>
-            <li>
-              <a href="#clases">Clases</a>
-            </li>
-            <li>
-              <a href="#horarios">Horarios</a>
-            </li>
-            <li>
-              <a href="clientes.html">Clientes</a>
-            </li>
+            <ul>
+              <li>
+                <a href="../../index.html">Inicio</a>
+              </li>
+              <li>
+                <a href="../../index.html#nosotros">Nosotros</a>
+              </li>
+              <li>
+                <a href="../../index.html#clases">Clases</a>
+              </li>
+              <li>
+                <a href="../../index.html#horarios">Horarios</a>
+              </li>
+              <li>
+                <a href="./clientes.html">Clientes</a>
+              </li>
+            </ul>
           </nav>
         </div>
         <div class="flex-item login">
+          <p id="nombreCliente"></p>
           <div
             class="user-icon"
             onclick="toggleLoginRegister()"
@@ -144,10 +160,7 @@
           </div>
 
           <!-- Botones de login y registro -->
-          <div
-            class="login-buttons"
-            style="display: none"
-          >
+          <div class="login-buttons">
             <button
               id="reservar-btn"
               class="custom-btn"
@@ -251,23 +264,96 @@
         </div>
       </div>
     </header>
+    <!-- header ----->
 
+    <!-- main -->
     <main>
-      <!-- Mensaje para mostrar que se produjo un error -->
-
-      <div class="error-template">
-        <h1>Oops!</h1>
-        <h2>404 Not Found</h2>
-        <div class="error-details">Lo sentimos, ha ocurrido un error, página no encontrada!</div>
-        <div class="error-actions">
-          <a
-            href="../../index.html"
-            class="btn btn-primary btn-lg"
-            ><span class="glyphicon glyphicon-home"></span> Volver a la página de inicio
-          </a>
+    <form>
+        <div class="form-group">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                required
+                class="form-input"
+            />
         </div>
-      </div>
+
+        <div class="form-group">
+            <label for="descripcion" class="form-label">Descripción:</label>
+            <textarea
+                id="descripcion"
+                name="descripcion"
+                required
+                class="form-input"
+            ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="instructor" class="form-label">Nombre del instructor:</label>
+            <input
+                type="text"
+                id="instructor"
+                name="instructor"
+                required
+                class="form-input"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="capacidad" class="form-label">Capacidad máxima:</label>
+            <input
+                type="number"
+                id="capacidad"
+                name="capacidad"
+                required
+                class="form-input"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="horario" class="form-label">Horario:</label>
+            <select
+                id="horario"
+                name="horario"
+                required
+                class="form-input"
+            >
+                <option
+                    value=""
+                    disabled
+                    selected
+                >
+                    Selecciona un horario
+                </option>
+                <option value="Lunes 9:00 - 10:00">Lunes 9:00 - 10:00</option>
+                <option value="Martes 14:00 - 15:00">Martes 14:00 - 15:00</option>
+                <option value="Miércoles 18:00 - 19:00">Miércoles 18:00 - 19:00</option>
+                <!-- Agrega más opciones de horarios disponibles aquí -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="nuevo-horario" class="form-label">Agregar nuevo horario:</label>
+            <input
+                type="text"
+                id="nuevo-horario"
+                name="nuevo-horario"
+                class="form-input"
+            />
+        </div>
+
+        <button type="submit" class="form-button">Registrar clase</button>
+    </form>
     </main>
+    <!-- Toast que muestra un mensaje -->
+    <div
+      id="toast"
+      class="hidden"
+    >
+      <p id="toast-message"></p>
+    </div>
 
     <!-- FOOTER -->
     <footer>
@@ -275,5 +361,9 @@
     </footer>
     <script src="../static/js/burger-menu.js"></script>
     <script src="../static/js/login-menu.js"></script>
+    <script
+      type="module"
+      src="../static/js/reservar.js"
+    ></script>
   </body>
 </html>

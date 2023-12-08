@@ -34,7 +34,6 @@ h1 {
   border: 1px solid #303030;
   padding: 5px 15px 2px 15px;
   width: 30%;
-  margin: auto;
 }
 
 h2 {
@@ -46,7 +45,6 @@ h2 {
   padding: 5px 15px 2px 15px;
   text-align: center;
   width: 90%;
-  margin: auto;
 }
 
 h3 {

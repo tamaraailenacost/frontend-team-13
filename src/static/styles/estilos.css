@@ -363,7 +363,7 @@ li a {
 
 /* Cambiar el color de fondo al pasar el cursor sobre los elementos del menú */
 li a:hover {
-  background-color: rgba(85, 85, 85, 0.7); /* Color de fondo con transparencia */
+  background-color: #2b303b; /* Color de fondo con transparencia */
 }
 
 /* Animación cuando el cursor pasa sobre los elementos del menú */
