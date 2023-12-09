@@ -21,8 +21,6 @@ async function obtenerClases() {
   }
 }
 
-const diasSemana = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado"];
-
 function llenarTabla(clases) {
   // Obtener la referencia a la tabla
   const cuerpoTabla = document.getElementById("contenedor-horarios");

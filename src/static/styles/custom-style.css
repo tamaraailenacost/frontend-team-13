@@ -7,8 +7,19 @@ body {
 }
 
 header {
+  height: 6vw;
+  max-height: 100px;
   align-items: center;
   color: white;
+  position: fixed;
+  top: 0;
+  z-index: 1020;
+  width: 100%;
+  background: linear-gradient(1deg, #22de3300, #c2ee0a 100px);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Estilos para los elementos flexibles en el contenedor Flexbox */
@@ -16,13 +27,13 @@ header {
   /* "flex" permite definir cuanto espacio van a ocupar los elementos */
   flex: 1;
   padding: 10px;
-  margin: 5px;
-  margin: 1%;
   text-align: center;
 }
 
 .header .flex-container {
   position: relative;
+  width: 100%;
+  max-width: 1440px;
 }
 
 .flex-item.nav ul {
@@ -51,15 +62,6 @@ header {
   flex: 5;
 }
 
-.header {
-  position: fixed;
-  top: 0;
-  z-index: 1020;
-  width: 100%;
-  background: linear-gradient(1deg, #22de3300, #c2ee0a 100px);
-  backdrop-filter: blur(10px);
-}
-
 /* .footer{
     position: absolute;
     bottom: 0;
@@ -85,6 +87,8 @@ header {
   font-size: 24px;
   font-weight: 800;
   color: aliceblue;
+  display: flex;
+  align-items: center;
 }
 
 /*registro-------------------------------------*/

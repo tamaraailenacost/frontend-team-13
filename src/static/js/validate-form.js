@@ -1,9 +1,37 @@
 import { showToast } from "../../utils/toast.js";
 
+// ----------------------------------------------
+// -------------- VARIABLES ------------------
+// ----------------------------------------------
+const form = document.getElementById("signupFrm");
 const username = document.getElementById("username");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
 const password_1 = document.getElementById("password-1");
+
+// ----------------------------------------------
+// -------------- EVENTOS ------------------
+// ----------------------------------------------
+form.addEventListener("submit", validateForm);
+username.addEventListener("blur", validateUser);
+email.addEventListener("blur", validateEmail);
+password.addEventListener("blur", validatePassword);
+password_1.addEventListener("blur", validatePasswordMatch);
+
+// ----------------------------------------------
+// -------------- FUNCIONES ------------------
+// ----------------------------------------------
+
+/**
+ * Función que muestra un mensaje de alerta
+ * @param {HTMLElement} element elemento HTML que tiene el mensaje de alerta
+ * @param {string} message mensaje que se mostrará en la alerta
+ * @returns {void}
+ *
+ * @example
+ * username = document.getElementById("username");
+ * displayAlert(username, "Este campo es obligatorio");
+ */
 
 function displayAlert(element, message) {
   const alertElement = element.nextElementSibling;
@@ -14,12 +42,25 @@ function displayAlert(element, message) {
   }
 }
 
+/**
+ * Función que remueve un mensaje de alerta si existe
+ * @param {HTMLElement} element elemento HTML que tiene el mensaje de alerta
+ * @returns {void}
+ * @example
+ * username = document.getElementById("username");
+ * removeAlert(username);
+ */
 function removeAlert(element) {
   const alertElement = element.nextElementSibling;
   if (alertElement) {
     alertElement.remove();
   }
 }
+
+/**
+ * Función que valida el email del usuario utilizando una expresión regular
+ * @returns {boolean} true si el usuario es válido, false si no es válido
+ */
 
 function validateUser() {
   if (username.value.length < 3) {
@@ -33,6 +74,10 @@ function validateUser() {
   }
 }
 
+/**
+ * Función que valida el email del usuario utilizando una expresión regular
+ * @returns {boolean} true si el email es válido, false si no es válido
+ */
 function validateEmail() {
   const pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
   if (!pattern.test(email.value)) {
@@ -46,6 +91,10 @@ function validateEmail() {
   }
 }
 
+/**
+ * Función que valida el password del usuario utilizando una expresión regular
+ * @returns {boolean} true si el password es válido, false si no es válido
+ */
 function validatePassword() {
   const patternPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   if (password.value.length < 8 || !patternPassword.test(password.value)) {
@@ -59,6 +108,10 @@ function validatePassword() {
   }
 }
 
+/**
+ * Función que valida que los passwords sean iguales
+ * @returns {boolean} true si los passwords son iguales, false si no lo son
+ */
 function validatePasswordMatch() {
   if (password.value !== password_1.value) {
     password.classList.add("input-alert");
@@ -73,14 +126,11 @@ function validatePasswordMatch() {
   }
 }
 
-username.addEventListener("blur", validateUser);
-email.addEventListener("blur", validateEmail);
-password.addEventListener("blur", validatePassword);
-password_1.addEventListener("blur", validatePasswordMatch);
-
-const form = document.getElementById("signupFrm");
-
-form.addEventListener("submit", async function (event) {
+/**
+ * Función que valida el formulario de registro y envía la información al servicio de autenticación para registrar al usuario
+ * @param {Event} event evento submit del formulario
+ */
+async function validateForm(event) {
   event.preventDefault();
   if (!validateEmail() || !validateUser() || !validatePasswordMatch() || !validatePasswordMatch()) {
     console.log("Formulario inválido");
@@ -93,42 +143,23 @@ form.addEventListener("submit", async function (event) {
   };
 
   try {
-    // Enviar la solicitud al backend usando fetch o la librería que prefieras
-    const response = await fetch("https://giulianocharra.pythonanywhere.com/api/auth/registrar", {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    });
-
-    const responseData = await response.json();
+    // Utilizar el servicio de autenticación para registrar al usuario
+    const response_data = await authService.registrarUsuario(userData);
 
     // Verificar si la solicitud fue exitosa
-    if (!response.ok) {
-      throw new Error(responseData.error);
+    if (!response_data.ok) {
+      throw new Error(response_data.error);
     }
 
-    if (!responseData) {
-      displayAlert(email, responseData.message || "Error en el registro");
-      showToast("Error en el registro", "error");
-    }
-
-    // mostrar toast de éxito y redirigir al login
+    // Mostrar toast de éxito y redirigir al login
     showToast("Usuario registrado con éxito", "success");
 
     setTimeout(() => {
       window.location.href = "./login.html";
     }, 2000);
   } catch (error) {
+    // Manejar errores de red u otros errores
     console.error("Error:", error.message);
-    document.getElementById("errorRegistro").textContent = error;
-
-    setTimeout(() => {
-      document.getElementById("errorRegistro").textContent = "";
-    }, 3000);
-
-    showToast(error, "error");
+    showToast(error.message || "Error en el registro", "error");
   }
-});
+}
