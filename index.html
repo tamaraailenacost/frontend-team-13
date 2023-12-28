@@ -97,13 +97,19 @@
                 </div>
               </li>
               <li>
-                <a href="./src/views/clientes.html">Opiniones</a>
+                <a href="./src/views/clientes.html">Clientes</a>
+              </li>
+              <li
+                class="btnDashboard"
+                style="display: none"
+              >
+                <a href="./src/views/dashboard.html">Dashboard</a>
               </li>
               <li
                 class="btnReservas"
                 style="display: none"
               >
-                <a href="./src/views/reservas.html">Reservar</a>
+                <a href="./src/views/reservas.html">Reservar Clase</a>
               </li>
               <li class="btnLogin">
                 <a href="./src/views/login.html">Login</a>
@@ -148,17 +154,26 @@
             </ul>
           </nav>
         </div>
-        <div class="flex-item login">
+        <div class="flex-item login col-1">
           <p id="nombreCliente"></p>
           <div
             class="user-icon"
             onclick="toggleLoginRegister()"
           >
-            <i class="fa-solid fa-circle-user"></i>
+            <i
+              id="user-icono"
+              class="fa-solid fa-circle-user"
+            ></i>
+            <img
+              id="user-imagen"
+              src=""
+              alt=""
+              style="display: none"
+            />
           </div>
 
           <!-- Botones de login y registro -->
-          <div class="login-buttons">
+          <!-- <div class="login-buttons">
             <button
               id="reservar-btn"
               class="custom-btn"
@@ -258,7 +273,42 @@
                 />
               </svg>
             </button>
-          </div>
+          </div> -->
+        </div>
+        <div class="flex-item login-menu col-2">
+          <nav>
+            <ul>
+              <li
+                class="dashboard-btn"
+                style="display: none"
+              >
+                <a href="./src/views/dashboard.html">Dashboard</a>
+              </li>
+              <li
+                id="reservar-btn"
+                style="display: none"
+              >
+                <a href="./src/views/reservas.html">Reservar Clase</a>
+              </li>
+              <li id="login-btn">
+                <a href="./src/views/login.html">Login</a>
+              </li>
+              <li
+                id="logout-btn"
+                onclick="logout()"
+                style="display: none"
+              >
+                <a
+                  href="#"
+                  onclick="logout()"
+                  >Logout</a
+                >
+              </li>
+              <li id="register-btn">
+                <a href="./src/views/registro.html">Regístrate</a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </header>

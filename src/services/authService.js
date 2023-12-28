@@ -19,7 +19,7 @@ const prefix = "auth/";
  */
 export async function registrarUsuario(datos) {
   try {
-    const data = await fetchData(`${prefix}/registrar/`, "POST", datos);
+    const data = await fetchData(`${prefix}registrar`, "POST", datos);
     return data;
   } catch (error) {
     console.error("Error al registrar el usuario:", error);
@@ -42,7 +42,7 @@ export async function registrarUsuario(datos) {
  */
 export async function iniciarSesion(datos) {
   try {
-    const data = await fetchData(`${prefix}login/`, "POST", datos);
+    const data = await fetchData(`${prefix}login`, "POST", datos);
     return data;
   } catch (error) {
     console.error("Error al iniciar sesión:", error);

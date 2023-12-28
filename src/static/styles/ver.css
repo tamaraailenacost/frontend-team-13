@@ -1,0 +1,55 @@
+.contenedor-campos {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+}
+
+.contenedor-campo {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding-block: 20px;
+}
+
+.contenedor-horario{
+  font-size: 1.4rem;
+}
+
+.campos {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.campo-nombre {
+  font-size: 1.5rem;
+  color: #c2ee0a;
+}
+
+.campo-valor {
+  font-size: 1.4rem;
+}
+
+.campo-imagen {
+  display: grid;
+  justify-content: center;
+  width: 50%;
+}
+
+.campo-imagen .preview-imagen {
+  margin: 0;
+  max-width: 100%;
+  max-height: 100%;
+
+  min-width: 200px;
+  min-height: 200px;
+  width: auto;
+
+  filter: drop-shadow(2px 4px 50px #000000);
+}
+
+@media screen and (max-width: 900px) {
+  .contenerdor-campos {
+    flex-direction: column;
+  }
+}

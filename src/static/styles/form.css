@@ -1,0 +1,30 @@
+.btn-volver {
+  position: fixed;
+  top: 100px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form .flex-item label {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #c2ee0a;
+}
+
+.form input {
+  margin: 0;
+}
+
+.preview-imagen {
+  max-width: 300px;
+  max-height: 300px;
+  background-color: #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}

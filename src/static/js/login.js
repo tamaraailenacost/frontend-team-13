@@ -102,7 +102,7 @@ async function validateFormLogin(event) {
     const response_data = await authService.iniciarSesion(userData);
 
     // Verificar si la solicitud fue exitosa
-    if (!response_data.ok) {
+    if (!response_data.usuario) {
       throw new Error(response_data.error || "No se pudo loguear el usuario");
     }
 
@@ -117,7 +117,7 @@ async function validateFormLogin(event) {
     }, 2000);
   } catch (error) {
     // Manejar errores de red u otros errores
-    console.error(error, error.message);
+    console.error(error.message);
     showToast(error.message, "error");
     document.getElementById("errorLogin").textContent = error.message;
     setTimeout(() => {

@@ -1,3 +1,4 @@
+import { registrarUsuario } from "../../services/authService.js";
 import { showToast } from "../../utils/toast.js";
 
 // ----------------------------------------------
@@ -144,10 +145,10 @@ async function validateForm(event) {
 
   try {
     // Utilizar el servicio de autenticación para registrar al usuario
-    const response_data = await authService.registrarUsuario(userData);
+    const response_data = await registrarUsuario(userData);
 
     // Verificar si la solicitud fue exitosa
-    if (!response_data.ok) {
+    if (!response_data) {
       throw new Error(response_data.error);
     }
 

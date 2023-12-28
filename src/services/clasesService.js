@@ -17,7 +17,23 @@ export async function buscarTodasLasClases() {
   }
 }
 
-export async function crearClase(datos) {
+export async function obtenerClasePorId(claseId) {
+  /**
+   * Busca los datos de una clase
+   * @param {number} claseId - El id de la clase a buscar
+   * @returns {Promise<Object>} - Los datos de la clase encontrada
+   * @throws {Error} - Si hay un error en la petición
+   */
+  try {
+    const data = await fetchData(`${prefix}${claseId}`, "GET");
+    return data;
+  } catch (error) {
+    console.error("Error al buscar la clase:", error);
+    throw error;
+  }
+}
+
+export async function crearClase(claseDatos) {
   /**
    * Crea una nueva clase
    * @param {Object} datos - Los datos de la clase
@@ -25,7 +41,7 @@ export async function crearClase(datos) {
    * @throws {Error} - Si hay un error en la petición
    */
   try {
-    const data = await fetchData(prefix, "POST", datos);
+    const data = await fetchData(prefix, "POST", claseDatos, {});
     return data;
   } catch (error) {
     console.error("Error al crear la clase:", error);
@@ -49,7 +65,7 @@ export async function eliminarClase(claseId) {
   }
 }
 
-export async function actualizarClase(claseId, nuevosDatos) {
+export async function actualizarClase(claseId, claseDatos) {
   /**
    * Actualiza los datos de una clase
    * @param {number} claseId - El id de la clase
@@ -58,7 +74,7 @@ export async function actualizarClase(claseId, nuevosDatos) {
    * @throws {Error} - Si hay un error en la petición
    */
   try {
-    const data = await fetchData(`${prefix}${claseId}`, "PUT", nuevosDatos);
+    const data = await fetchData(`${prefix}${claseId}`, "PUT", claseDatos, {});
     return data;
   } catch (error) {
     console.error("Error al actualizar la clase:", error);

@@ -10,29 +10,40 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-
-    <title>Gymnasionline Listado de Clases</title>
+    <title>Gymnasionline Ver Clase</title>
     <link
       rel="stylesheet"
-      href="./src/static/styles/estilos.css"
+      href="../static/styles/estilos.css"
     />
     <link
       rel="stylesheet"
-      href="./src/static/styles/estilos.boostrap.css"
+      href="../static/styles/estilos.boostrap.css"
     />
     <link
       rel="stylesheet"
-      href="./src/static/styles/custom-style.css"
+      href="../static/styles/custom-style.css"
     />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="../static/styles/dashboard.css"
+    />
     <script
       src="https://kit.fontawesome.com/4d2f081ec5.js"
       crossorigin="anonymous"
     ></script>
+    <link
+      rel="stylesheet"
+      href="../static/styles/form.css"
+    />
+    <link
+      rel="stylesheet"
+      href="../static/styles/ver.css"
+    />
   </head>
   <body>
     <!-- Header -->
@@ -43,7 +54,7 @@
       <div class="flex-container">
         <div class="flex-item logo col-1">
           <a
-            href="index.html"
+            href="../../index.html"
             class="logo"
           >
             Gym & CIA</a
@@ -69,7 +80,7 @@
             <ul>
               <li>
                 <div class="opcion-con-submenu">
-                  <a href="./index.html">Inicio</a>
+                  <a href="../../index.html">Inicio</a>
                   <i
                     id="btnSubMenuInicio"
                     class="fa-solid fa-chevron-down btn-open-submenu"
@@ -81,41 +92,37 @@
                 >
                   <ul>
                     <li>
-                      <a href="#nosotros">Nosotros</a>
+                      <a href="../../index.html#nosotros">Nosotros</a>
                     </li>
                     <li>
-                      <a href="#clases">Clases</a>
+                      <a href="../../index.html#clases">Clases</a>
                     </li>
                     <li>
-                      <a href="#horarios">Horarios</a>
+                      <a href="../../index.html#horarios">Horarios</a>
+                    </li>
+                    <li>
+                      <a href="../../index.html#contacto">Contacto</a>
                     </li>
                   </ul>
                 </div>
               </li>
               <li>
-                <a href="#nosotros">Nosotros</a>
+                <a href="./clientes.html">Clientes</a>
               </li>
-              <li>
-                <a href="#clases">Clases</a>
-              </li>
-              <li>
-                <a href="#horarios">Horarios</a>
-              </li>
-              <li>
-                <a href="./src/views/clientes.html">Clientes</a>
+              <li
+                class="btnDashboard"
+                style="display: none"
+              >
+                <a href="./dashboard.html">Dashboard</a>
               </li>
               <li
                 class="btnReservas"
                 style="display: none"
               >
-                <a href="./src/views/reservas.html">Reservar</a>
+                <a href="./reservas.html">Reservar Clase</a>
               </li>
               <li class="btnLogin">
-                <a href="./src/views/login.html">Login</a>
-              </li>
-
-              <li>
-                <a href="./src/views/registro.html">Regístrate</a>
+                <a href="./login.html">Login</a>
               </li>
               <li
                 class="btnLogout"
@@ -128,7 +135,7 @@
                 >
               </li>
               <li class="btnRegistrar">
-                <a href="./src/views/registro.html">Regístrate</a>
+                <a href="./registro.html">Regístrate</a>
               </li>
             </ul>
           </nav>
@@ -137,34 +144,43 @@
           <nav>
             <ul>
               <li>
-                <a href="./index.html">Inicio</a>
+                <a href="../../index.html">Inicio</a>
               </li>
               <li>
-                <a href="#nosotros">Nosotros</a>
+                <a href="../../index.html#nosotros">Nosotros</a>
               </li>
               <li>
-                <a href="#clases">Clases</a>
+                <a href="../../index.html#clases">Clases</a>
               </li>
               <li>
-                <a href="#horarios">Horarios</a>
+                <a href="../../index.html#horarios">Horarios</a>
               </li>
               <li>
-                <a href="./src/views/clientes.html">Clientes</a>
+                <a href="./clientes.html">Clientes</a>
               </li>
             </ul>
           </nav>
         </div>
-        <div class="flex-item login">
+        <div class="flex-item login col-1">
           <p id="nombreCliente"></p>
           <div
             class="user-icon"
             onclick="toggleLoginRegister()"
           >
-            <i class="fa-solid fa-circle-user"></i>
+            <i
+              id="user-icono"
+              class="fa-solid fa-circle-user"
+            ></i>
+            <img
+              id="user-imagen"
+              src=""
+              alt=""
+              style="display: none"
+            />
           </div>
 
           <!-- Botones de login y registro -->
-          <div class="login-buttons">
+          <!-- <div class="login-buttons">
             <button
               id="reservar-btn"
               class="custom-btn"
@@ -264,34 +280,183 @@
                 />
               </svg>
             </button>
-          </div>
+            <nav>
+              <ul>
+                <li>
+                  <a href="./src/views/reservas.html">Reservar Clase</a>
+                </li>
+                <li>
+                  <a href="./src/views/login.html">Login</a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    onclick="logout()"
+                    >Logout</a
+                  >
+                </li>
+                <li>
+                  <a href="./src/views/registro.html">Regístrate</a>
+                </li>
+              </ul>
+            </nav>
+          </div> -->
+        </div>
+        <div class="flex-item login-menu col-2">
+          <nav>
+            <ul>
+              <li
+                class="dashboard-btn"
+                style="display: none"
+              >
+                <a href="./dashboard.html">Dashboard</a>
+              </li>
+              <li
+                id="reservar-btn"
+                style="display: none"
+              >
+                <a href="./reservas.html">Reservar Clase</a>
+              </li>
+              <li id="login-btn">
+                <a href="./login.html">Login</a>
+              </li>
+              <li
+                id="logout-btn"
+                onclick="logout()"
+                style="display: none"
+              >
+                <a
+                  href="#"
+                  onclick="logout()"
+                  >Logout</a
+                >
+              </li>
+              <li id="register-btn">
+                <a href="./registro.html">Regístrate</a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </header>
 
     <!-- MAIN -->
     <main>
-      
-    </main>
+      <h1>Ver Clase</h1>
+      <button
+        id="btn-volver"
+        class="btn-volver buscar-btn"
+      >
+        <i class="fa-solid fa-circle-arrow-left"></i>
+      </button>
 
+      <section
+        id="seccion-detalle-clase"
+        class="contenedor-campos"
+      >
+        <div class="campo-imagen">
+          <img
+            id="preview-imagen"
+            src=""
+            alt=""
+            class="preview-imagen"
+          />
+        </div>
+
+        <div class="campos">
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Nombre de la Clase:</h3>
+            <span
+              id="nombre"
+              class="campo-valor"
+            ></span>
+          </div>
+
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Descripción:</h3>
+            <span
+              id="descripcion"
+              class="campo-valor"
+            ></span>
+          </div>
+
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Instructor:</h3>
+            <span
+              id="instructor-nombre"
+              class="campo-valor"
+            ></span>
+          </div>
+
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Especialidad del Instructor:</h3>
+            <span
+              id="instructor-especialidad"
+              class="campo-valor"
+            ></span>
+          </div>
+
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Teléfono del Instructor:</h3>
+            <span
+              id="instructor-telefono"
+              class="campo-valor"
+            ></span>
+          </div>
+
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Dirección del Instructor:</h3>
+            <span
+              id="instructor-direccion"
+              class="campo-valor"
+            ></span>
+          </div>
+
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Horario:</h3>
+            <div class="contenedor-horario">
+              <span
+                id="dia_semana"
+                class="campo-valor"
+              ></span>
+              <span
+                id="hora_inicio"
+                class="campo-valor"
+              ></span>
+              -
+              <span
+                id="hora_fin"
+                class="campo-valor"
+              ></span>
+            </div>
+          </div>
+
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Capacidad Máxima:</h3>
+            <span
+              id="capacidad_maxima"
+              class="campo-valor"
+            ></span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Toast que muestra un mensaje -->
+    <div
+      id="toast"
+      class="hidden"
+    >
+      <p id="toast-message"></p>
+    </div>
     <!-- FOOTER -->
     <footer>
       <p class="footer">Copyright &copy; 2023 Gymnasionline</p>
     </footer>
-    <script src="./src/static/js/burger-menu.js"></script>
-    <script src="./src/static/js/login-menu.js"></script>
+    <script src="../static/js/burger-menu.js"></script>
+    <script src="../static/js/login-menu.js"></script>
     <script
       type="module"
-      src="./src/static/js/cargarCalendario.js"
+      src="../static/js/verClase.js"
     ></script>
-    <script>
-      // funcion que dependiendo del dia de la semana(0-6) le agrega la clese diaSemanaActual al col de un tabla los cuelaes se identifican con columna-n
-      function diaSemana() {
-        let dia = new Date().getDay();
-        let col = document.getElementById("columna-" + dia);
-        col.classList.add("diaSemanaActual");
-      }
-      diaSemana();
-    </script>
   </body>
 </html>

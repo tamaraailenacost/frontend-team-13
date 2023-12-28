@@ -66,7 +66,8 @@ li {
 
 /*---------------------------------------------*/
 input,
-select {
+select,
+textarea {
   outline: none;
   width: 100%;
   margin: 2%;
@@ -74,11 +75,6 @@ select {
   font-size: 23px;
   border-radius: 5px;
   border: 2px solid #c2ee0a;
-}
-
-textarea {
-  outline: none;
-  border: none;
 }
 
 textarea:focus,

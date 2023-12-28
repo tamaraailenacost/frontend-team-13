@@ -8,6 +8,7 @@ body {
 
 header {
   height: 6vw;
+  min-height: 50px;
   max-height: 100px;
   align-items: center;
   color: white;
@@ -153,8 +154,31 @@ span.burger-icon:hover {
 }
 
 .burger-menu,
-.burger-menu.show {
+.burger-menu.show,
+.login-menu {
   display: none;
+}
+
+.flex-item.login-menu.col-2 {
+  border: 1px solid #ffffff;
+  max-width: 200px;
+  background-color: #c2ee0adb;
+  position: absolute;
+  top: 100%;
+  right: 0px;
+}
+
+.login-menu.show {
+  display: block;
+}
+
+.flex-item.login-menu li {
+  float: unset;
+}
+
+.flex-item.login-menu li > * {
+  font-size: 21px;
+  border: 1px solid #ffffff;
 }
 
 span.clases-precio:hover {
@@ -197,24 +221,63 @@ p.footer {
   display: block;
 }
 
-table.table-tusclases {
+table.table-tusclases,
+.tabla-listado-clases,
+.tabla-listado-instructores {
   table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
   font-size: 1.2rem;
 }
 
-table.table-tusclases th,
-table.table-tusclases td {
-  padding: 20px;
+.columna-instructor-foto img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  max-width: 100px;
+  border-radius: 50%;
 }
 
-.table-tusclases th {
+.tabla-listado-clases th,
+.tabla-listado-clases td,
+.tabla-listado-instructores th,
+.tabla-listado-instructores td {
+  text-align: left;
+}
+
+table.table-tusclases th,
+table.table-tusclases td,
+.tabla-listado-clases th,
+.tabla-listado-clases td,
+.tabla-listado-instructores th,
+.tabla-listado-instructores td {
+  padding: 20px 5px;
+}
+
+table.table-tusclases p,
+table.tabla-listado-clases p,
+table.tabla-listado-instructores p {
+  font-size: 1.3rem;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+
+.table-tusclases tr,
+.tabla-listado-clases tr,
+.tabla-listado-instructores tr {
+  border-bottom: 1px solid #c2ee0a;
+}
+
+.table-tusclases th,
+.tabla-listado-clases th,
+.tabla-listado-instructores th {
   color: #c2ee0a;
   font-size: 1.3rem;
 }
 
-.table-tusclases .campo-nombre {
+.table-tusclases .campo-nombre,
+.tabla-listado-clases .campo-nombre,
+.tabla-listado-instructores .campo-nombre {
   display: none;
   color: #c2ee0a;
   font-weight: bold;
@@ -222,7 +285,10 @@ table.table-tusclases td {
 }
 
 .table-tusclases td.columna-clase-nombre p::first-letter,
-.table-tusclases td.columna-dia-semana p::first-letter {
+.table-tusclases td.columna-dia-semana p::first-letter,
+.tabla-listado-clases td.columna-clase-nombre p::first-letter,
+.tabla-listado-clases td.columna-dia-semana p::first-letter,
+.tabla-listado-instructores td.columna-nombre p::first-letter {
   text-transform: capitalize;
 }
 
@@ -243,17 +309,22 @@ table.table-tusclases td {
   width: 100%;
 }
 
-.form-registrar-clase .filtros {
+.filtros {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   width: 100%;
+  gap: 20px;
+  padding-block: 20px;
 }
 
 .filtro {
   min-width: 200px;
   max-width: 30%;
+}
+
+.filtro select {
+  margin: 0;
 }
 
 .form-filtrar-clases,
@@ -310,7 +381,43 @@ table.table-tusclases td {
   background-color: #c2ee0a;
 }
 
-.btn-eliminar-reserva {
+.btn-ver {
+  background-color: #c2ee0a;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color, background-color;
+  transition-duration: 0.3s;
+  margin: 0;
+}
+
+.btn-ver:hover {
+  color: #50af33;
+  background-color: #ffffff;
+}
+
+.btn-editar {
+  background-color: #1488f5;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color, background-color;
+  transition-duration: 0.3s;
+  margin: 0;
+}
+
+.btn-editar:hover {
+  color: #1488f5;
+  background-color: #ffffff;
+}
+
+.btn-eliminar {
   background-color: #f83535;
   color: #000000;
   border: none;
@@ -320,9 +427,10 @@ table.table-tusclases td {
   cursor: pointer;
   transition: color, background-color;
   transition-duration: 0.3s;
+  margin: 0;
 }
 
-.btn-eliminar-reserva:hover {
+.btn-eliminar:hover {
   color: #f83535;
   background-color: #ffffff;
 }
@@ -351,16 +459,34 @@ table.table-tusclases td {
   background-color: #f83535;
 }
 
-#signupFrm {
+#seccion-registrar-clase,
+#seccion-editar-clase,
+#seccion-registrar-instructor,
+#seccion-editar-empleado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#signupFrm,
+#form-registrar-clase,
+#form-editar-clase,
+#form-registrar-empleado,
+#form-editar-empleado {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: clamp(10px, 5vw, 20px);
+  max-width: 600px;
+  width: 100%;
 }
 
-#signupFrm .input100 {
+#signupFrm .input100,
+#form-registrar-clase .input100,
+#form-editar-clase .input100,
+#form-registrar-empleado .input100,
+#form-editar-empleado .input100 {
   margin: 0;
-  max-width: 500px;
 }
 
 #signupFrm #errorRegistro,
@@ -370,11 +496,14 @@ table.table-tusclases td {
   font-weight: bold;
 }
 
-#signupFrm .flex-item {
+#signupFrm .flex-item,
+#form-registrar-clase .flex-item,
+#form-editar-clase .flex-item,
+#form-registrar-empleado .flex-item,
+#form-editar-empleado .flex-item {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
 }
 .fundadoras {
@@ -516,6 +645,10 @@ table.table-tusclases td {
     display: block;
   }
 
+  .login-menu.show {
+    display: none;
+  }
+
   .flex-item.burger-menu li {
     float: unset;
   }
@@ -587,6 +720,31 @@ table.table-tusclases td {
   .presentacion-text h1,
   .presentacion-text a {
     margin-left: 0;
+  }
+
+  .filtros {
+    flex-direction: column;
+  }
+
+  .table-tusclases thead,
+  .tabla-listado-clases thead,
+  .tabla-listado-instructores thead {
+    display: none;
+  }
+
+  .table-tusclases tr,
+  .tabla-listado-clases tr,
+  .tabla-listado-instructores tr {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .table-tusclases td .campo-nombre,
+  .tabla-listado-clases td .campo-nombre,
+  .tabla-listado-instructores td .campo-nombre {
+    display: inline-block;
+    text-align: left;
   }
 }
 
@@ -660,20 +818,6 @@ table.table-tusclases td {
     display: flex;
   }
 
-  .table-tusclases thead {
-    display: none;
-  }
-
-  .table-tusclases tr {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .table-tusclases td .campo-nombre {
-    display: inline-block;
-    text-align: left;
-  }
   #mis-reservas {
     display: flex;
     flex-direction: column;

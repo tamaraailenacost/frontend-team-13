@@ -10,8 +10,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-
-    <title>Gymnasionline reservas</title>
+    <title>Gymnasionline Dashboard</title>
     <link
       rel="stylesheet"
       href="../static/styles/estilos.css"
@@ -29,12 +28,16 @@
       href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
       crossorigin="anonymous"
     />
+    <link
+      rel="stylesheet"
+      href="../static/styles/dashboard.css"
+    />
     <script
       src="https://kit.fontawesome.com/4d2f081ec5.js"
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="pagina-reservas">
+  <body>
     <!-- Header -->
     <header
       id="header"
@@ -99,6 +102,12 @@
                 <a href="./clientes.html">Clientes</a>
               </li>
               <li
+                class="btnDashboard"
+                style="display: none"
+              >
+                <a href="./dashboard.html">Dashboard</a>
+              </li>
+              <li
                 class="btnReservas"
                 style="display: none"
               >
@@ -139,21 +148,27 @@
                 <a href="../../index.html#horarios">Horarios</a>
               </li>
               <li>
-                <a href="../../index.html#contacto">Contacto</a>
-              </li>
-              <li>
                 <a href="./clientes.html">Clientes</a>
               </li>
             </ul>
           </nav>
         </div>
-        <div class="flex-item login">
+        <div class="flex-item login col-1">
           <p id="nombreCliente"></p>
           <div
             class="user-icon"
             onclick="toggleLoginRegister()"
           >
-            <i class="fa-solid fa-circle-user"></i>
+            <i
+              id="user-icono"
+              class="fa-solid fa-circle-user"
+            ></i>
+            <img
+              id="user-imagen"
+              src=""
+              alt=""
+              style="display: none"
+            />
           </div>
 
           <!-- Botones de login y registro -->
@@ -163,7 +178,7 @@
               class="custom-btn"
               style="display: none"
             >
-              <a href="./reservas.html">Reservar Clase</a>
+              <a href="./src/views/reservas.html">Reservar Clase</a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -186,7 +201,7 @@
               id="login-btn"
               class="custom-btn"
             >
-              <a href="./login.html">Login</a>
+              <a href="./src/views/login.html">Login</a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -213,7 +228,7 @@
             >
               <a
                 id="logout-button"
-                href="../../index.html"
+                href="./index.html"
                 >Logout</a
               >
               <svg
@@ -238,7 +253,7 @@
               id="register-btn"
               class="custom-btn"
             >
-              <a href="./registro.html">Regístrate</a>
+              <a href="./src/views/registro.html">Regístrate</a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -257,11 +272,37 @@
                 />
               </svg>
             </button>
+            <nav>
+              <ul>
+                <li>
+                  <a href="./src/views/reservas.html">Reservar Clase</a>
+                </li>
+                <li>
+                  <a href="./src/views/login.html">Login</a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    onclick="logout()"
+                    >Logout</a
+                  >
+                </li>
+                <li>
+                  <a href="./src/views/registro.html">Regístrate</a>
+                </li>
+              </ul>
+            </nav>
           </div> -->
         </div>
         <div class="flex-item login-menu col-2">
           <nav>
             <ul>
+              <li
+                class="dashboard-btn"
+                style="display: none"
+              >
+                <a href="./dashboard.html">Dashboard</a>
+              </li>
               <li
                 id="reservar-btn"
                 style="display: none"
@@ -290,72 +331,175 @@
         </div>
       </div>
     </header>
-    <!-- header ----->
 
-    <!-- main -->
-    <main class="reservas__main">
-      <h1>Hace tu Reserva</h1>
-      <form class="form-filtrar-clases">
-        <div class="filtros">
-          <div class="filtro">
-            <label for="dia">Seleccione un Dia</label>
-            <select
-              name="dia"
-              id="dia"
-            >
-              <option
-                selected
-                value="1"
-              >
-                Lunes
-              </option>
-              <option value="2">Martes</option>
-              <option value="3">Miércoles</option>
-              <option value="4">Jueves</option>
-              <option value="5">Viernes</option>
-              <option value="6">Sábado</option>
-              <option value="7">Domingo</option>
-            </select>
-          </div>
-        </div>
-        <input
-          type="submit"
-          class="buscar-btn"
-          value="Buscar"
-        />
-      </form>
-      <form class="form-registrar-clase">
-        <h4>Clases Disponibles:</h4>
+    <!-- MAIN -->
+    <main>
+      <h1>Dashboard</h1>
+      <section id="seccion-dashboard">
+        <ul class="tabs">
+          <li
+            class="tab active"
+            data-tab-target="clases"
+          >
+            Clases
+          </li>
+          <li
+            class="tab"
+            data-tab-target="instructores"
+          >
+            Instructores
+          </li>
+          <!-- Agrega más pestañas según tus necesidades -->
+        </ul>
+
         <div
-          class="clases-container"
-          id="clases-container"
-        ></div>
+          id="clasesTab"
+          class="tab-content active"
+        >
+          <!-- Contenido para la pestaña de Clases -->
+          <div class="tab-content__header">
+            <h2>Clases</h2>
+            <button class="custom-btn">
+              <a
+                href="./registrarClase.html"
+                class="add-button"
+              >
+                <i class="fa-solid fa-circle-plus"></i>
+                Agregar Clase
+              </a>
+            </button>
+            <form id="formFiltrarClases">
+              <div class="filtros">
+                <div class="filtro">
+                  <label
+                    for="dia-semana"
+                    style="display: none"
+                  >
+                  </label>
+                  <select
+                    name="dia-semana"
+                    id="dia-semana"
+                  >
+                    <!-- default -->
+                    <option
+                      selected
+                      value="0"
+                    >
+                      Dia Semana
+                    </option>
 
-        <input
-          type="submit"
-          class="reservar-btn"
-          value="Reservar"
-        />
-      </form>
-
-      <div class="flex-container contenedor-mis-reservas">
-        <div class="flex-item nav col-1 tus-reservas">
-          <h3>Aquí podes ver tus clases</h3>
-          <table class="table-tusclases">
+                    <option value="1">Lunes</option>
+                    <option value="2">Martes</option>
+                    <option value="3">Miércoles</option>
+                    <option value="4">Jueves</option>
+                    <option value="5">Viernes</option>
+                    <option value="6">Sábado</option>
+                    <option value="7">Domingo</option>
+                  </select>
+                </div>
+                <div class="filtro">
+                  <label
+                    for="instructor"
+                    style="display: none"
+                  >
+                  </label>
+                  <select
+                    name="instructor"
+                    id="instructor"
+                  >
+                    <!-- default -->
+                    <option
+                      selected
+                      value="0"
+                    >
+                      Instructor
+                    </option>
+                    <option value="1">Caterina Lipster</option>
+                    <option value="2">Maria Suan</option>
+                    <option value="3">Laura</option>
+                    <option value="4">Mariana</option>
+                    <option value="5">Cata</option>
+                  </select>
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="buscar-btn"
+                id="btnFiltrar"
+              >
+                Filtrar
+              </button>
+            </form>
+          </div>
+          <table class="tabla-listado-clases">
             <thead>
               <tr>
-                <th>Clase</th>
-                <th>Dia Semana</th>
-                <th>Hora Inicio</th>
+                <th>Nombre</th>
                 <th>Instructor</th>
-                <th>Fecha Reserva</th>
-                <th>Action</th>
+                <th>Día Semana</th>
+                <th>Acciones</th>
               </tr>
             </thead>
-            <tbody id="mis-reservas"></tbody>
+            <tbody id="tabla-clases">
+              <tr>
+                <td>Clase 1</td>
+                <td>Instructor A</td>
+                <td>Lunes</td>
+              </tr>
+              <tr>
+                <td>Clase 2</td>
+                <td>Instructor B</td>
+                <td>Miércoles</td>
+              </tr>
+            </tbody>
           </table>
         </div>
-      </div>
+
+        <div
+          id="instructoresTab"
+          class="tab-content"
+        >
+          <!-- Contenido para la pestaña de Instructores -->
+          <div class="tab-content__header">
+            <h2>Instructores</h2>
+            <button class="custom-btn">
+              <a
+                href="./registrarEmpleado.html"
+                class="add-button"
+              >
+                <i class="fa-solid fa-circle-plus"></i>
+                Agregar Instructor
+              </a>
+            </button>
+          </div>
+
+          <!-- Agrega el contenido relacionado con los instructores aquí -->
+          <table class="tabla-listado-instructores">
+            <thead>
+              <tr>
+                <th>Foto</th>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-instructores">
+              <tr>
+                <td>Clase 1</td>
+                <td>Instructor A</td>
+                <td>Lunes</td>
+              </tr>
+              <tr>
+                <td>Clase 2</td>
+                <td>Instructor B</td>
+                <td>Miércoles</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </main>
     <!-- Toast que muestra un mensaje -->
     <div
@@ -364,7 +508,6 @@
     >
       <p id="toast-message"></p>
     </div>
-
     <!-- FOOTER -->
     <footer>
       <p class="footer">Copyright &copy; 2023 Gymnasionline</p>
@@ -373,7 +516,7 @@
     <script src="../static/js/login-menu.js"></script>
     <script
       type="module"
-      src="../static/js/reservar.js"
+      src="../static/js/dashboard.js"
     ></script>
   </body>
 </html>

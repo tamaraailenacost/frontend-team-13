@@ -102,10 +102,16 @@
                 <a href="./clientes.html">Clientes</a>
               </li>
               <li
+                class="btnDashboard"
+                style="display: none"
+              >
+                <a href="./dashboard.html">Dashboard</a>
+              </li>
+              <li
                 class="btnReservas"
                 style="display: none"
               >
-                <a href="./reservas.html">Reservar</a>
+                <a href="./reservas.html">Reservar Clase</a>
               </li>
               <li class="btnLogin">
                 <a href="./login.html">Login</a>
@@ -142,125 +148,63 @@
                 <a href="../../index.html#horarios">Horarios</a>
               </li>
               <li>
-                <a href="../../index.html#contacto">Contacto</a>
-              </li>
-              <li>
-                <a href="./clientes.html">Opiniones</a>
+                <a href="./clientes.html">Clientes</a>
               </li>
             </ul>
           </nav>
         </div>
-        <div class="flex-item login">
+        <div class="flex-item login col-1">
           <p id="nombreCliente"></p>
           <div
             class="user-icon"
             onclick="toggleLoginRegister()"
           >
-            <i class="fa-solid fa-circle-user"></i>
-          </div>
-
-          <!-- Botones de login y registro -->
-          <div class="login-buttons">
-            <button
-              id="reservar-btn"
-              class="custom-btn"
+            <i
+              id="user-icono"
+              class="fa-solid fa-circle-user"
+            ></i>
+            <img
+              id="user-imagen"
+              src=""
+              alt=""
               style="display: none"
-            >
-              <a href="./reservas.html">Reservar Clase</a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-box-arrow-in-right"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"
-                />
-                <path
-                  fill-rule="evenodd"
-                  d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
-                />
-              </svg>
-            </button>
-            <button
-              id="login-btn"
-              class="custom-btn"
-            >
-              <a href="./login.html">Login</a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-box-arrow-in-right"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"
-                />
-                <path
-                  fill-rule="evenodd"
-                  d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
-                />
-              </svg>
-            </button>
-            <button
-              id="logout-btn"
-              class="custom-btn"
-              style="display: none"
-              onclick="logout()"
-            >
-              <a
-                id="logout-button"
-                href="../../index.html"
-                >Logout</a
-              >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-box-arrow-in-right"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"
-                />
-                <path
-                  fill-rule="evenodd"
-                  d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
-                />
-              </svg>
-            </button>
-            <button
-              id="register-btn"
-              class="custom-btn"
-            >
-              <a href="./registro.html">Regístrate</a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-box-arrow-in-right"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"
-                />
-                <path
-                  fill-rule="evenodd"
-                  d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"
-                />
-              </svg>
-            </button>
+            />
           </div>
+        </div>
+        <div class="flex-item login-menu col-2">
+          <nav>
+            <ul>
+              <li
+                class="dashboard-btn"
+                style="display: none"
+              >
+                <a href="./dashboard.html">Dashboard</a>
+              </li>
+              <li
+                id="reservar-btn"
+                style="display: none"
+              >
+                <a href="./reservas.html">Reservar Clase</a>
+              </li>
+              <li id="login-btn">
+                <a href="./login.html">Login</a>
+              </li>
+              <li
+                id="logout-btn"
+                onclick="logout()"
+                style="display: none"
+              >
+                <a
+                  href="#"
+                  onclick="logout()"
+                  >Logout</a
+                >
+              </li>
+              <li id="register-btn">
+                <a href="./registro.html">Regístrate</a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </header>

@@ -2,7 +2,7 @@
 // const baseUrl = "https://giulianocharra.pythonanywhere.com/api";
 const baseUrl = "http://127.0.0.1:5000/api";
 
-export async function fetchData(endpoint, method = "GET", body = null) {
+export async function fetchData(endpoint, method = "GET", body = null, headers = null) {
   /**
    * Realiza una petición a la API
    * @param {string} endpoint - El endpoint de la API
@@ -15,24 +15,30 @@ export async function fetchData(endpoint, method = "GET", body = null) {
    */
   try {
     const url = `${baseUrl}/${endpoint}`;
+
+    if (!headers) {
+      headers = {
+        "Content-Type": "application/json",
+      };
+    }
+
     const options = {
       method,
-      headers: {
-        "Content-Type": "application/json",
-      },
+      mode: "cors",
+      headers,
     };
 
     if (body) {
-      options.body = JSON.stringify(body);
+      if (body instanceof FormData) {
+        options.body = body;
+      } else {
+        options.body = JSON.stringify(body);
+      }
     }
 
     const response = await fetch(url, options);
-
-    if (!response.ok) {
-      throw new Error(`Error (${response.status}): ${response.statusText}`);
-    }
-
     const data = await response.json();
+
     return data;
   } catch (error) {
     console.error(`Error in API request: ${error.message}`);

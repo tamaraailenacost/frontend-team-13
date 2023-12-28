@@ -116,12 +116,23 @@ async function obtenerReservasCliente() {
 
   try {
     // Obtener las reservas del cliente usando el servicio
-    reservasCliente = await clienteService.obtenerReservasCliente(clienteId);
+    const reservas = await clienteService.obtenerReservasCliente(clienteId);
+
+    if (!reservas) {
+      throw new Error("No se encontraron reservas del cliente.");
+    }
+
+    if (reservas.length === 0) {
+      throw new Error("El cliente no tiene reservas.");
+    }
+
+    reservasCliente = reservas;
 
     // Después de obtener las reservas, actualizar la tabla
     actualizarTablaReservas();
   } catch (error) {
     console.error("Error al obtener las reservas del cliente:", error);
+    showToast(error.message, "error");
   }
 }
 
@@ -158,11 +169,11 @@ function generarFilaTabla(reserva) {
       <td><span class="campo-nombre">Hora Inicio:</span> <p>${formatoHora(
         reserva.clase.horario.hora_inicio
       )}</p></td>
-      <td><span class="campo-nombre">Instructor:</span> <p>${reserva.clase.instructor}</p></td>
+      <td><span class="campo-nombre">Instructor:</span> <p>${reserva.clase.instructor.nombre}</p></td>
       <td><span class="campo-nombre">Fecha Reserva:</span> <p>${reserva.fecha_reserva}</p></td>
       <td>
         <span class="campo-nombre">Acciones:</span>
-        <button class="btn-eliminar-reserva" data-id-reserva="${reserva.reserva_id}">
+        <button class="btn-eliminar" data-id-reserva="${reserva.reserva_id}">
           <i class="fa-regular fa-trash-can"></i>
         </button>
       </td>

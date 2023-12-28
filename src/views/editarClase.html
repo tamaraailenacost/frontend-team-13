@@ -10,8 +10,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-
-    <title>Gymnasionline Registrar Clase</title>
+    <title>Gymnasionline Editar Clase</title>
     <link
       rel="stylesheet"
       href="../static/styles/estilos.css"
@@ -26,14 +25,13 @@
     />
     <link
       rel="stylesheet"
-      href="../static/styles/dashboard.css"
-    />
-    <link
-      rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
       crossorigin="anonymous"
     />
-
+    <link
+      rel="stylesheet"
+      href="../static/styles/dashboard.css"
+    />
     <script
       src="https://kit.fontawesome.com/4d2f081ec5.js"
       crossorigin="anonymous"
@@ -43,7 +41,7 @@
       href="../static/styles/form.css"
     />
   </head>
-  <body class="pagina-registrar-clase">
+  <body>
     <!-- Header -->
     <header
       id="header"
@@ -214,20 +212,22 @@
         </div>
       </div>
     </header>
-    <!-- header ----->
 
-    <!-- main -->
+    <!-- MAIN -->
     <main>
-      <h1>Registrar Clase</h1>
+      <h1>Editar Clase</h1>
       <button
         id="btn-volver"
         class="btn-volver buscar-btn"
       >
         <i class="fa-solid fa-circle-arrow-left"></i>
       </button>
-      <section id="seccion-registrar-clase">
+
+      <section id="seccion-editar-clase">
         <form
-          id="form-registrar-clase"
+          id="form-editar-clase"
+          action="#"
+          method="PUT"
           enctype="multipart/form-data"
           class="form"
         >
@@ -344,7 +344,7 @@
               type="submit"
               id="sub-form-registro"
               class="login100-form-btn"
-              value="Registrar"
+              value="Guardar"
             />
           </div>
         </form>
@@ -367,7 +367,6 @@
                     id="dia-semana"
                     name="dia-semana"
                   >
-                    <option value="0">Dia</option>
                     <option value="1">Lunes</option>
                     <option value="2">Martes</option>
                     <option value="3">Miércoles</option>
@@ -375,6 +374,7 @@
                     <option value="5">Viernes</option>
                     <option value="6">Sábado</option>
                     <option value="7">Domingo</option>
+                    <!-- Agrega más opciones según sea necesario -->
                   </select>
                 </div>
 
@@ -427,7 +427,6 @@
     >
       <p id="toast-message"></p>
     </div>
-
     <!-- FOOTER -->
     <footer>
       <p class="footer">Copyright &copy; 2023 Gymnasionline</p>
@@ -436,7 +435,7 @@
     <script src="../static/js/login-menu.js"></script>
     <script
       type="module"
-      src="../static/js/registrarClase.js"
+      src="../static/js/editarClase.js"
     ></script>
   </body>
 </html>
