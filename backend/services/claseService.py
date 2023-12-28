@@ -102,7 +102,6 @@ class ClaseService:
             clase.url_imagen = url_imagen
 
         for key, value in kwargs.items():
-            print(key, value)
             setattr(clase, key, value)
         db.session.commit()
         return clase.to_dict()

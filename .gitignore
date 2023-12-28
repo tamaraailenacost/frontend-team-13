@@ -3,4 +3,4 @@
 /.vscode
 info.txt
 __pycache__/
-apiKey.json
+/apiKey.json

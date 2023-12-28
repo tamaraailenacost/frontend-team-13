@@ -38,6 +38,7 @@ def subir_archivo_nombre(folder, filename, source_file_name):
 def subir_archivo(folder, filename, file):
     """
     Upload a file to the firebase storage
+    :param filename: the name that will have the file
     :param folder: the folder where the file will be uploaded
     :param file: the file to upload
     :return: the url of the uploaded file
