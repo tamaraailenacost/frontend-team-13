@@ -5,7 +5,8 @@ from datetime import datetime
 import firebase_admin
 from firebase_admin import credentials, storage
 
-cred = credentials.Certificate("./apiKey.json")
+api_key_path = os.path.abspath("apiKey.json")
+cred = credentials.Certificate(api_key_path)
 firabase = firebase_admin.initialize_app(
     cred, {"storageBucket": "gym-cia.appspot.com"}
 )
