@@ -5,7 +5,7 @@ from datetime import datetime
 import firebase_admin
 from firebase_admin import credentials, storage
 
-cred = credentials.Certificate("backend/utils/apiKey.json")
+cred = credentials.Certificate("./apiKey.json")
 firabase = firebase_admin.initialize_app(
     cred, {"storageBucket": "gym-cia.appspot.com"}
 )
@@ -35,7 +35,7 @@ def subir_archivo_nombre(folder, filename, source_file_name):
     return blob.public_url
 
 
-def subir_archivo(folder, file):
+def subir_archivo(folder, filename, file):
     """
     Upload a file to the firebase storage
     :param folder: the folder where the file will be uploaded
@@ -47,7 +47,7 @@ def subir_archivo(folder, file):
     """
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S%f")
     _, extension = os.path.splitext(file.filename)
-    unique_filename = f"{timestamp}_perfil{extension}"
+    unique_filename = f"{timestamp}_{filename}{extension}"
     file_path = f"{folder}/{unique_filename}"
 
     blob = bucket.blob(file_path)

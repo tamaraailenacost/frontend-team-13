@@ -47,7 +47,7 @@ class ClaseService:
         )
 
         # guardar la imagen de la clase en firebase
-        url_imagen = subir_archivo("clases", imagen)
+        url_imagen = subir_archivo("clases", "clase", imagen)
         clase.url_imagen = url_imagen
 
         clase.instructor = instructor
@@ -98,7 +98,7 @@ class ClaseService:
 
         # Verificar si hay una nueva imagen
         if imagen:
-            url_imagen = subir_archivo("clases", imagen)
+            url_imagen = subir_archivo("clases", "clase", imagen)
             clase.url_imagen = url_imagen
 
         for key, value in kwargs.items():

@@ -59,7 +59,7 @@ class EmpleadoService:
         nuevo_empleado.usuario = nuevo_usuario
 
         # guardar la imagen del empleado en firebase
-        url_imagen = subir_archivo("usuarios", imagen)
+        url_imagen = subir_archivo("usuarios", "perfil", imagen)
         nuevo_empleado.url_imagen = url_imagen
 
         db.session.add(nuevo_usuario)
@@ -112,7 +112,7 @@ class EmpleadoService:
 
         # Verificar si hay una nueva imagen
         if imagen:
-            url_imagen = subir_archivo("usuarios", imagen)
+            url_imagen = subir_archivo("usuarios", "perfil", imagen)
             empleado.url_imagen = url_imagen
 
         for key, value in kwargs.items():
