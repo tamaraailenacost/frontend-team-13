@@ -1,6 +1,5 @@
 // apiService.js
-// const baseUrl = "https://giulianocharra.pythonanywhere.com/api";
-const baseUrl = "http://127.0.0.1:5000/api";
+const baseUrl = "https://giulianocharra.pythonanywhere.com/api";
 
 export async function fetchData(endpoint, method = "GET", body = null, headers = null) {
   /**
