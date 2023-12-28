@@ -130,3 +130,19 @@ class PasswordInvalidaError(Exception):
     ):
         self.message = message
         super().__init__(self.message)
+
+
+class EmpleadosEmptyError(Exception):
+    """Excepción lanzada cuando no hay Empleados disponibles."""
+
+    def __init__(self, message="No hay empleados disponibles."):
+        self.message = message
+        super().__init__(self.message)
+
+
+class EmpleadoNotFoundError(Exception):
+    """Excepción lanzada cuando se proporciona un Empleado inválido."""
+
+    def __init__(self, message="Empleado no encontrado."):
+        self.message = message
+        super().__init__(self.message)

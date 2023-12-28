@@ -1,10 +1,8 @@
 from http import HTTPStatus
 
-from flask import Blueprint, request
+from flask import request
 
 from backend.services.authService import AuthService
-
-bp = Blueprint("auth", __name__, url_prefix="/auth")
 
 
 def registrar_usuario():

@@ -67,7 +67,6 @@ class ReservaService:
         :return: lista de reservas
         """
         reservas = Reserva.query.all()
-
         if not reservas or len(reservas) == 0:
             raise ReservasEmptyError()
 

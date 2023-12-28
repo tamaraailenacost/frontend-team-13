@@ -12,12 +12,15 @@ def create_clase():
     Crea una clase y la guarda en la base de datos
     :return: la clase creada
     """
-    data = request.json
+    data = request.form
     nombre = data.get("nombre")
     descripcion = data.get("descripcion")
-    instructor = data.get("instructor")
+    instructor_id = data.get("instructor_id")
     capacidad_maxima = data.get("capacidad_maxima")
     horario_id = data.get("horario_id")
+
+    # Obtener archivo de imagen
+    imagen = request.files.get("imagen")
 
     if not nombre or not horario_id:
         return ({"error": "Nombre y horario_id son obligatorios"}), 400
@@ -25,9 +28,10 @@ def create_clase():
     clase = ClaseService.create_clase(
         nombre,
         descripcion,
-        instructor,
+        instructor_id,
         capacidad_maxima,
         horario_id,
+        imagen,
     )
 
     return (
@@ -69,13 +73,17 @@ def update_clase(clase_id):
     :param clase_id: id de la clase
     :return: la clase actualizada
     """
-    data = request.json
+    data = request.form
+
     # Filtrar los campos no nulos
     campos_actualizar = {
         key: data[key] for key in data if data[key] is not None
     }
 
-    clase = ClaseService.update_clase(clase_id, **campos_actualizar)
+    # Obtener archivo de imagen
+    imagen = request.files.get("imagen")
+
+    clase = ClaseService.update_clase(clase_id, imagen, **campos_actualizar)
     return {
         "message": "Clase actualizada exitosamente",
         "clase_actualizada": clase,

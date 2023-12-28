@@ -1,5 +1,9 @@
 from backend import db
-from backend.errors.exceptions import ClienteNotFoundError, ClientesEmptyError
+from backend.errors.exceptions import (
+    ClienteNotFoundError,
+    ClientesEmptyError,
+    ReservasEmptyError,
+)
 from backend.models.cliente import Cliente
 
 
@@ -45,7 +49,6 @@ class ClienteService:
         :return: clientes
         """
         clientes = Cliente.query.all()
-
         if not clientes or len(clientes) == 0:
             raise ClientesEmptyError()
 
@@ -88,6 +91,15 @@ class ClienteService:
         :param cliente_id: id del cliente
         :return: las reservas del cliente
         """
+
         cliente = Cliente.query.get(cliente_id)
-        reservas = [reserva.to_dict() for reserva in cliente.reservas]
+        if not cliente:
+            raise ClienteNotFoundError()
+
+        reservas = cliente.reservas
+
+        if not reservas or len(reservas) == 0:
+            raise ReservasEmptyError()
+
+        reservas = [reserva.to_dict() for reserva in reservas]
         return reservas

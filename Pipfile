@@ -11,6 +11,7 @@ python-dotenv = "*"
 cryptography = "*"
 werkzeug = "*"
 flask-cors = "*"
+firebase-admin = "*"
 
 [dev-packages]
 black = "*"

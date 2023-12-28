@@ -20,6 +20,8 @@ from .exceptions import (
     CuentaExistenteError,
     ReservaAlreadyExistsError,
     PasswordInvalidaError,
+    EmpleadosEmptyError,
+    EmpleadoNotFoundError,
 )
 
 
@@ -68,20 +70,22 @@ def register_error_handlers(app):
     error_handlers = [
         (CuentaExistenteError, HTTPStatus.BAD_REQUEST),
         (ClaseNotFoundError, HTTPStatus.NOT_FOUND),
-        (ClasesEmptyError, HTTPStatus.NO_CONTENT),
-        (HorariosEmptyError, HTTPStatus.NO_CONTENT),
+        (ClasesEmptyError, HTTPStatus.NOT_FOUND),
+        (HorariosEmptyError, HTTPStatus.NOT_FOUND),
         (HorarioNotFoundError, HTTPStatus.NOT_FOUND),
         (DiaSemanaNotFoundError, HTTPStatus.NOT_FOUND),
         (ClienteNotFoundError, HTTPStatus.NOT_FOUND),
-        (ClientesEmptyError, HTTPStatus.NO_CONTENT),
+        (ClientesEmptyError, HTTPStatus.NOT_FOUND),
         (TipoUsuarioNotFoundError, HTTPStatus.NOT_FOUND),
         (UsuarioNotFoundError, HTTPStatus.NOT_FOUND),
-        (UsuariosEmptyError, HTTPStatus.NO_CONTENT),
-        (TiposUsuariosEmptyError, HTTPStatus.NO_CONTENT),
-        (ReservasEmptyError, HTTPStatus.NO_CONTENT),
+        (UsuariosEmptyError, HTTPStatus.NOT_FOUND),
+        (TiposUsuariosEmptyError, HTTPStatus.NOT_FOUND),
+        (ReservasEmptyError, HTTPStatus.NOT_FOUND),
         (ReservaNotFoundError, HTTPStatus.NOT_FOUND),
         (ReservaAlreadyExistsError, HTTPStatus.BAD_REQUEST),
         (PasswordInvalidaError, HTTPStatus.BAD_REQUEST),
+        (EmpleadosEmptyError, HTTPStatus.NOT_FOUND),
+        (EmpleadoNotFoundError, HTTPStatus.NOT_FOUND),
     ]
 
     for error_class, http_status in error_handlers:

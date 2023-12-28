@@ -81,5 +81,7 @@ class UsuarioService:
         usuario = Usuario.query.get(usuario_id)
         if usuario is None:
             raise UsuarioNotFoundError()
-        db.session.delete(usuario)
+        # db.session.delete(usuario)
+        # db.session.commit()
+        usuario.activo = False
         db.session.commit()

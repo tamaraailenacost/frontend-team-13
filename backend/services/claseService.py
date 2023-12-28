@@ -2,9 +2,15 @@
 from sqlalchemy import select
 
 from backend import db
-from backend.errors.exceptions import ClasesEmptyError, ClaseNotFoundError
+from backend.errors.exceptions import (
+    ClasesEmptyError,
+    ClaseNotFoundError,
+    EmpleadoNotFoundError,
+)
 from backend.models.clase import Clase
+from backend.models.empleado import Empleado
 from backend.models.horario import Horario
+from backend.utils.firestoreService import subir_archivo
 
 
 class ClaseService:
@@ -12,27 +18,39 @@ class ClaseService:
     def create_clase(
         nombre,
         descripcion,
-        instructor,
+        instructor_id,
         capacidad_maxima,
         horario_id,
+        imagen,
     ):
         """
         Crea una clase y la guarda en la base de datos
         :param nombre: nombre de la clase
         :param descripcion: descripcion de la clase
-        :param instructor: instructor de la clase
+        :param instructor_id: id del instructor de la clase
         :param capacidad_maxima: capacidad maxima de la clase
         :param horario_id: id del horario de la clase
+        :param imagen: imagen de la clase
         :return: la clase creada
         """
+
+        instructor = Empleado.query.get(instructor_id)
+
+        if instructor is None:
+            raise EmpleadoNotFoundError()
 
         clase = Clase(
             nombre=nombre,
             descripcion=descripcion,
-            instructor=instructor,
             capacidad_maxima=capacidad_maxima,
             horario_id=horario_id,
         )
+
+        # guardar la imagen de la clase en firebase
+        url_imagen = subir_archivo("clases", imagen)
+        clase.url_imagen = url_imagen
+
+        clase.instructor = instructor
         db.session.add(clase)
         db.session.commit()
         return clase.to_dict()
@@ -45,7 +63,7 @@ class ClaseService:
         :return: la clase encontrada
         """
         clase = Clase.query.get(clase_id)
-        if clase is None:
+        if clase is None or not clase.activo:
             raise ClaseNotFoundError()
         return clase.to_dict()
 
@@ -55,7 +73,7 @@ class ClaseService:
         Devuelve todas las clases
         :return: lista de clases
         """
-        clases = Clase.query.all()
+        clases = Clase.query.filter_by(activo=True).all()
 
         if not clases or len(clases) == 0:
             raise ClasesEmptyError()
@@ -65,10 +83,11 @@ class ClaseService:
         return clases
 
     @staticmethod
-    def update_clase(clase_id, **kwargs):
+    def update_clase(clase_id, imagen, **kwargs):
         """
         Busca una clase por su id y la actualiza con los nuevos datos y la devuelve
         :param clase_id: id de la clase
+        :param imagen: nueva imagen de la clase
         :param kwargs: nuevos datos de la clase
         :return: la clase actualizada
         """
@@ -76,7 +95,14 @@ class ClaseService:
         clase = Clase.query.get(clase_id)
         if clase is None:
             raise ClaseNotFoundError()
+
+        # Verificar si hay una nueva imagen
+        if imagen:
+            url_imagen = subir_archivo("clases", imagen)
+            clase.url_imagen = url_imagen
+
         for key, value in kwargs.items():
+            print(key, value)
             setattr(clase, key, value)
         db.session.commit()
         return clase.to_dict()
@@ -91,7 +117,7 @@ class ClaseService:
 
         clase = Clase.query.get(clase_id)
         if clase:
-            db.session.delete(clase)
+            clase.activo = False  # Cambia el estado a inactivo
             db.session.commit()
 
     @staticmethod

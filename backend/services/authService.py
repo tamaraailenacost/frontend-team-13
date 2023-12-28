@@ -69,15 +69,28 @@ class AuthService:
         :return: Usuario que inició sesión.
         """
         usuario = Usuario.query.filter_by(email=email).first()
-        # if usuario and check_password_hash(usuario.password, password):
+
+        # if usuario is None or check_password_hash(usuario.password, password):
+        #     raise UsuarioNotFoundError(
+        #         "Nombre de usuario o contraseña incorrectos."
+        #     )
+
         if not usuario or usuario.password != password:
             raise UsuarioNotFoundError(
                 "Nombre de usuario o contraseña incorrectos."
             )
 
-        cliente = Cliente.query.filter_by(usuario_id=usuario.usuario_id).first()
+        cliente = usuario.cliente
+        empleado = usuario.empleado
 
-        return cliente.to_dict()
+        user_data = {}
+        if cliente:
+            user_data = cliente.to_dict()
+
+        if empleado:
+            user_data = empleado.to_dict()
+
+        return user_data
 
     @staticmethod
     def eliminar_cuenta(

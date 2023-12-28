@@ -6,6 +6,7 @@ def create_and_register_blueprints(app):
     from . import claseRoute
     from . import horarioRoute
     from . import reservaRoute
+    from . import empleadoRoute
 
     blue_prints = [
         authRoute.bp,
@@ -15,6 +16,7 @@ def create_and_register_blueprints(app):
         claseRoute.bp,
         horarioRoute.bp,
         reservaRoute.bp,
+        empleadoRoute.bp,
     ]
 
     for bp in blue_prints:
