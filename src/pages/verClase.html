@@ -10,7 +10,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Gymnasionline Registrar Empleado</title>
+    <title>Gymnasionline Ver Clase</title>
     <link
       rel="stylesheet"
       href="../static/styles/estilos.css"
@@ -40,9 +40,12 @@
       rel="stylesheet"
       href="../static/styles/form.css"
     />
+    <link
+      rel="stylesheet"
+      href="../static/styles/ver.css"
+    />
   </head>
-
-  <body class="pagina-registrar-empleado">
+  <body>
     <!-- Header -->
     <header
       id="header"
@@ -183,7 +186,7 @@
               class="custom-btn"
               style="display: none"
             >
-              <a href="./src/views/reservas.html">Reservar Clase</a>
+              <a href="./src/pages/reservas.html">Reservar Clase</a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -206,7 +209,7 @@
               id="login-btn"
               class="custom-btn"
             >
-              <a href="./src/views/login.html">Login</a>
+              <a href="./src/pages/login.html">Login</a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -258,7 +261,7 @@
               id="register-btn"
               class="custom-btn"
             >
-              <a href="./src/views/registro.html">Regístrate</a>
+              <a href="./src/pages/registro.html">Regístrate</a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -280,10 +283,10 @@
             <nav>
               <ul>
                 <li>
-                  <a href="./src/views/reservas.html">Reservar Clase</a>
+                  <a href="./src/pages/reservas.html">Reservar Clase</a>
                 </li>
                 <li>
-                  <a href="./src/views/login.html">Login</a>
+                  <a href="./src/pages/login.html">Login</a>
                 </li>
                 <li>
                   <a
@@ -293,7 +296,7 @@
                   >
                 </li>
                 <li>
-                  <a href="./src/views/registro.html">Regístrate</a>
+                  <a href="./src/pages/registro.html">Regístrate</a>
                 </li>
               </ul>
             </nav>
@@ -339,127 +342,103 @@
 
     <!-- MAIN -->
     <main>
-      <h1>Registrar Empleado</h1>
+      <h1>Ver Clase</h1>
       <button
         id="btn-volver"
         class="btn-volver buscar-btn"
       >
         <i class="fa-solid fa-circle-arrow-left"></i>
       </button>
-      <section id="seccion-registrar-instructor">
-        <form
-          id="form-registrar-empleado"
-          enctype="multipart/form-data"
-          class="form"
-        >
-          <p id="errorRegistro"></p>
 
-          <div class="flex-item">
-            <label for="imagen">Foto:</label>
-            <img
-              id="preview-imagen"
-              src=""
-              alt=""
-              class="preview-imagen"
-            />
-            <input
-              type="file"
-              id="imagen"
-              name="imagen"
-              accept="image/*"
-              required
-            />
-          </div>
-          <div class="flex-item">
-            <label for="nombre">Nombre:</label>
-            <input
-              type="text"
-              class="input100"
+      <section
+        id="seccion-detalle-clase"
+        class="contenedor-campos"
+      >
+        <div class="campo-imagen">
+          <img
+            id="preview-imagen"
+            src=""
+            alt=""
+            class="preview-imagen"
+          />
+        </div>
+
+        <div class="campos">
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Nombre de la Clase:</h3>
+            <span
               id="nombre"
-              name="nombre"
-              placeholder="Nombre del empleado"
-              required
-            />
+              class="campo-valor"
+            ></span>
           </div>
 
-          <div class="flex-item">
-            <label for="dni">DNI:</label>
-            <input
-              type="text"
-              class="input100"
-              id="dni"
-              name="dni"
-              placeholder="DNI del empleado"
-              required
-            />
-          </div>
-          
-          <div class="flex-item">
-            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
-            <input
-              type="date"
-              class="input100"
-              id="fecha_nacimiento"
-              name="fecha_nacimiento"
-              required
-            />
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Descripción:</h3>
+            <span
+              id="descripcion"
+              class="campo-valor"
+            ></span>
           </div>
 
-          <div class="flex-item">
-            <label for="email">Email:</label>
-            <input
-              type="email"
-              class="input100"
-              id="email"
-              name="email"
-              placeholder="Email del empleado"
-              required
-            />
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Instructor:</h3>
+            <span
+              id="instructor-nombre"
+              class="campo-valor"
+            ></span>
           </div>
 
-          <div class="flex-item">
-            <label for="telefono">Teléfono:</label>
-            <input
-              type="tel"
-              class="input100"
-              id="telefono"
-              name="telefono"
-              placeholder="Teléfono del empleado"
-              required
-            />
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Especialidad del Instructor:</h3>
+            <span
+              id="instructor-especialidad"
+              class="campo-valor"
+            ></span>
           </div>
 
-          <div class="flex-item">
-            <label for="direccion">Dirección:</label>
-            <input
-              type="text"
-              class="input100"
-              id="direccion"
-              name="direccion"
-              placeholder="Ej: Calle Falsa 123"
-            />
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Teléfono del Instructor:</h3>
+            <span
+              id="instructor-telefono"
+              class="campo-valor"
+            ></span>
           </div>
 
-          <div class="flex-item">
-            <label for="especialidad">Especialidad:</label>
-            <input
-              type="text"
-              class="input100"
-              id="especialidad"
-              name="especialidad"
-              placeholder="Ej: Pilates, Yoga, etc."
-            />
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Dirección del Instructor:</h3>
+            <span
+              id="instructor-direccion"
+              class="campo-valor"
+            ></span>
           </div>
 
-          <div class="flex-item container-login100-form-btn">
-            <input
-              type="submit"
-              id="sub-form-registro-empleado"
-              class="login100-form-btn"
-              value="Registrar"
-            />
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Horario:</h3>
+            <div class="contenedor-horario">
+              <span
+                id="dia_semana"
+                class="campo-valor"
+              ></span>
+              <span
+                id="hora_inicio"
+                class="campo-valor"
+              ></span>
+              -
+              <span
+                id="hora_fin"
+                class="campo-valor"
+              ></span>
+            </div>
           </div>
-        </form>
+
+          <div class="contenedor-campo">
+            <h3 class="campo-nombre">Capacidad Máxima:</h3>
+            <span
+              id="capacidad_maxima"
+              class="campo-valor"
+            ></span>
+          </div>
+        </div>
       </section>
     </main>
     <!-- Toast que muestra un mensaje -->
@@ -477,7 +456,7 @@
     <script src="../static/js/login-menu.js"></script>
     <script
       type="module"
-      src="../static/js/registrarEmpleado.js"
+      src="../static/js/verClase.js"
     ></script>
   </body>
 </html>

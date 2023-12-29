@@ -17,10 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const nombre_usuario = document.getElementById("nombreCliente");
   const user_icon = document.getElementById("user-icono");
   const user_imagen = document.getElementById("user-imagen");
-
-  const tipo_usuario = JSON.parse(userData).usuario.tipo_usuario.tipo_usuario_id;
+  let tipo_usuario;
 
   if (userData) {
+    tipo_usuario = JSON.parse(userData).usuario.tipo_usuario.tipo_usuario_id;
+
     nombre_usuario.textContent = JSON.parse(userData).nombre;
     let url_imagen = JSON.parse(userData).url_imagen;
     if (url_imagen != null) {

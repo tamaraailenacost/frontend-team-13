@@ -10,7 +10,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-    <title>Gymnasionline Ver Clase</title>
+    <title>Gymnasionline Dashboard</title>
     <link
       rel="stylesheet"
       href="../static/styles/estilos.css"
@@ -36,14 +36,6 @@
       src="https://kit.fontawesome.com/4d2f081ec5.js"
       crossorigin="anonymous"
     ></script>
-    <link
-      rel="stylesheet"
-      href="../static/styles/form.css"
-    />
-    <link
-      rel="stylesheet"
-      href="../static/styles/ver.css"
-    />
   </head>
   <body>
     <!-- Header -->
@@ -186,7 +178,7 @@
               class="custom-btn"
               style="display: none"
             >
-              <a href="./src/views/reservas.html">Reservar Clase</a>
+              <a href="./src/pages/reservas.html">Reservar Clase</a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -209,7 +201,7 @@
               id="login-btn"
               class="custom-btn"
             >
-              <a href="./src/views/login.html">Login</a>
+              <a href="./src/pages/login.html">Login</a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -261,7 +253,7 @@
               id="register-btn"
               class="custom-btn"
             >
-              <a href="./src/views/registro.html">Regístrate</a>
+              <a href="./src/pages/registro.html">Regístrate</a>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -283,10 +275,10 @@
             <nav>
               <ul>
                 <li>
-                  <a href="./src/views/reservas.html">Reservar Clase</a>
+                  <a href="./src/pages/reservas.html">Reservar Clase</a>
                 </li>
                 <li>
-                  <a href="./src/views/login.html">Login</a>
+                  <a href="./src/pages/login.html">Login</a>
                 </li>
                 <li>
                   <a
@@ -296,7 +288,7 @@
                   >
                 </li>
                 <li>
-                  <a href="./src/views/registro.html">Regístrate</a>
+                  <a href="./src/pages/registro.html">Regístrate</a>
                 </li>
               </ul>
             </nav>
@@ -342,102 +334,170 @@
 
     <!-- MAIN -->
     <main>
-      <h1>Ver Clase</h1>
-      <button
-        id="btn-volver"
-        class="btn-volver buscar-btn"
-      >
-        <i class="fa-solid fa-circle-arrow-left"></i>
-      </button>
+      <h1>Dashboard</h1>
+      <section id="seccion-dashboard">
+        <ul class="tabs">
+          <li
+            class="tab active"
+            data-tab-target="clases"
+          >
+            Clases
+          </li>
+          <li
+            class="tab"
+            data-tab-target="instructores"
+          >
+            Instructores
+          </li>
+          <!-- Agrega más pestañas según tus necesidades -->
+        </ul>
 
-      <section
-        id="seccion-detalle-clase"
-        class="contenedor-campos"
-      >
-        <div class="campo-imagen">
-          <img
-            id="preview-imagen"
-            src=""
-            alt=""
-            class="preview-imagen"
-          />
+        <div
+          id="clasesTab"
+          class="tab-content active"
+        >
+          <!-- Contenido para la pestaña de Clases -->
+          <div class="tab-content__header">
+            <h2>Clases</h2>
+            <button class="custom-btn">
+              <a
+                href="./registrarClase.html"
+                class="add-button"
+              >
+                <i class="fa-solid fa-circle-plus"></i>
+                Agregar Clase
+              </a>
+            </button>
+            <form id="formFiltrarClases">
+              <div class="filtros">
+                <div class="filtro">
+                  <label
+                    for="dia-semana"
+                    style="display: none"
+                  >
+                  </label>
+                  <select
+                    name="dia-semana"
+                    id="dia-semana"
+                  >
+                    <!-- default -->
+                    <option
+                      selected
+                      value="0"
+                    >
+                      Dia Semana
+                    </option>
+
+                    <option value="1">Lunes</option>
+                    <option value="2">Martes</option>
+                    <option value="3">Miércoles</option>
+                    <option value="4">Jueves</option>
+                    <option value="5">Viernes</option>
+                    <option value="6">Sábado</option>
+                    <option value="7">Domingo</option>
+                  </select>
+                </div>
+                <div class="filtro">
+                  <label
+                    for="instructor"
+                    style="display: none"
+                  >
+                  </label>
+                  <select
+                    name="instructor"
+                    id="instructor"
+                  >
+                    <!-- default -->
+                    <option
+                      selected
+                      value="0"
+                    >
+                      Instructor
+                    </option>
+                    <option value="1">Caterina Lipster</option>
+                    <option value="2">Maria Suan</option>
+                    <option value="3">Laura</option>
+                    <option value="4">Mariana</option>
+                    <option value="5">Cata</option>
+                  </select>
+                </div>
+              </div>
+              <button
+                type="submit"
+                class="buscar-btn"
+                id="btnFiltrar"
+              >
+                Filtrar
+              </button>
+            </form>
+          </div>
+          <table class="tabla-listado-clases">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Instructor</th>
+                <th>Día Semana</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-clases">
+              <tr>
+                <td>Clase 1</td>
+                <td>Instructor A</td>
+                <td>Lunes</td>
+              </tr>
+              <tr>
+                <td>Clase 2</td>
+                <td>Instructor B</td>
+                <td>Miércoles</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <div class="campos">
-          <div class="contenedor-campo">
-            <h3 class="campo-nombre">Nombre de la Clase:</h3>
-            <span
-              id="nombre"
-              class="campo-valor"
-            ></span>
+        <div
+          id="instructoresTab"
+          class="tab-content"
+        >
+          <!-- Contenido para la pestaña de Instructores -->
+          <div class="tab-content__header">
+            <h2>Instructores</h2>
+            <button class="custom-btn">
+              <a
+                href="./registrarEmpleado.html"
+                class="add-button"
+              >
+                <i class="fa-solid fa-circle-plus"></i>
+                Agregar Instructor
+              </a>
+            </button>
           </div>
 
-          <div class="contenedor-campo">
-            <h3 class="campo-nombre">Descripción:</h3>
-            <span
-              id="descripcion"
-              class="campo-valor"
-            ></span>
-          </div>
-
-          <div class="contenedor-campo">
-            <h3 class="campo-nombre">Instructor:</h3>
-            <span
-              id="instructor-nombre"
-              class="campo-valor"
-            ></span>
-          </div>
-
-          <div class="contenedor-campo">
-            <h3 class="campo-nombre">Especialidad del Instructor:</h3>
-            <span
-              id="instructor-especialidad"
-              class="campo-valor"
-            ></span>
-          </div>
-
-          <div class="contenedor-campo">
-            <h3 class="campo-nombre">Teléfono del Instructor:</h3>
-            <span
-              id="instructor-telefono"
-              class="campo-valor"
-            ></span>
-          </div>
-
-          <div class="contenedor-campo">
-            <h3 class="campo-nombre">Dirección del Instructor:</h3>
-            <span
-              id="instructor-direccion"
-              class="campo-valor"
-            ></span>
-          </div>
-
-          <div class="contenedor-campo">
-            <h3 class="campo-nombre">Horario:</h3>
-            <div class="contenedor-horario">
-              <span
-                id="dia_semana"
-                class="campo-valor"
-              ></span>
-              <span
-                id="hora_inicio"
-                class="campo-valor"
-              ></span>
-              -
-              <span
-                id="hora_fin"
-                class="campo-valor"
-              ></span>
-            </div>
-          </div>
-
-          <div class="contenedor-campo">
-            <h3 class="campo-nombre">Capacidad Máxima:</h3>
-            <span
-              id="capacidad_maxima"
-              class="campo-valor"
-            ></span>
-          </div>
+          <!-- Agrega el contenido relacionado con los instructores aquí -->
+          <table class="tabla-listado-instructores">
+            <thead>
+              <tr>
+                <th>Foto</th>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-instructores">
+              <tr>
+                <td>Clase 1</td>
+                <td>Instructor A</td>
+                <td>Lunes</td>
+              </tr>
+              <tr>
+                <td>Clase 2</td>
+                <td>Instructor B</td>
+                <td>Miércoles</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
     </main>
@@ -456,7 +516,7 @@
     <script src="../static/js/login-menu.js"></script>
     <script
       type="module"
-      src="../static/js/verClase.js"
+      src="../static/js/dashboard.js"
     ></script>
   </body>
 </html>
