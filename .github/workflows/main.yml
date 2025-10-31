@@ -1,0 +1,74 @@
+name: Fortify SAST Scan
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  fortify-sast:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    steps:
+      # Check out source code
+      - name: Check Out Source Code
+        uses: actions/checkout@v3
+
+      # Java is required to run the various Fortify utilities.
+      # When scanning a Java application, please use the appropriate Java version for building your application.
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: 8
+          distribution: 'temurin'
+
+      - name: Download Fortify ScanCentral Client
+        uses: fortify/gha-setup-scancentral-client@5b7382f8234fb9840958c49d5f32ae854115f9f3
+
+      - name: Package Code + Dependencies
+        run: scancentral package $PACKAGE_OPTS -o package.zip
+        env:
+          PACKAGE_OPTS: "-bt none"
+
+      - name: Download Fortify on Demand Universal CI Tool
+        uses: fortify/gha-setup-fod-uploader@6e6bb8a33cb476e240929fa8ebc739ff110e7433
+
+      - name: Perform SAST Scan
+        run: >
+          java -jar $FOD_UPLOAD_JAR -z package.zip
+          -aurl $FOD_API_URL
+          -purl $FOD_URL
+          -rid "$FOD_RELEASEID"
+          -tc "$FOD_TENANTID"
+          -ac "$FOD_API_KEY" "$FOD_API_SECRET"
+          $FOD_UPLOADER_OPTS
+          -n "$FOD_UPLOADER_NOTES"
+        env:
+          FOD_URL: "https://ams.fortify.com/"
+          FOD_API_URL: "https://api.ams.fortify.com/"
+          FOD_TENANTID: ${{ secrets.FOD_TENANTID }}
+          FOD_API_KEY: ${{ secrets.FOD_API_KEY }}
+          FOD_API_SECRET: ${{ secrets.FOD_API_SECRET }}
+          FOD_RELEASEID: ${{ secrets.FOD_RELEASEID }}
+          FOD_UPLOADER_OPTS: "-ep 1 -pp 2 -I 1 -apf"
+          FOD_UPLOADER_NOTES: "Triggered by GitHub Actions (${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})"
+          EXTRA_PACKAGE_OPTS: "-oss"
+
+      # Once scan completes, pull SAST issues from Fortify on Demand and generate SARIF output.
+      - name: Export results to GitHub-optimized SARIF
+        uses: fortify/gha-export-vulnerabilities@fcb374411cff9809028c911dabb8b57dbdae623b
+        with:
+          fod_base_url: "https://ams.fortify.com/"
+          fod_tenant: ${{ secrets.FOD_TENANTID }}
+          fod_client_id: ${{ secrets.FOD_API_KEY }}
+          fod_client_secret: ${{ secrets.FOD_API_SECRET }}
+          fod_release_id: ${{ secrets.FOD_RELEASEID }}
+
+      # Import Fortify on Demand results to GitHub Security Code Scanning
+      - name: Import Results
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ./gh-fortify-sast.sarif
